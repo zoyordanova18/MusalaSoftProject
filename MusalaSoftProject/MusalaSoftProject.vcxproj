@@ -141,6 +141,9 @@
   <ItemGroup>
     <ClCompile Include="MusalaSoftProject.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="define.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
