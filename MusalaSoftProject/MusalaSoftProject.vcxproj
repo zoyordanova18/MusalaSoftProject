@@ -141,10 +141,15 @@
   <ItemGroup>
     <ClCompile Include="MusalaSoftProject.cpp" />
     <ClCompile Include="Presentation.cpp" />
+    <ClCompile Include="students.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h" />
     <ClInclude Include="Presentation.h" />
+    <ClInclude Include="students.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="students.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
