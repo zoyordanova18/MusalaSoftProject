@@ -2,8 +2,10 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
+#include <vector>
 #include "define.h"
 
+#pragma pack(1)
 struct STUDENT
 {
 	int id = 0;
@@ -12,14 +14,19 @@ struct STUDENT
 	char studentClass[MAX_ST_CLASS_LENGTH];
 	char email[MAX_CHAR_ARRAY_LENGTH]{};
 
+	std::string toString(STUDENT&);
+
+
+};
+
+struct STUDENT_SERVICE
+{
 	std::fstream studentsFile;
 
 	bool open();
 	void close();
-	bool add();
+	bool add(STUDENT student);
 	uint32_t generateId();
-	void showAll();
-	std::string toString(STUDENT&);
-
-	
+	std::vector <STUDENT> getAll();
+	bool editFirstName(int, const char*);
 };
