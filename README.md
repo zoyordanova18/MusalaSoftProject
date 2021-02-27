@@ -1,5 +1,8 @@
+<p align="center">
+<img src="https://cdn.discordapp.com/attachments/807691025031495689/807691093193523230/logo-done.png" width="200" height="200" alt="some_text" ></p>
+ 
+ 
  <h3 align="center">CAPS LOCK</h3>
-
 
 
 <details open="open">
@@ -34,9 +37,9 @@ Technologies we used:
 ## Our Team
 
 - Jacqueline Yordanova(Scrum Trainer)
-- Iliyan Iliev(Back-end developer)
+- Iliyan Iliev(Back-End developer)
 - Stanislava Andonova(QA Engineer)
-- Dimitar Kaloyanov(Front-end developer)
+- Dimitar Kaloyanov(Front-End developer)
 
 ## Presentation and Documentation
 
