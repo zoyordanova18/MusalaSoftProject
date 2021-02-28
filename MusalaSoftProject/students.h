@@ -5,6 +5,8 @@
 #include <vector>
 #include "define.h"
 
+
+
 #pragma pack(1)
 struct STUDENT
 {
@@ -14,19 +16,21 @@ struct STUDENT
 	char studentClass[MAX_ST_CLASS_LENGTH];
 	char email[MAX_CHAR_ARRAY_LENGTH]{};
 
-	std::string toString(STUDENT&);
+	std::string toString(STUDENT&);	
+	void showAll();
 
 
 };
 
 struct STUDENT_SERVICE
 {
-	std::fstream studentsFile;
-
-	bool open();
-	void close();
-	bool add(STUDENT student);
-	uint32_t generateId();
-	std::vector <STUDENT> getAll();
-	bool editFirstName(int, const char*);
+	static bool open();
+	static void close();
+	static bool add(STUDENT student);
+	static uint32_t generateId();
+	static std::vector <STUDENT> getAll();
+	static void editFirstName(int, const char*);
+	static void editLastName(int, const char*);
+	static void editEmail(int, const char*);
+	static void editClass(int, const char*);
 };

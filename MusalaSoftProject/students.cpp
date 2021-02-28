@@ -5,6 +5,8 @@
 
 using namespace std;
 
+std::fstream studentsFile;
+
 bool STUDENT_SERVICE::open()
 {
 	studentsFile.open("students.txt", ios::ate | ios::binary | ios::in | ios::out);
@@ -18,7 +20,7 @@ void STUDENT_SERVICE::close()
 
 bool STUDENT_SERVICE::add(STUDENT student)
 {
-	student.id = generateId();
+	//student.id = generateId();
 
 	studentsFile.seekp(0, ios::end);
 
@@ -67,6 +69,8 @@ vector<STUDENT> STUDENT_SERVICE::getAll()
 		}
 	}
 
+	return students;
+
 }
 
 string STUDENT::toString(STUDENT& product)
@@ -76,7 +80,22 @@ string STUDENT::toString(STUDENT& product)
 	return s.str();
 }
 
-bool STUDENT_SERVICE::editFirstName(int id, const char* itemName)
+void STUDENT::showAll()
+{
+	vector<STUDENT> students = STUDENT_SERVICE::getAll();
+
+	for (size_t i = 0; i < students.size(); i++)
+	{
+		cout << "Id		|" << students[i].id << endl;
+		cout << "Name   |" << students[i].firstName<< endl;
+		cout << "Surname|" << students[i].lastName << endl;
+		cout << "Class  |" << students[i].studentClass << endl;
+		cout << "Email  |" << students[i].email << endl;
+	}
+	
+}
+
+void STUDENT_SERVICE::editFirstName(int id, const char* studentName)
 {
 	STUDENT student;
 
@@ -88,20 +107,128 @@ bool STUDENT_SERVICE::editFirstName(int id, const char* itemName)
 
 		if (student.id == id)
 		{
-			int res = strcpy_s(student.firstName, sizeof(student.firstName), itemName);
+			int res = strcpy_s(student.firstName, sizeof(student.firstName), studentName);
 
 			studentsFile.seekg(-132, ios::cur);
-			cout << studentsFile.tellp() << endl;
-			if (studentsFile.write((byte*)&student, sizeof(STUDENT))) {
-				cout << "Successfull write";
+			//cout << studentsFile.tellp() << endl;
+			if (studentsFile.write((byte*)&student, sizeof(STUDENT))) 
+{
+				return;
 			}
-			return true;
+			else
+			{
+				throw exception("A wild error appeard!");
+			}
+			
 		}
 
 
 	}
-
+	throw exception("Invalid ID");
 	// closeFile();
-	return false;
+	//return false;
 }
+
+void STUDENT_SERVICE::editLastName(int id, const char* studentSurname)
+{
+	STUDENT student;
+
+	studentsFile.seekg(0, ios::beg);
+
+	while (!studentsFile.eof())
+	{
+		studentsFile.read((byte*)&student, sizeof(STUDENT));
+
+		if (student.id == id)
+		{
+			int res = strcpy_s(student.lastName, sizeof(student.lastName), studentSurname);
+
+			studentsFile.seekg(-132, ios::cur);
+			//cout << studentsFile.tellp() << endl;
+			if (studentsFile.write((byte*)&student, sizeof(STUDENT)))
+			{
+				return;
+			}
+			else
+			{
+				throw exception("A wild error appeard!");
+			}
+
+		}
+
+
+	}
+	throw exception("Invalid ID");
+	// closeFile();
+	//return false;
+}
+
+void STUDENT_SERVICE::editEmail(int id, const char* studentEmail)
+{
+	STUDENT student;
+
+	studentsFile.seekg(0, ios::beg);
+
+	while (!studentsFile.eof())
+	{
+		studentsFile.read((byte*)&student, sizeof(STUDENT));
+
+		if (student.id == id)
+		{
+			int res = strcpy_s(student.email, sizeof(student.email), studentEmail);
+
+			studentsFile.seekg(-132, ios::cur);
+			//cout << studentsFile.tellp() << endl;
+			if (studentsFile.write((byte*)&student, sizeof(STUDENT)))
+			{
+				return;
+			}
+			else
+			{
+				throw exception("A wild error appeard!");
+			}
+
+		}
+
+
+	}
+	throw exception("Invalid ID");
+	// closeFile();
+	//return false;
+}
+
+void STUDENT_SERVICE::editClass(int id, const char* studentClass)
+{
+	STUDENT student;
+
+	studentsFile.seekg(0, ios::beg);
+
+	while (!studentsFile.eof())
+	{
+		studentsFile.read((byte*)&student, sizeof(STUDENT));
+
+		if (student.id == id)
+		{
+			int res = strcpy_s(student.studentClass, sizeof(student.studentClass), studentClass);
+
+			studentsFile.seekg(-132, ios::cur);
+			//cout << studentsFile.tellp() << endl;
+			if (studentsFile.write((byte*)&student, sizeof(STUDENT)))
+			{
+				return;
+			}
+			else
+			{
+				throw exception("A wild error appeard!");
+			}
+
+		}
+
+
+	}
+	throw exception("Invalid ID");
+	// closeFile();
+	//return false;
+}
+
 
