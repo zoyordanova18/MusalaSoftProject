@@ -157,6 +157,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="EditStudentClassTest.cpp" />
     <ClCompile Include="EditFirstNameTest.cpp" />
     <ClCompile Include="EditLastNameTest.cpp" />
     <ClCompile Include="HelperFunctionsForTesting.cpp" />
