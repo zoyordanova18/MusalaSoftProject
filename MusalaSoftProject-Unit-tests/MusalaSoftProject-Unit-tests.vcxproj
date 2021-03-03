@@ -167,6 +167,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="HelperFunctionsForTesting.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
