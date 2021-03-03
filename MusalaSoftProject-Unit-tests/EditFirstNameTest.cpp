@@ -14,7 +14,7 @@ namespace MusalaSoftProjectUnitTests
 		TEST_METHOD(shouldEditFirstName)
 		{
 			// Arrange
-			createFilesNeededForTesting();
+			createFilesNeededForTesting("students_editFirstNameTest.txt");
 
 			// Act
 			STUDENT_SERVICE::editFirstName(1, "Ivan");
