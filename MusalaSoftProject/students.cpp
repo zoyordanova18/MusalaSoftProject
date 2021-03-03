@@ -7,9 +7,17 @@ using namespace std;
 
 std::fstream studentsFile;
 
-bool STUDENT_SERVICE::open()
+bool STUDENT_SERVICE::open(const char* fileName)
 {
-	studentsFile.open("students.txt", ios::ate | ios::binary | ios::in | ios::out);
+	studentsFile.open(fileName, ios::in | ios::out | ios::_Noreplace);
+
+	if (studentsFile.is_open() == false)
+	{
+		studentsFile.open(fileName, ios::out);
+		studentsFile.close();
+	}
+
+	studentsFile.open(fileName, ios::ate | ios::binary | ios::in | ios::out);
 	return studentsFile.is_open();
 }
 
@@ -51,7 +59,9 @@ uint32_t STUDENT_SERVICE::generateId()
 		studentsFile.clear();
 	}
 
-	return ++id;
+	id++;
+
+	return id;
 }
 
 vector<STUDENT> STUDENT_SERVICE::getAll()
@@ -266,6 +276,24 @@ void STUDENT_SERVICE::removeSt(int id)
 	int rs = rename("temp.txt", "students.txt");
 	
 	open();
+}
+
+STUDENT findStudentById(const vector<STUDENT>& students, int id)
+{
+	STUDENT noStudentFound = {-3, "No students found"};
+
+	if (students.size() != 0) 
+	{
+		for (size_t i = 0; i < students.size(); i++)
+		{
+			if (id == students[i].id)
+			{
+				return students[i];
+			}
+		}
+	}
+	
+	return noStudentFound;
 }
 
 

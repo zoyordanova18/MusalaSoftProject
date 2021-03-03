@@ -33,7 +33,7 @@ int main()
 	//	cout << e.what();
 	//}
 	//cout << sizeof(a);
-	STUDENT_SERVICE::removeSt(2);
+	//STUDENT_SERVICE::removeSt(2);
 	a.showAll();
 	STUDENT_SERVICE::close();
 
