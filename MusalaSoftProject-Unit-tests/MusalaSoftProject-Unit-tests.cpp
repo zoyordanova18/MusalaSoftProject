@@ -12,6 +12,7 @@ namespace MusalaSoftProjectUnittests
 		
 		TEST_METHOD(TestMethod1)
 		{
+
 		}
 	};
 }
