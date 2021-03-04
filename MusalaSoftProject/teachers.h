@@ -21,4 +21,9 @@ struct TEACHER
 	void showAll();
 };
 
+struct TEACHER_SERVICE
+{
+	static bool open(const char* fileName = "teachers.txt");
+};
+
 
