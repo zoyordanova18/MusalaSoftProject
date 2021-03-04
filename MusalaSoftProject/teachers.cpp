@@ -39,3 +39,28 @@ bool TEACHER_SERVICE::add(TEACHER teacher)
 
 	return false;
 }
+
+uint32_t TEACHER_SERVICE::generateId()
+{
+	int id = -1;
+	TEACHER teacher;
+
+	teachersFile.seekg(0, ios::beg);
+
+	while (teachersFile)
+	{
+		if (teachersFile.read((byte*)&teacher, sizeof(TEACHER)))
+		{
+			id = teacher.id;
+		}
+	}
+
+	if (id == -1 || teachersFile.eof()) {
+		teachersFile.clear();
+	}
+
+	id++;
+
+	return id;
+}
+
