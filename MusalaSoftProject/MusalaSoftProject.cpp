@@ -1,6 +1,8 @@
 #include <iostream>
+#include <string>
 #include "students.h"
 #include "teachers.h"
+#include "teams.h"
 using namespace std;
 
 
@@ -9,7 +11,7 @@ int main()
 	TEACHER a{ 1,"Jamal", "Salim", "jsalim@codingburgas.bg" };
 	//cout << sizeof(a)<<endl;
 
-	bool isOpen = TEACHER_SERVICE::open();
+	//bool isOpen = TEACHER_SERVICE::open();
 	//b.editFirstName(2, "Kandy");
 	//vector<STUDENT> c = b.getAll();
 
@@ -20,8 +22,8 @@ int main()
 	 //STUDENT_SERVICE::add({ 4, "Mokor", "Misooo", "10V", "MJMisooo18@codingburgas.bg" });
 
 	//STUDENT_SERVICE::add({ 4, "Habib", "Hujok", "10A", "HZHujok18@codingburgas.bg" });
-	TEACHER_SERVICE::add(a);
-	a.showAll();
+	//TEACHER_SERVICE::add(a);
+	//a.showAll();
 
 
 	//try
@@ -39,7 +41,8 @@ int main()
 	//cout << sizeof(a);
 	//STUDENT_SERVICE::removeSt(2);
 	//a.showAll();
-	TEACHER_SERVICE::close();
+	//TEACHER_SERVICE::close();
 
+	string date =  getTodaysDate();
 }
 

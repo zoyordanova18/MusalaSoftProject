@@ -8,20 +8,15 @@ enum class TEAM_STATUS
 	ARCHIVED
 };
 
-struct DATE
-{
-	int day;
-	int month;
-	int Year;
-};
-
 struct TEAMS
 {
 	int id = 0;
 	char name[MAX_DESCRIPTION_LENGTH];
-	DATE dateOfSetup;
+	char dateOfSetup[MAX_CHAR_ARRAY_LENGTH];
 	TEAM_STATUS status;
 	int teacherId;
 };
 
+
+std::string getTodaysDate();
 
