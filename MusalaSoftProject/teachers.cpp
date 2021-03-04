@@ -171,5 +171,39 @@ void TEACHER_SERVICE::editLastName(int id, const char* teacherSurname)
 	//return false;
 }
 
+void TEACHER_SERVICE::editEmail(int id, const char* teacherEmail)
+{
+	TEACHER teacher;
+
+	teachersFile.seekg(0, ios::beg);
+
+	while (!teachersFile.eof())
+	{
+		teachersFile.read((byte*)&teacher, sizeof(TEACHER));
+
+		if (teacher.id == id)
+		{
+			int res = strcpy_s(teacher.email, sizeof(teacher.email), teacherEmail);
+
+			teachersFile.seekg(-132, ios::cur);
+			//cout << teachersFile.tellp() << endl;
+			if (teachersFile.write((byte*)&teacher, sizeof(TEACHER)))
+			{
+				return;
+			}
+			else
+			{
+				throw exception("A wild error appeard!");
+			}
+
+		}
+
+
+	}
+	throw exception("Invalid ID");
+	// closeFile();
+	//return false;
+}
+
 
 

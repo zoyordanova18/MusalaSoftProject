@@ -30,6 +30,7 @@ struct TEACHER_SERVICE
 	static std::vector <TEACHER> getAll();
 	static void editFirstName(int, const char*);
 	static void editLastName(int, const char*);
+	static void editEmail(int, const char*);
 };
 
 
