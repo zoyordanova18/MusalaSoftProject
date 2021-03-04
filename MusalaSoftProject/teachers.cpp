@@ -205,5 +205,45 @@ void TEACHER_SERVICE::editEmail(int id, const char* teacherEmail)
 	//return false;
 }
 
+void TEACHER_SERVICE::removeTc(int id)
+{
+	// India starts here
+
+	ofstream temp("temp.txt", ios::binary);
+
+	TEACHER teacher;
+
+	teachersFile.seekg(0, ios::beg);
+
+	vector<TEACHER> teachers;
+
+	while (!teachersFile.eof())
+	{
+		teachersFile.read((byte*)&teacher, sizeof(TEACHER));
+
+		if (teacher.id != id)
+		{
+			teachers.push_back(teacher);
+		}
+	}
+
+	for (size_t i = 0; i < teachers.size() - 1; i++)
+	{
+		temp.write((byte*)&teachers[i], sizeof(TEACHER));
+	}
+
+	//throw exception("Invalid ID");
+
+	close();
+	temp.close();
+
+	remove("teachers.txt");
+	int rs = rename("temp.txt", "teachers.txt");
+
+	open();
+}
+
+
+
 
 

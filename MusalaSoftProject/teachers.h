@@ -31,6 +31,7 @@ struct TEACHER_SERVICE
 	static void editFirstName(int, const char*);
 	static void editLastName(int, const char*);
 	static void editEmail(int, const char*);
+	static void removeTc(int);
 };
 
 
