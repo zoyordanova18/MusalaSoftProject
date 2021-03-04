@@ -25,6 +25,7 @@ struct TEACHER_SERVICE
 {
 	static bool open(const char* fileName = "teachers.txt");
 	static void close();
+	static bool add(TEACHER student);
 };
 
 

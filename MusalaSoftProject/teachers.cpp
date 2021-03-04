@@ -25,3 +25,17 @@ void TEACHER_SERVICE::close()
 {
 	teachersFile.close();
 }
+
+bool TEACHER_SERVICE::add(TEACHER teacher)
+{
+	teacher.id = generateId();
+
+	teachersFile.seekp(0, ios::end);
+
+	if (teachersFile.write((byte*)&teacher, sizeof(TEACHER)))
+	{
+		return true;
+	}
+
+	return false;
+}
