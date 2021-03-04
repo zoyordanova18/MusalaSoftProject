@@ -5,7 +5,7 @@
 
 using namespace std;
 
-std::fstream studentsFile;
+fstream studentsFile;
 
 bool STUDENT_SERVICE::open(const char* fileName)
 {

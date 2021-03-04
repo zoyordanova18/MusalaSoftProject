@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include "define.h"
 
-//std::fstream studentsFile;
+extern std::fstream studentsFile;
 
 #pragma pack(1)
 struct STUDENT
