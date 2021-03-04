@@ -2,7 +2,11 @@
 #include <iostream>
 #include <ctime>
 #include <string>
+#include <cstring>
+#include <fstream>
 using namespace std;
+
+fstream teamsFile;
 
 string getTodaysDate()
 {
@@ -29,3 +33,63 @@ string getTodaysDate()
 
 	return cDate;
 }
+
+bool TEAM_SERVICE::open(const char* fileName)
+{
+	/*studentsFile.open(fileName, ios::in | ios::out | ios::_Noreplace);
+
+	if (studentsFile.is_open() == false)
+	{
+		studentsFile.open(fileName, ios::out);
+		studentsFile.close();
+	}*/
+
+	teamsFile.open(fileName, ios::ate | ios::binary | ios::in | ios::out);
+	return teamsFile.is_open();
+}
+
+void TEAM_SERVICE::close()
+{
+	teamsFile.close();
+}
+
+uint32_t TEAM_SERVICE::generateId()
+{
+	int id = -1;
+	TEAM team;
+
+	teamsFile.seekg(0, ios::beg);
+
+	while (teamsFile)
+	{
+		if (teamsFile.read((byte*)&team, sizeof(TEAM)))
+		{
+			id = team.id;
+		}
+	}
+
+	if (id == -1 || teamsFile.eof()) {
+		teamsFile.clear();
+	}
+
+	id++;
+
+	return id;
+}
+
+bool TEAM_SERVICE::add(TEAM team)
+{
+	team.id = generateId();
+	strcpy_s(team.dateOfSetup, getTodaysDate().c_str());
+
+	teamsFile.seekp(0, ios::end);
+
+	if (teamsFile.write((byte*)&team, sizeof(TEAM)))
+	{
+		return true;
+	}
+
+	return false;
+}
+
+
