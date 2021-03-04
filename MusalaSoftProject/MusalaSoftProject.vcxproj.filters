@@ -27,6 +27,12 @@
     <ClCompile Include="teachers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="teams.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="participants.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -39,6 +45,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="teachers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="teams.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="participants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

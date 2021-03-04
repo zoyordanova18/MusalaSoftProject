@@ -140,15 +140,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="MusalaSoftProject.cpp" />
+    <ClCompile Include="participants.cpp" />
     <ClCompile Include="Presentation.cpp" />
     <ClCompile Include="students.cpp" />
     <ClCompile Include="teachers.cpp" />
+    <ClCompile Include="teams.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h" />
+    <ClInclude Include="participants.h" />
     <ClInclude Include="Presentation.h" />
     <ClInclude Include="students.h" />
     <ClInclude Include="teachers.h" />
+    <ClInclude Include="teams.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="students.txt" />

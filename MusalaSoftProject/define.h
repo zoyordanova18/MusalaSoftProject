@@ -8,21 +8,6 @@ constexpr auto MAX_DESCRIPTION_LENGTH= 256;
 
 typedef char byte;
 
-enum class TEAM_STATUS
-{
-	IN_USE,
-	NOT_ACTIVE,
-	ARCHIVED
-};
-
-enum class ROLES
-{
-	BACK_END,
-	FRONT_END,
-	SCRUM_MASTER,
-	QA
-};
-
 struct TEAM
 {
 	int id = 0;
