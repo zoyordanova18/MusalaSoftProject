@@ -66,41 +66,76 @@ uint32_t TEACHER_SERVICE::generateId()
 
 vector<TEACHER> TEACHER_SERVICE::getAll()
 {
-	TEACHER student;
-	vector<TEACHER> students;
+	TEACHER teacher;
+	vector<TEACHER> teachers;
 
 	teachersFile.seekg(0, ios::beg);
 
 	while (!teachersFile.eof())
 	{
-		if (teachersFile.read((byte*)&student, sizeof(TEACHER)))
+		if (teachersFile.read((byte*)&teacher, sizeof(TEACHER)))
 		{
-			students.push_back(student);
+			teachers.push_back(teacher);
 		}
 	}
 
-	return students;
+	return teachers;
 
 }
 
-string TEACHER::toString(TEACHER& product)
+string TEACHER::toString(TEACHER& teacher)
 {
 	stringstream s;
-	s << product.id << " | " << product.firstName << ", " << product.lastName << endl;
+	s << teacher.id << " | " << teacher.firstName << ", " << teacher.lastName << endl;
 	return s.str();
 }
 
 void TEACHER::showAll()
 {
-	vector<TEACHER> students = TEACHER_SERVICE::getAll();
+	vector<TEACHER> teachers = TEACHER_SERVICE::getAll();
 
-	for (size_t i = 0; i < students.size(); i++)
+	for (size_t i = 0; i < teachers.size(); i++)
 	{
-		cout << "Id		|" << students[i].id << endl;
-		cout << "Name   |" << students[i].firstName << endl;
-		cout << "Surname|" << students[i].lastName << endl;
-		cout << "Email  |" << students[i].email << endl;
+		cout << "Id		|" << teachers[i].id << endl;
+		cout << "Name   |" << teachers[i].firstName << endl;
+		cout << "Surname|" << teachers[i].lastName << endl;
+		cout << "Email  |" << teachers[i].email << endl;
 	}
 
 }
+
+void TEACHER_SERVICE::editFirstName(int id, const char* teacherName)
+{
+	TEACHER teacher;
+
+	teachersFile.seekg(0, ios::beg);
+
+	while (!teachersFile.eof())
+	{
+		teachersFile.read((byte*)&teacher, sizeof(TEACHER));
+
+		if (teacher.id == id)
+		{
+			int res = strcpy_s(teacher.firstName, sizeof(teacher.firstName), teacherName);
+
+			if (res != 0)
+			{
+				throw exception("Cannot copy strings!");
+			}
+
+			teachersFile.seekg(sizeof(TEACHER), ios::cur);
+			if (teachersFile.write((byte*)&teacher, sizeof(TEACHER)))
+			{
+				return;
+			}
+			else
+			{
+				throw exception("A wild error appeard!");
+			}
+		}
+	}
+	throw exception("Invalid ID");
+}
+
+
 

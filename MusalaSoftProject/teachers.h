@@ -28,6 +28,7 @@ struct TEACHER_SERVICE
 	static bool add(TEACHER student);
 	static uint32_t generateId();
 	static std::vector <TEACHER> getAll();
+	static void editFirstName(int, const char*);
 };
 
 
