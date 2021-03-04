@@ -137,5 +137,39 @@ void TEACHER_SERVICE::editFirstName(int id, const char* teacherName)
 	throw exception("Invalid ID");
 }
 
+void TEACHER_SERVICE::editLastName(int id, const char* teacherSurname)
+{
+	TEACHER teacher;
+
+	teachersFile.seekg(0, ios::beg);
+
+	while (!teachersFile.eof())
+	{
+		teachersFile.read((byte*)&teacher, sizeof(TEACHER));
+
+		if (teacher.id == id)
+		{
+			int res = strcpy_s(teacher.lastName, sizeof(teacher.lastName), teacherSurname);
+
+			teachersFile.seekg(-132, ios::cur);
+			//cout << teachersFile.tellp() << endl;
+			if (teachersFile.write((byte*)&teacher, sizeof(TEACHER)))
+			{
+				return;
+			}
+			else
+			{
+				throw exception("A wild error appeard!");
+			}
+
+		}
+
+
+	}
+	throw exception("Invalid ID");
+	// closeFile();
+	//return false;
+}
+
 
 
