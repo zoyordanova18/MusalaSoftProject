@@ -90,3 +90,17 @@ string TEACHER::toString(TEACHER& product)
 	return s.str();
 }
 
+void TEACHER::showAll()
+{
+	vector<TEACHER> students = TEACHER_SERVICE::getAll();
+
+	for (size_t i = 0; i < students.size(); i++)
+	{
+		cout << "Id		|" << students[i].id << endl;
+		cout << "Name   |" << students[i].firstName << endl;
+		cout << "Surname|" << students[i].lastName << endl;
+		cout << "Email  |" << students[i].email << endl;
+	}
+
+}
+
