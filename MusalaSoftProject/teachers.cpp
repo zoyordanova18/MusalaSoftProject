@@ -83,3 +83,10 @@ vector<TEACHER> TEACHER_SERVICE::getAll()
 
 }
 
+string TEACHER::toString(TEACHER& product)
+{
+	stringstream s;
+	s << product.id << " | " << product.firstName << ", " << product.lastName << endl;
+	return s.str();
+}
+
