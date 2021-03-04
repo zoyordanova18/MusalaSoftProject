@@ -27,6 +27,7 @@ struct TEACHER_SERVICE
 	static void close();
 	static bool add(TEACHER student);
 	static uint32_t generateId();
+	static std::vector <TEACHER> getAll();
 };
 
 

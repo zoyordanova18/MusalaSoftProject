@@ -64,3 +64,22 @@ uint32_t TEACHER_SERVICE::generateId()
 	return id;
 }
 
+vector<TEACHER> TEACHER_SERVICE::getAll()
+{
+	TEACHER student;
+	vector<TEACHER> students;
+
+	teachersFile.seekg(0, ios::beg);
+
+	while (!teachersFile.eof())
+	{
+		if (teachersFile.read((byte*)&student, sizeof(TEACHER)))
+		{
+			students.push_back(student);
+		}
+	}
+
+	return students;
+
+}
+
