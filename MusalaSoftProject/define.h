@@ -23,16 +23,6 @@ enum class ROLES
 	QA
 };
 
-
-
-struct TEACHER
-{
-	int id = 0;
-	char firstName[MAX_CHAR_ARRAY_LENGTH]{};
-	char lastName[MAX_CHAR_ARRAY_LENGTH]{};
-	char email[MAX_CHAR_ARRAY_LENGTH]{};
-};
-
 struct TEAM
 {
 	int id = 0;

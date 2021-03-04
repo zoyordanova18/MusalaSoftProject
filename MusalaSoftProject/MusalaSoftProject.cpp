@@ -1,25 +1,29 @@
 #include <iostream>
 #include "students.h"
+#include "teachers.h"
 using namespace std;
 
 
 int main()
 {
-	STUDENT a{ 1,"Kondoriano", "Horhe", "10A", "IDIliev18@codingburgas.bg" };
-	STUDENT_SERVICE b;
+	TEACHER a{ 1,"Jamal", "Salim", "jsalim@codingburgas.bg" };
 	//cout << sizeof(a)<<endl;
 
-	STUDENT_SERVICE::open();
+	bool isOpen = TEACHER_SERVICE::open();
 	//b.editFirstName(2, "Kandy");
 	//vector<STUDENT> c = b.getAll();
 
 
-	STUDENT_SERVICE::add({ 1, "Kondoriano", "Horhe", "10A", "KGHorhe18@codingburgas.bg" });
-	STUDENT_SERVICE::add({ 2, "Habibi", "Viutr", "10G", "HZViutr18@codingburgas.bg" });
-	STUDENT_SERVICE::add({ 3, "Korja", "Zarzavat", "10G", "KJZarzavat18@codingburgas.bg" });
-	STUDENT_SERVICE::add({ 4, "Mokor", "Misooo", "10V", "MJMisooo18@codingburgas.bg" });
+	 //STUDENT_SERVICE::add({ 1, "Kondoriano", "Horhe", "10A", "KGHorhe18@codingburgas.bg" });
+	 //STUDENT_SERVICE::add({ 2, "Habibi", "Viutr", "10G", "HZViutr18@codingburgas.bg" });
+	 //STUDENT_SERVICE::add({ 3, "Korja", "Zarzavat", "10G", "KJZarzavat18@codingburgas.bg" });
+	 //STUDENT_SERVICE::add({ 4, "Mokor", "Misooo", "10V", "MJMisooo18@codingburgas.bg" });
 
-	
+	//STUDENT_SERVICE::add({ 4, "Habib", "Hujok", "10A", "HZHujok18@codingburgas.bg" });
+	TEACHER_SERVICE::add(a);
+	a.showAll();
+
+
 	//try
 	//{
 	//	STUDENT_SERVICE::editFirstName(1, "Alo, Alo, Alo");
@@ -34,8 +38,8 @@ int main()
 	//}
 	//cout << sizeof(a);
 	//STUDENT_SERVICE::removeSt(2);
-	a.showAll();
-	STUDENT_SERVICE::close();
+	//a.showAll();
+	TEACHER_SERVICE::close();
 
 }
 

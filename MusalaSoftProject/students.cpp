@@ -9,13 +9,13 @@ fstream studentsFile;
 
 bool STUDENT_SERVICE::open(const char* fileName)
 {
-	studentsFile.open(fileName, ios::in | ios::out | ios::_Noreplace);
+	/*studentsFile.open(fileName, ios::in | ios::out | ios::_Noreplace);
 
 	if (studentsFile.is_open() == false)
 	{
 		studentsFile.open(fileName, ios::out);
 		studentsFile.close();
-	}
+	}*/
 
 	studentsFile.open(fileName, ios::ate | ios::binary | ios::in | ios::out);
 	return studentsFile.is_open();
@@ -28,7 +28,7 @@ void STUDENT_SERVICE::close()
 
 bool STUDENT_SERVICE::add(STUDENT student)
 {
-	//student.id = generateId();
+	student.id = generateId();
 
 	studentsFile.seekp(0, ios::end);
 

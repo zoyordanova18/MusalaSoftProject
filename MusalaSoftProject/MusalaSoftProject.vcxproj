@@ -142,11 +142,13 @@
     <ClCompile Include="MusalaSoftProject.cpp" />
     <ClCompile Include="Presentation.cpp" />
     <ClCompile Include="students.cpp" />
+    <ClCompile Include="teachers.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h" />
     <ClInclude Include="Presentation.h" />
     <ClInclude Include="students.h" />
+    <ClInclude Include="teachers.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="students.txt" />

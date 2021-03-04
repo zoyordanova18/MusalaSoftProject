@@ -25,8 +25,6 @@ struct STUDENT
 
 struct STUDENT_SERVICE
 {
-	std::fstream file;
-
 	static bool open(const char* fileName = "students.txt");
 	static void close();
 	static bool add(STUDENT student);
