@@ -6,16 +6,15 @@
 #include "Presentation.h"
 using namespace std;
 
-
 int main()
 {
-	TEAM a{ 0, "Chupacabra", "Lovqt Riba", "dfdf", TEAM_STATUS::IN_USE, 0};
+	/*TEAM a{ 0, "Chupacabra", "Lovqt Riba", "dfdf", TEAM_STATUS::IN_USE, 0};
 
 	bool isOpen = TEAM_SERVICE::open();
 
 	TEAM_SERVICE::add(a);
 
-	TEAM_SERVICE::close();
+	TEAM_SERVICE::close();*/
 
 
 
