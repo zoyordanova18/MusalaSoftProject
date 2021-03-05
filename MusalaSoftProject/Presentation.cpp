@@ -191,3 +191,11 @@ void showMainMenu()
     showMenuOptions(mainMenu);
     handleUserChoice(mainMenu);
 }
+
+void showStudentMenu()
+{
+    vector<MENU_OPTION> menu = initializeStudentMenuOptions();
+
+    showMenuOptions(menu);
+    handleUserChoice(menu);
+}

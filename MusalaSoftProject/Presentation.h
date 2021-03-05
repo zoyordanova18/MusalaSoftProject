@@ -45,3 +45,5 @@ void inputStudentClass(STUDENT&);
 void inputEmail(STUDENT&);
 
 void showMainMenu();
+
+void showStudentMenu();
