@@ -9,7 +9,16 @@ using namespace std;
 
 int main()
 {
-	TEACHER a{ 1,"Jamal", "Salim", "jsalim@codingburgas.bg" };
+	TEAM a{ 0, "Chupacabra", "Lovqt Riba", "dfdf", TEAM_STATUS::IN_USE, 0};
+
+	bool isOpen = TEAM_SERVICE::open();
+
+	TEAM_SERVICE::add(a);
+
+	TEAM_SERVICE::close();
+
+
+
 	//cout << sizeof(a)<<endl;
 
 	bool isOpen = STUDENT_SERVICE::open();

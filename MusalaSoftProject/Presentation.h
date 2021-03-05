@@ -9,6 +9,8 @@ void showMainMenuHeading();
 
 void showSchoolArt();
 
-void showMessage(const char* message);
+void mainMenu();
 
+void editStudentMenu();
 
+void editTeacherMenu();
