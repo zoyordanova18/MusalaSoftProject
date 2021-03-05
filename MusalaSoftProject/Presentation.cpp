@@ -49,3 +49,19 @@ void showMenuOptions(vector<MENU_OPTION>& options)
         cout << endl;
     }
 }
+
+void handleUserChoice(vector<MENU_OPTION>& options)
+{
+    char choice;
+
+    cout << "Enter your choice: ";
+    cin >> choice;
+
+    for (size_t i = 0; i < options.size(); i++)
+    {
+        if (choice == options.at(i).number)
+        {
+            options.at(i).handler();
+        }
+    }
+}

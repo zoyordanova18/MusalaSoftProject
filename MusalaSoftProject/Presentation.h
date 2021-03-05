@@ -19,3 +19,5 @@ void showSchoolArt();
 void showMessage(const char*);
 
 void showMenuOptions(std::vector<MENU_OPTION>&);
+
+void handleUserChoice(std::vector<MENU_OPTION>&);
