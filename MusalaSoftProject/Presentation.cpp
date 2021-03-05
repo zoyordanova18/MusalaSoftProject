@@ -1,5 +1,7 @@
 #include <iostream>
+#include <vector>
 #include "Presentation.h"
+#include "students.h"
 using namespace std;
 
 void showMainMenuHeading()
@@ -31,3 +33,25 @@ void showSchoolArt()
     cout << "          `''''/             \\ \\:'-'-'-'-" << endl;
     cout << "         `''''/             \ \ \\:'-'-'-'-" << endl;
 }
+
+void showMessage(const char* message)
+{
+    cout << message;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
