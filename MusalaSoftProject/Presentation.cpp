@@ -65,3 +65,15 @@ void handleUserChoice(vector<MENU_OPTION>& options)
         }
     }
 }
+
+vector<MENU_OPTION> initializeMainMenuOptions()
+{
+    vector<MENU_OPTION> options =
+    {
+        {'1', ".Students", showStudentMenu},
+        {'2', ".Teachers", showTeacherMenu},
+        {'3', ".Teams", showTeamsMenu}
+    };
+
+    return options;
+}
