@@ -35,3 +35,5 @@ std::vector<MENU_OPTION> initializeEditMenuOptions();
 void showStudentAddMenu();
 
 void showEditMenu(STUDENT);
+
+void inputFirstName(STUDENT&);

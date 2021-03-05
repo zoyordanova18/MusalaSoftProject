@@ -151,3 +151,10 @@ void showEditMenu(STUDENT student)
 {
 
 }
+
+void inputFirstName(STUDENT& student)
+{
+    showMessage("First name: ");
+    cin >> student.firstName;
+    cout << endl;
+}
