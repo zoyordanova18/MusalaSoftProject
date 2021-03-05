@@ -1,4 +1,5 @@
 #include "participants.h"
+#include "define.h"
 #include <iostream>
 #include <vector>
 #include <fstream>
@@ -25,3 +26,16 @@ void PARTICIPANT_SERVICE::close()
 {
 	participantsFile.close();
 }
+
+bool PARTICIPANT_SERVICE::add(PARTICIPANT participant)
+{
+	participantsFile.seekp(0, ios::end);
+
+	if (participantsFile.write((byte*)&participant, sizeof(PARTICIPANT)))
+	{
+		return true;
+	}
+
+	return false;
+}
+
