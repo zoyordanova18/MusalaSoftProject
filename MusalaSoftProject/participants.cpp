@@ -39,3 +39,42 @@ bool PARTICIPANT_SERVICE::add(PARTICIPANT participant)
 	return false;
 }
 
+void PARTICIPANT_SERVICE::removePt(int studentId, int teamId)
+{
+	// India starts here
+
+	ofstream temp("temp.txt", ios::binary);
+
+	PARTICIPANT participant;
+
+	participantsFile.seekg(0, ios::beg);
+
+	vector<PARTICIPANT> participants;
+
+	while (!participantsFile.eof())
+	{
+		participantsFile.read((byte*)&participant, sizeof(PARTICIPANT));
+
+		if (participant.studentId != studentId && participant.teamId != teamId)
+		{
+			participants.push_back(participant);
+		}
+	}
+
+	for (size_t i = 0; i < participants.size() - 1; i++)
+	{
+		temp.write((byte*)&participants[i], sizeof(PARTICIPANT));
+	}
+
+	//throw exception("Invalid ID");
+
+	close();
+	temp.close();
+
+	remove("participants.txt");
+	int rs = rename("temp.txt", "participants.txt");
+
+	open();
+}
+
+

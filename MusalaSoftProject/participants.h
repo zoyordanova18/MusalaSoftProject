@@ -24,5 +24,6 @@ struct PARTICIPANT_SERVICE
 	static bool open(const char* fileName = "participants.txt");
 	static void close();
 	static bool add(PARTICIPANT student);
+	static void removePt(int, int);
 };
 
