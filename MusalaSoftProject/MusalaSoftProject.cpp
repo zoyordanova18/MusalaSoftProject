@@ -56,6 +56,8 @@ int main()
 
 	STUDENT student;
 
+	showMainMenu();
+
 	student.showAll();
 
 	STUDENT_SERVICE::close();

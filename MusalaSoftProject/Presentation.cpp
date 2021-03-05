@@ -207,3 +207,11 @@ void showTeacherMenu()
     showMenuOptions(menu);
     handleUserChoice(menu);
 }
+
+void showTeamsMenu()
+{
+    vector<MENU_OPTION> menu = initializeTeamMenuOptions();
+
+    showMenuOptions(menu);
+    handleUserChoice(menu);
+}

@@ -49,3 +49,5 @@ void showMainMenu();
 void showStudentMenu();
 
 void showTeacherMenu();
+
+void showTeamsMenu();
