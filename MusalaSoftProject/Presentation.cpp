@@ -129,3 +129,20 @@ vector<MENU_OPTION> initializeEditMenuOptions()
 
     return options;
 }
+
+void showStudentAddMenu()
+{
+    STUDENT student;
+
+    inputFirstName(student);
+
+    inputLastName(student);
+
+    inputStudentClass(student);
+
+    inputEmail(student);
+
+    STUDENT_SERVICE::add(student);
+
+    showMessage("The student is successfully registered in the system.\n");
+}
