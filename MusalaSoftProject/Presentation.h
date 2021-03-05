@@ -27,3 +27,5 @@ std::vector<MENU_OPTION> initializeMainMenuOptions();
 std::vector<MENU_OPTION> initializeStudentMenuOptions();
 
 std::vector<MENU_OPTION> initializeTeacherMenuOptions();
+
+std::vector<MENU_OPTION> initializeTeamMenuOptions();

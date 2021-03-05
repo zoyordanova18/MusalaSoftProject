@@ -103,3 +103,16 @@ vector<MENU_OPTION> initializeTeacherMenuOptions()
 
     return options;
 }
+
+vector<MENU_OPTION> initializeTeamMenuOptions()
+{
+    vector<MENU_OPTION> options =
+    {
+        {'1', ".Add team", /*func*/},
+        {'2', ".Edit team", /*func*/},
+        {'3', ".Delete team", /*func*/},
+        {'4', ".View all teams", /*func*/},
+    };
+
+    return options;
+}
