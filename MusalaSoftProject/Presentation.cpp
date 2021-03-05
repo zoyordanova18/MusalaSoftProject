@@ -199,3 +199,11 @@ void showStudentMenu()
     showMenuOptions(menu);
     handleUserChoice(menu);
 }
+
+void showTeacherMenu()
+{
+    vector<MENU_OPTION> menu = initializeTeacherMenuOptions();
+
+    showMenuOptions(menu);
+    handleUserChoice(menu);
+}
