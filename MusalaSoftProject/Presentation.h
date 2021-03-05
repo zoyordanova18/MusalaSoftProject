@@ -5,6 +5,13 @@
 //typedef unsigned char byte;
 typedef void (*MENU_HANDLER)();
 
+struct MENU_OPTION
+{
+    char number;
+    const char* text;
+    MENU_HANDLER handler;
+};
+
 void showMainMenuHeading();
 
 void showSchoolArt();
