@@ -179,3 +179,15 @@ void inputEmail(STUDENT& student)
     cin >> student.email;
     cout << endl;
 }
+
+void showMainMenu()
+{
+    STUDENT student;
+
+    vector <MENU_OPTION> mainMenu = initializeMainMenuOptions();
+
+    showMainMenuHeading();
+    showSchoolArt();
+    showMenuOptions(mainMenu);
+    handleUserChoice(mainMenu);
+}
