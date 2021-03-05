@@ -22,5 +22,6 @@ struct PARTICIPANT
 struct PARTICIPANT_SERVICE
 {
 	static bool open(const char* fileName = "participants.txt");
+	static void close();
 };
 

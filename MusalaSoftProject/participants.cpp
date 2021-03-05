@@ -20,3 +20,8 @@ bool PARTICIPANT_SERVICE::open(const char* fileName)
 	participantsFile.open(fileName, ios::ate | ios::binary | ios::in | ios::out);
 	return participantsFile.is_open();
 }
+
+void PARTICIPANT_SERVICE::close()
+{
+	participantsFile.close();
+}
