@@ -37,3 +37,5 @@ void showStudentAddMenu();
 void showEditMenu(STUDENT);
 
 void inputFirstName(STUDENT&);
+
+void inputLastName(STUDENT& student);

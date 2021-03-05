@@ -158,3 +158,10 @@ void inputFirstName(STUDENT& student)
     cin >> student.firstName;
     cout << endl;
 }
+
+void inputLastName(STUDENT& student)
+{
+    showMessage("Last name: ");
+    cin >> student.lastName;
+    cout << endl;
+}
