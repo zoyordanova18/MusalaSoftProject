@@ -38,4 +38,6 @@ void showEditMenu(STUDENT);
 
 void inputFirstName(STUDENT&);
 
-void inputLastName(STUDENT& student);
+void inputLastName(STUDENT&);
+
+void inputStudentClass(STUDENT&);
