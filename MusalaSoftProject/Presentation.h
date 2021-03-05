@@ -41,3 +41,5 @@ void inputFirstName(STUDENT&);
 void inputLastName(STUDENT&);
 
 void inputStudentClass(STUDENT&);
+
+void inputEmail(STUDENT&);

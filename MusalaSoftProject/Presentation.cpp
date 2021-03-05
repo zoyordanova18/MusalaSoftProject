@@ -172,3 +172,10 @@ void inputStudentClass(STUDENT& student)
     cin >> student.studentClass;
     cout << endl;
 }
+
+void inputEmail(STUDENT& student)
+{
+    showMessage("E-mail: ");
+    cin >> student.email;
+    cout << endl;
+}
