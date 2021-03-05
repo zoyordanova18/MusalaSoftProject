@@ -116,3 +116,16 @@ vector<MENU_OPTION> initializeTeamMenuOptions()
 
     return options;
 }
+
+vector<MENU_OPTION> initializeEditMenuOptions()
+{
+    vector<MENU_OPTION> options =
+    {
+        {'1', ".First name", /*func*/},
+        {'2', ".Last name", /*func*/},
+        {'3', ".Class", /*func*/},
+        {'4', ".E-mail", /*func*/},
+    };
+
+    return options;
+}
