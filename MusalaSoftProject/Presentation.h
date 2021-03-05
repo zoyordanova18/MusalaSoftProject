@@ -23,3 +23,5 @@ void showMenuOptions(std::vector<MENU_OPTION>&);
 void handleUserChoice(std::vector<MENU_OPTION>&);
 
 std::vector<MENU_OPTION> initializeMainMenuOptions();
+
+std::vector<MENU_OPTION> initializeStudentMenuOptions();

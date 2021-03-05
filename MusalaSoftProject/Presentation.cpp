@@ -77,3 +77,16 @@ vector<MENU_OPTION> initializeMainMenuOptions()
 
     return options;
 }
+
+vector<MENU_OPTION> initializeStudentMenuOptions()
+{
+    vector<MENU_OPTION> mainMenu =
+    {
+        {'1', ".Add student", showStudentAddMenu}
+        //{'2', ".Edit student", /*func*/},
+        //{'3', ".Delete student", /*func*/},
+        //{'4', ".View all students", /*func*/},
+    };
+
+    return mainMenu;
+}
