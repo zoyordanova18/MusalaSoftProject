@@ -17,3 +17,5 @@ void showMainMenuHeading();
 void showSchoolArt();
 
 void showMessage(const char*);
+
+void showMenuOptions(std::vector<MENU_OPTION>&);

@@ -54,7 +54,6 @@ int main()
 
 	//string date =  getTodaysDate();
 
-
 	STUDENT student;
 
 	student.showAll();

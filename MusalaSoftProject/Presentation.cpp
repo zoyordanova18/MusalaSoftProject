@@ -40,3 +40,12 @@ void showMessage(const char* message)
     cout << message;
 }
 
+void showMenuOptions(vector<MENU_OPTION>& options)
+{
+    for (size_t i = 0; i < options.size(); i++)
+    {
+        cout << options.at(i).number;
+        cout << options.at(i).text;
+        cout << endl;
+    }
+}
