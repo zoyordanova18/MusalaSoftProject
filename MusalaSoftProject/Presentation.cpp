@@ -146,3 +146,8 @@ void showStudentAddMenu()
 
     showMessage("The student is successfully registered in the system.\n");
 }
+
+void showEditMenu(STUDENT student)
+{
+
+}

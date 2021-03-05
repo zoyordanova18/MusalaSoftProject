@@ -33,3 +33,5 @@ std::vector<MENU_OPTION> initializeTeamMenuOptions();
 std::vector<MENU_OPTION> initializeEditMenuOptions();
 
 void showStudentAddMenu();
+
+void showEditMenu(STUDENT);
