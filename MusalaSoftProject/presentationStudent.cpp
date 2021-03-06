@@ -17,7 +17,7 @@ vector<MENU_OPTION> initializeStudentMenuOptions()
     return mainMenu;
 }
 
-void showMenuOptionsStudent(vector<MENU_OPTION_STUDENT>& options)
+void showMenuOptionsStudent(vector<MENU_OPTION_INT>& options)
 {
     for (size_t i = 0; i < options.size(); i++)
     {
@@ -27,7 +27,7 @@ void showMenuOptionsStudent(vector<MENU_OPTION_STUDENT>& options)
     }
 }
 
-void handleUserChoiceStudent(vector<MENU_OPTION_STUDENT>& options)
+void handleUserChoiceStudent(vector<MENU_OPTION_INT>& options)
 {
     char choice;
 
@@ -74,16 +74,16 @@ void showEditMenu()
 
     cout << "Choose what you want to edit: " << endl;
 
-    vector<MENU_OPTION_STUDENT> options = initializeEditMenuOptions();
+    vector<MENU_OPTION_INT> options = initializeEditMenuOptions();
 
     showMenuOptionsStudent(options);
 
     handleUserChoiceStudent(options);
 }
 
-vector<MENU_OPTION_STUDENT> initializeEditMenuOptions()
+vector<MENU_OPTION_INT> initializeEditMenuOptions()
 {
-    vector<MENU_OPTION_STUDENT> options =
+    vector<MENU_OPTION_INT> options =
     {
         {'1', ".First name", editFirstNameMenu},
         {'2', ".Last name", editLastNameMenu},

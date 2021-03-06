@@ -5,7 +5,7 @@
 
 typedef void (*MENU_HANDLER_STUDENT)(int&);
 
-struct MENU_OPTION_STUDENT
+struct MENU_OPTION_INT
 {
     char number;
     const char* text;
@@ -14,11 +14,11 @@ struct MENU_OPTION_STUDENT
 
 std::vector<MENU_OPTION> initializeStudentMenuOptions();
 
-std::vector<MENU_OPTION_STUDENT> initializeEditMenuOptions();
+std::vector<MENU_OPTION_INT> initializeEditMenuOptions();
 
-void showMenuOptionsStudent(std::vector<MENU_OPTION_STUDENT>&);
+void showMenuOptionsStudent(std::vector<MENU_OPTION_INT>&);
 
-void handleUserChoiceStudent(std::vector<MENU_OPTION_STUDENT>&);
+void handleUserChoiceStudent(std::vector<MENU_OPTION_INT>&);
 
 void showStudentAddMenu();
 
