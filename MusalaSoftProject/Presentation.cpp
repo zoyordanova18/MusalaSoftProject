@@ -151,8 +151,8 @@ vector<MENU_OPTION_STUDENT> initializeEditMenuOptions()
     vector<MENU_OPTION_STUDENT> options =
     {
         {'1', ".First name", editFirstNameMenu},
-        {'2', ".Last name", editLastNameMenu}
-       // {'3', ".Class", editClassMenu}
+        {'2', ".Last name", editLastNameMenu},
+        {'3', ".Class", editStudentClassMenu}
         //{'4', ".E-mail", inputEmail},*/
     };
 
@@ -222,6 +222,22 @@ void editLastNameMenu(int& id)
     cin >> student.lastName;
 
     chosen.editLastName(id, student.lastName);
+
+    showMessage("\nThe information was edited successfully.");
+}
+
+void editStudentClassMenu(int& id)
+{
+    STUDENT student;
+    STUDENT_SERVICE chosen;
+
+    showMessage("\nEnter ID: ");
+    cin >> id;
+
+    showMessage("\nClass: ");
+    cin >> student.studentClass;
+
+    chosen.editClass(id, student.studentClass);
 
     showMessage("\nThe information was edited successfully.");
 }
