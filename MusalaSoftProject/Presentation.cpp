@@ -85,8 +85,8 @@ vector<MENU_OPTION> initializeStudentMenuOptions()
     vector<MENU_OPTION> mainMenu =
     {
         {'1', ".Add student", showStudentAddMenu},
-        {'2', ".Edit student", showEditMenu}
-        //{'3', ".Delete student", /*func*/},
+        {'2', ".Edit student", showEditMenu},
+        {'3', ".Delete student", deleteStudentMenu}
         //{'4', ".View all students", /*func*/},
     };
 

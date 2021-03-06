@@ -12,8 +12,6 @@ struct MENU_OPTION
     MENU_HANDLER handler;
 };
 
-
-
 void showMainMenuHeading();
 
 void showSchoolArt();

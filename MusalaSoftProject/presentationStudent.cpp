@@ -172,3 +172,18 @@ void inputEmail(STUDENT& student)
     cin >> student.email;
     cout << endl;
 }
+
+void deleteStudentMenu()
+{
+    STUDENT_SERVICE chosen;
+    int id;
+
+    showMessage("\nChoose a student to delete: ");
+
+    showMessage("\nEnter ID: ");
+    cin >> id;
+
+    chosen.removeSt(id);
+
+    showMessage("\nThe student was removed successfully.");
+}

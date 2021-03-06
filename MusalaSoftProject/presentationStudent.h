@@ -37,6 +37,8 @@ void editStudentClassMenu(int&);
 
 void editStudentEmailMenu(int&);
 
+void deleteStudentMenu();
+
 
 
 
