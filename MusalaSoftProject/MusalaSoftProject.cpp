@@ -57,13 +57,13 @@ int main()
 
 	STUDENT student;
 
-	//showMainMenu();
+	showMainMenu();
 
 
 
-	student.showAll();
+	//student.showAll();
 
-	STUDENT_SERVICE::editFirstName(1, "GadenTellG");
+	//STUDENT_SERVICE::editFirstName(1, "GadenTellG");
 
 	student.showAll();
 

@@ -151,7 +151,7 @@ vector<MENU_OPTION_STUDENT> initializeEditMenuOptions()
     vector<MENU_OPTION_STUDENT> options =
     {
         {'1', ".First name", editFirstNameMenu},
-        ///{'2', ".Last name", inputLastName},
+        //{'2', ".Last name", inputLastName},
        // {'3', ".Class", editClassMenu}
         //{'4', ".E-mail", inputEmail},*/
     };
@@ -179,14 +179,13 @@ void showStudentAddMenu()
 void showEditMenu()
 {
     int id = 0;
-    STUDENT_SERVICE a;
     STUDENT student;
 
-    cout << "Please choose a student to edit: ";
+    //cout << "Please choose a student to edit: ";
 
     //student.showAll();
 
-    cout << "Choose what you want to edit: ";
+    cout << "Choose what you want to edit: " << endl;
 
     vector<MENU_OPTION_STUDENT> options = initializeEditMenuOptions();
 
@@ -198,17 +197,17 @@ void showEditMenu()
 void editFirstNameMenu(int& id)
 {
     STUDENT student;
-    STUDENT_SERVICE a;
+    STUDENT_SERVICE chosen;
 
-    cout << "First name: ";
-    cin >> student.firstName;
-
-    cout << "Enter ID: ";
+    showMessage("\nEnter ID: ");
     cin >> id;
 
-    a.editFirstName(id, student.firstName);
+    showMessage("\nFirst name: ");
+    cin >> student.firstName;
 
-    cout << "S";
+    chosen.editFirstName(id, student.firstName);
+
+    showMessage("\nThe information was edited successfully.");
 }
 
 
