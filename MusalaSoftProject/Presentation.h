@@ -39,3 +39,7 @@ void showMainMenu();
 void showStudentMenu();
 
 void showTeamsMenu();
+
+void showMenuOptionsStudent(std::vector<MENU_OPTION_INT>&);
+
+void handleUserChoiceStudent(std::vector<MENU_OPTION_INT>&);

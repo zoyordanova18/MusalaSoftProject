@@ -7,10 +7,6 @@ std::vector<MENU_OPTION> initializeStudentMenuOptions();
 
 std::vector<MENU_OPTION_INT> initializeEditMenuOptions();
 
-void showMenuOptionsStudent(std::vector<MENU_OPTION_INT>&);
-
-void handleUserChoiceStudent(std::vector<MENU_OPTION_INT>&);
-
 void showStudentAddMenu();
 
 void showEditMenu();
@@ -32,6 +28,8 @@ void editStudentClassMenu(int&);
 void editStudentEmailMenu(int&);
 
 void deleteStudentMenu();
+
+
 
 
 

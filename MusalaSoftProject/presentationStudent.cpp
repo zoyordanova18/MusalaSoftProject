@@ -17,35 +17,6 @@ vector<MENU_OPTION> initializeStudentMenuOptions()
     return mainMenu;
 }
 
-void showMenuOptionsStudent(vector<MENU_OPTION_INT>& options)
-{
-    for (size_t i = 0; i < options.size(); i++)
-    {
-        cout << options.at(i).number;
-        cout << options.at(i).text;
-        cout << endl;
-    }
-}
-
-void handleUserChoiceStudent(vector<MENU_OPTION_INT>& options)
-{
-    char choice;
-
-    cout << "Enter your choice: ";
-    cin >> choice;
-
-    STUDENT student;
-    int c = 0;
-
-    for (size_t i = 0; i < options.size(); i++)
-    {
-        if (choice == options.at(i).number)
-        {
-            options.at(i).handler(c);
-        }
-    }
-}
-
 void showStudentAddMenu()
 {
     STUDENT student;
