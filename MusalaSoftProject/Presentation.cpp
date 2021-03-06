@@ -1,7 +1,9 @@
 #include <iostream>
 #include <vector>
 #include "Presentation.h"
+#include "presentationTeacher.h"
 #include "students.h"
+#include "presentationStudent.h"
 
 using namespace std;
 
@@ -50,16 +52,6 @@ void showMenuOptions(vector<MENU_OPTION>& options)
     }
 }
 
-void showMenuOptionsStudent(vector<MENU_OPTION_STUDENT>& options)
-{
-    for (size_t i = 0; i < options.size(); i++)
-    {
-        cout << options.at(i).number;
-        cout << options.at(i).text;
-        cout << endl;
-    }
-}
-
 void handleUserChoice(vector<MENU_OPTION>& options)
 {
     char choice;
@@ -76,25 +68,6 @@ void handleUserChoice(vector<MENU_OPTION>& options)
     }
 }
 
-void handleUserChoiceStudent(vector<MENU_OPTION_STUDENT>& options)
-{
-    char choice;
-
-    cout << "Enter your choice: ";
-    cin >> choice;
-
-    STUDENT student;
-    int c = 0;
-
-    for (size_t i = 0; i < options.size(); i++)
-    {
-        if (choice == options.at(i).number)
-        {
-            options.at(i).handler(c);
-        }
-    }
-}
-
 vector<MENU_OPTION> initializeMainMenuOptions()
 {
     vector<MENU_OPTION> options =
@@ -102,32 +75,6 @@ vector<MENU_OPTION> initializeMainMenuOptions()
         {'1', ".Students", showStudentMenu},
         {'2', ".Teachers", showTeacherMenu},
         {'3', ".Teams", showTeamsMenu}
-    };
-
-    return options;
-}
-
-vector<MENU_OPTION> initializeStudentMenuOptions()
-{
-    vector<MENU_OPTION> mainMenu =
-    {
-        {'1', ".Add student", showStudentAddMenu},
-        {'2', ".Edit student", showEditMenu}
-        //{'3', ".Delete student", /*func*/},
-        //{'4', ".View all students", /*func*/},
-    };
-
-    return mainMenu;
-}
-
-vector<MENU_OPTION> initializeTeacherMenuOptions()
-{
-    vector<MENU_OPTION> options =
-    {
-        {'1', ".Add teacher", /*func*/},
-        {'2', ".Edit teacher", /*func*/},
-        {'3', ".Delete teacher", /*func*/},
-        {'4', ".View all teachers", /*func*/},
     };
 
     return options;
@@ -144,147 +91,6 @@ vector<MENU_OPTION> initializeTeamMenuOptions()
     };
 
     return options;
-}
-
-vector<MENU_OPTION_STUDENT> initializeEditMenuOptions()
-{
-    vector<MENU_OPTION_STUDENT> options =
-    {
-        {'1', ".First name", editFirstNameMenu},
-        {'2', ".Last name", editLastNameMenu},
-        {'3', ".Class", editStudentClassMenu},
-        {'4', ".E-mail", editStudentEmailMenu},
-    };
-
-    return options;
-}
-
-void showStudentAddMenu()
-{
-    STUDENT student;
-
-    inputFirstName(student);
-
-    inputLastName(student);
-
-    inputStudentClass(student);
-
-    inputEmail(student);
-
-    STUDENT_SERVICE::add(student);
-
-    showMessage("The student is successfully registered in the system.\n");
-}
-
-void showEditMenu()
-{
-    int id = 0;
-    STUDENT student;
-
-    //cout << "Please choose a student to edit: ";
-
-    //student.showAll();
-
-    cout << "Choose what you want to edit: " << endl;
-
-    vector<MENU_OPTION_STUDENT> options = initializeEditMenuOptions();
-
-    showMenuOptionsStudent(options);
-
-    handleUserChoiceStudent(options);
-}
-
-void editFirstNameMenu(int& id)
-{
-    STUDENT student;
-    STUDENT_SERVICE chosen;
-
-    showMessage("\nEnter ID: ");
-    cin >> id;
-
-    showMessage("\nFirst name: ");
-    cin >> student.firstName;
-
-    chosen.editFirstName(id, student.firstName);
-
-    showMessage("\nThe information was edited successfully.");
-}
-
-void editLastNameMenu(int& id)
-{
-    STUDENT student;
-    STUDENT_SERVICE chosen;
-
-    showMessage("\nEnter ID: ");
-    cin >> id;
-
-    showMessage("\nLast name: ");
-    cin >> student.lastName;
-
-    chosen.editLastName(id, student.lastName);
-
-    showMessage("\nThe information was edited successfully.");
-}
-
-void editStudentClassMenu(int& id)
-{
-    STUDENT student;
-    STUDENT_SERVICE chosen;
-
-    showMessage("\nEnter ID: ");
-    cin >> id;
-
-    showMessage("\nClass: ");
-    cin >> student.studentClass;
-
-    chosen.editClass(id, student.studentClass);
-
-    showMessage("\nThe information was edited successfully.");
-}
-
-void editStudentEmailMenu(int& id)
-{
-    STUDENT student;
-    STUDENT_SERVICE chosen;
-
-    showMessage("\nEnter ID: ");
-    cin >> id;
-
-    showMessage("\nE-mail: ");
-    cin >> student.email;
-
-    chosen.editEmail(id, student.email);
-
-    showMessage("\nThe information was edited successfully.");
-}
-
-
-void inputFirstName(STUDENT& student)
-{
-    showMessage("First name: ");
-    cin >> student.firstName;
-    cout << endl;
-}
-
-void inputLastName(STUDENT& student)
-{
-    showMessage("Last name: ");
-    cin >> student.lastName;
-    cout << endl;
-}
-
-void inputStudentClass(STUDENT& student)
-{
-    showMessage("Class: ");
-    cin >> student.studentClass;
-    cout << endl;
-}
-
-void inputEmail(STUDENT& student)
-{
-    showMessage("E-mail: ");
-    cin >> student.email;
-    cout << endl;
 }
 
 void showMainMenu()
@@ -307,18 +113,39 @@ void showStudentMenu()
     handleUserChoice(menu);
 }
 
-void showTeacherMenu()
-{
-    vector<MENU_OPTION> menu = initializeTeacherMenuOptions();
-
-    showMenuOptions(menu);
-    handleUserChoice(menu);
-}
-
 void showTeamsMenu()
 {
     vector<MENU_OPTION> menu = initializeTeamMenuOptions();
 
     showMenuOptions(menu);
     handleUserChoice(menu);
+}
+
+void showMenuOptionsInt(vector<MENU_OPTION_INT>& options)
+{
+    for (size_t i = 0; i < options.size(); i++)
+    {
+        cout << options.at(i).number;
+        cout << options.at(i).text;
+        cout << endl;
+    }
+}
+
+void handleUserChoiceInt(vector<MENU_OPTION_INT>& options)
+{
+    char choice;
+
+    cout << "Enter your choice: ";
+    cin >> choice;
+
+    STUDENT student;
+    int c = 0;
+
+    for (size_t i = 0; i < options.size(); i++)
+    {
+        if (choice == options.at(i).number)
+        {
+            options.at(i).handler(c);
+        }
+    }
 }
