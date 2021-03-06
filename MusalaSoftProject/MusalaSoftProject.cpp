@@ -4,6 +4,7 @@
 #include "teachers.h"
 #include "teams.h"
 #include "Presentation.h"
+#include "presentationStudent.h"
 using namespace std;
 
 int main()
