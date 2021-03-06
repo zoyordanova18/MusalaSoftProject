@@ -4,12 +4,20 @@
 
 //typedef unsigned char byte;
 typedef void (*MENU_HANDLER)();
+typedef void (*MENU_HANDLER_INT)(int&);
 
 struct MENU_OPTION
 {
     char number;
     const char* text;
     MENU_HANDLER handler;
+};
+
+struct MENU_OPTION_INT
+{
+    char number;
+    const char* text;
+    MENU_HANDLER_INT handler;
 };
 
 void showMainMenuHeading();

@@ -3,15 +3,6 @@
 #include "students.h"
 #include "Presentation.h"
 
-typedef void (*MENU_HANDLER_INT)(int&);
-
-struct MENU_OPTION_INT
-{
-    char number;
-    const char* text;
-    MENU_HANDLER_INT handler;
-};
-
 std::vector<MENU_OPTION> initializeStudentMenuOptions();
 
 std::vector<MENU_OPTION_INT> initializeEditMenuOptions();
