@@ -27,3 +27,11 @@ bool isEmailValid(std::string username)
 
 	return regex_match(username, pattern);
 }
+
+bool isStudentClassValid(std::string studentClass)
+{
+	regex pattern
+	("([1-9]|1[0-2])[a-z]", regex_constants::icase);
+
+	return regex_match(studentClass, pattern);
+}
