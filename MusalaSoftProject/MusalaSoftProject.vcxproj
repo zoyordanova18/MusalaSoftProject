@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="helpers.cpp" />
     <ClCompile Include="MusalaSoftProject.cpp" />
     <ClCompile Include="participants.cpp" />
     <ClCompile Include="Presentation.cpp" />
@@ -148,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h" />
+    <ClInclude Include="helpers.h" />
     <ClInclude Include="participants.h" />
     <ClInclude Include="Presentation.h" />
     <ClInclude Include="students.h" />
