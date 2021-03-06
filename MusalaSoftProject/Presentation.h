@@ -64,3 +64,4 @@ void handleUserChoiceStudent(std::vector<MENU_OPTION_STUDENT>&);
 
 void editFirstNameMenu(int&);
 
+void editLastNameMenu(int&);
