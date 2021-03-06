@@ -1,4 +1,9 @@
 #include "helpers.h"
+#include <iostream>
+#include <regex>
+using namespace std;
+
+
 
 template <class T>
 bool safeCin(T& input)
@@ -12,4 +17,13 @@ bool safeCin(T& input)
 	}
 
 	return true;
+}
+
+bool isEmailValid(std::string username)
+{
+		regex pattern
+		("(([a-z]+)([._a-z0-9])([a-z0-9]+)).{1,64}(@)([a-z]+)([.a-z])([a-z])+",
+			regex_constants::icase);
+
+	return regex_match(username, pattern);
 }
