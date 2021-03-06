@@ -143,6 +143,7 @@
     <ClCompile Include="MusalaSoftProject.cpp" />
     <ClCompile Include="participants.cpp" />
     <ClCompile Include="Presentation.cpp" />
+    <ClCompile Include="presentationTeacher.cpp" />
     <ClCompile Include="students.cpp" />
     <ClCompile Include="teachers.cpp" />
     <ClCompile Include="teams.cpp" />
@@ -152,6 +153,7 @@
     <ClInclude Include="helpers.h" />
     <ClInclude Include="participants.h" />
     <ClInclude Include="Presentation.h" />
+    <ClInclude Include="presentationTeacher.h" />
     <ClInclude Include="students.h" />
     <ClInclude Include="teachers.h" />
     <ClInclude Include="teams.h" />

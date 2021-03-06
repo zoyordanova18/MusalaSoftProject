@@ -120,6 +120,19 @@ vector<MENU_OPTION> initializeStudentMenuOptions()
     return mainMenu;
 }
 
+vector<MENU_OPTION> initializeTeacherMenuOptions()
+{
+    vector<MENU_OPTION> options =
+    {
+        {'1', ".Add teacher", /*func*/},
+        {'2', ".Edit teacher", /*func*/},
+        {'3', ".Delete teacher", /*func*/},
+        {'4', ".View all teachers", /*func*/},
+    };
+
+    return options;
+}
+
 vector<MENU_OPTION> initializeTeamMenuOptions()
 {
     vector<MENU_OPTION> options =
@@ -245,6 +258,7 @@ void editStudentEmailMenu(int& id)
     showMessage("\nThe information was edited successfully.");
 }
 
+
 void inputFirstName(STUDENT& student)
 {
     showMessage("First name: ");
@@ -288,6 +302,14 @@ void showMainMenu()
 void showStudentMenu()
 {
     vector<MENU_OPTION> menu = initializeStudentMenuOptions();
+
+    showMenuOptions(menu);
+    handleUserChoice(menu);
+}
+
+void showTeacherMenu()
+{
+    vector<MENU_OPTION> menu = initializeTeacherMenuOptions();
 
     showMenuOptions(menu);
     handleUserChoice(menu);
