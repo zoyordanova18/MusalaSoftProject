@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <vector>
 #include <fstream>
 
 extern std::fstream participantsFile;
@@ -25,5 +26,6 @@ struct PARTICIPANT_SERVICE
 	static void close();
 	static bool add(PARTICIPANT student);
 	static void removePt(int, int);
+	static std::vector<PARTICIPANT> getAllParticipantsFromTeam(int teamId);
 };
 

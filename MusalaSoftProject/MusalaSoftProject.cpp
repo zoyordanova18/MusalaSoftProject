@@ -3,6 +3,7 @@
 #include "students.h"
 #include "teachers.h"
 #include "teams.h"
+#include "participants.h"
 #include "Presentation.h"
 using namespace std;
 
@@ -20,7 +21,7 @@ int main()
 
 	//cout << sizeof(a)<<endl;
 
-	bool isOpen = STUDENT_SERVICE::open();
+	bool isOpen = PARTICIPANT_SERVICE::open();
 
 	//b.editFirstName(2, "Kandy");
 	//vector<STUDENT> c = b.getAll();
@@ -55,9 +56,11 @@ int main()
 
 	//string date =  getTodaysDate();
 
-	STUDENT student;
+	PARTICIPANT_SERVICE::add({ 0,1, ROLES::BACK_END });
 
-	showMainMenu();
+	//STUDENT student;
+
+	//showMainMenu();
 
 
 
@@ -65,8 +68,8 @@ int main()
 
 	//STUDENT_SERVICE::editFirstName(1, "GadenTellG");
 
-	student.showAll();
+	//student.showAll();
 
-	STUDENT_SERVICE::close();
+	PARTICIPANT_SERVICE::close();
 }
 
