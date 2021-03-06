@@ -4,12 +4,20 @@
 
 //typedef unsigned char byte;
 typedef void (*MENU_HANDLER)();
+typedef void (*MENU_HANDLER_STUDENT)(int&);
 
 struct MENU_OPTION
 {
     char number;
     const char* text;
     MENU_HANDLER handler;
+};
+
+struct MENU_OPTION_STUDENT
+{
+    char number;
+    const char* text;
+    MENU_HANDLER_STUDENT handler;
 };
 
 void showMainMenuHeading();
@@ -30,11 +38,11 @@ std::vector<MENU_OPTION> initializeTeacherMenuOptions();
 
 std::vector<MENU_OPTION> initializeTeamMenuOptions();
 
-std::vector<MENU_OPTION> initializeEditMenuOptions();
+std::vector<MENU_OPTION_STUDENT> initializeEditMenuOptions();
 
 void showStudentAddMenu();
 
-void showEditMenu(STUDENT);
+void showEditMenu();
 
 void inputFirstName(STUDENT&);
 
@@ -51,3 +59,8 @@ void showStudentMenu();
 void showTeacherMenu();
 
 void showTeamsMenu();
+
+void handleUserChoiceStudent(std::vector<MENU_OPTION_STUDENT>&);
+
+void editFirstNameMenu(int&);
+

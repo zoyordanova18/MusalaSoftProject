@@ -21,6 +21,7 @@ int main()
 	//cout << sizeof(a)<<endl;
 
 	bool isOpen = STUDENT_SERVICE::open();
+
 	//b.editFirstName(2, "Kandy");
 	//vector<STUDENT> c = b.getAll();
 

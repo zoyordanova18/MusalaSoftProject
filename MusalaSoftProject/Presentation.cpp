@@ -50,6 +50,16 @@ void showMenuOptions(vector<MENU_OPTION>& options)
     }
 }
 
+void showMenuOptionsStudent(vector<MENU_OPTION_STUDENT>& options)
+{
+    for (size_t i = 0; i < options.size(); i++)
+    {
+        cout << options.at(i).number;
+        cout << options.at(i).text;
+        cout << endl;
+    }
+}
+
 void handleUserChoice(vector<MENU_OPTION>& options)
 {
     char choice;
@@ -62,6 +72,25 @@ void handleUserChoice(vector<MENU_OPTION>& options)
         if (choice == options.at(i).number)
         {
             options.at(i).handler();
+        }
+    }
+}
+
+void handleUserChoiceStudent(vector<MENU_OPTION_STUDENT>& options)
+{
+    char choice;
+
+    cout << "Enter your choice: ";
+    cin >> choice;
+
+    STUDENT student;
+    int c = 0;
+
+    for (size_t i = 0; i < options.size(); i++)
+    {
+        if (choice == options.at(i).number)
+        {
+            options.at(i).handler(c);
         }
     }
 }
@@ -82,8 +111,8 @@ vector<MENU_OPTION> initializeStudentMenuOptions()
 {
     vector<MENU_OPTION> mainMenu =
     {
-        {'1', ".Add student", showStudentAddMenu}
-        //{'2', ".Edit student", /*func*/},
+        {'1', ".Add student", showStudentAddMenu},
+        {'2', ".Edit student", showEditMenu}
         //{'3', ".Delete student", /*func*/},
         //{'4', ".View all students", /*func*/},
     };
@@ -117,14 +146,14 @@ vector<MENU_OPTION> initializeTeamMenuOptions()
     return options;
 }
 
-vector<MENU_OPTION> initializeEditMenuOptions()
+vector<MENU_OPTION_STUDENT> initializeEditMenuOptions()
 {
-    vector<MENU_OPTION> options =
+    vector<MENU_OPTION_STUDENT> options =
     {
-        {'1', ".First name", /*func*/},
-        {'2', ".Last name", /*func*/},
-        {'3', ".Class", /*func*/},
-        {'4', ".E-mail", /*func*/},
+        {'1', ".First name", editFirstNameMenu},
+        ///{'2', ".Last name", inputLastName},
+       // {'3', ".Class", editClassMenu}
+        //{'4', ".E-mail", inputEmail},*/
     };
 
     return options;
@@ -147,10 +176,41 @@ void showStudentAddMenu()
     showMessage("The student is successfully registered in the system.\n");
 }
 
-void showEditMenu(STUDENT student)
+void showEditMenu()
 {
+    int id = 0;
+    STUDENT_SERVICE a;
+    STUDENT student;
 
+    cout << "Please choose a student to edit: ";
+
+    //student.showAll();
+
+    cout << "Choose what you want to edit: ";
+
+    vector<MENU_OPTION_STUDENT> options = initializeEditMenuOptions();
+
+    showMenuOptionsStudent(options);
+
+    handleUserChoiceStudent(options);
 }
+
+void editFirstNameMenu(int& id)
+{
+    STUDENT student;
+    STUDENT_SERVICE a;
+
+    cout << "First name: ";
+    cin >> student.firstName;
+
+    cout << "Enter ID: ";
+    cin >> id;
+
+    a.editFirstName(id, student.firstName);
+
+    cout << "S";
+}
+
 
 void inputFirstName(STUDENT& student)
 {
