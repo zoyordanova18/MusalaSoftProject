@@ -121,7 +121,7 @@ void showTeamsMenu()
     handleUserChoice(menu);
 }
 
-void showMenuOptionsStudent(vector<MENU_OPTION_INT>& options)
+void showMenuOptionsInt(vector<MENU_OPTION_INT>& options)
 {
     for (size_t i = 0; i < options.size(); i++)
     {
@@ -131,7 +131,7 @@ void showMenuOptionsStudent(vector<MENU_OPTION_INT>& options)
     }
 }
 
-void handleUserChoiceStudent(vector<MENU_OPTION_INT>& options)
+void handleUserChoiceInt(vector<MENU_OPTION_INT>& options)
 {
     char choice;
 

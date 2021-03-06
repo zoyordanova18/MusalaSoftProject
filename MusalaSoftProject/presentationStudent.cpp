@@ -47,9 +47,9 @@ void showEditMenu()
 
     vector<MENU_OPTION_INT> options = initializeEditMenuOptions();
 
-    showMenuOptionsStudent(options);
+    showMenuOptionsInt(options);
 
-    handleUserChoiceStudent(options);
+    handleUserChoiceInt(options);
 }
 
 vector<MENU_OPTION_INT> initializeEditMenuOptions()
