@@ -67,3 +67,5 @@ void editFirstNameMenu(int&);
 void editLastNameMenu(int&);
 
 void editStudentClassMenu(int&);
+
+void editStudentEmailMenu(int&);
