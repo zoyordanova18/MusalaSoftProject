@@ -80,19 +80,6 @@ vector<MENU_OPTION> initializeMainMenuOptions()
     return options;
 }
 
-vector<MENU_OPTION> initializeStudentMenuOptions()
-{
-    vector<MENU_OPTION> mainMenu =
-    {
-        {'1', ".Add student", showStudentAddMenu},
-        {'2', ".Edit student", showEditMenu},
-        {'3', ".Delete student", deleteStudentMenu}
-        //{'4', ".View all students", /*func*/},
-    };
-
-    return mainMenu;
-}
-
 vector<MENU_OPTION> initializeTeamMenuOptions()
 {
     vector<MENU_OPTION> options =

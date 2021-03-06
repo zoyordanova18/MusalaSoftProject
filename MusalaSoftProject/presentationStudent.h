@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "students.h"
+#include "Presentation.h"
 
 typedef void (*MENU_HANDLER_STUDENT)(int&);
 
@@ -10,6 +11,8 @@ struct MENU_OPTION_STUDENT
     const char* text;
     MENU_HANDLER_STUDENT handler;
 };
+
+std::vector<MENU_OPTION> initializeStudentMenuOptions();
 
 std::vector<MENU_OPTION_STUDENT> initializeEditMenuOptions();
 

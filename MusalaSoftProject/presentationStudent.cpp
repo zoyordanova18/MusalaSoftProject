@@ -4,6 +4,19 @@
 
 using namespace std;
 
+vector<MENU_OPTION> initializeStudentMenuOptions()
+{
+    vector<MENU_OPTION> mainMenu =
+    {
+        {'1', ".Add student", showStudentAddMenu},
+        {'2', ".Edit student", showEditMenu},
+        {'3', ".Delete student", deleteStudentMenu}
+        //{'4', ".View all students", /*func*/},
+    };
+
+    return mainMenu;
+}
+
 void showMenuOptionsStudent(vector<MENU_OPTION_STUDENT>& options)
 {
     for (size_t i = 0; i < options.size(); i++)
