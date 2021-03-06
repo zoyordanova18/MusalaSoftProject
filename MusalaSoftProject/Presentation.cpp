@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include "Presentation.h"
+#include "presentationTeacher.h"
 #include "students.h"
 
 using namespace std;

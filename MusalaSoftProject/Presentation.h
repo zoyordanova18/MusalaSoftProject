@@ -34,8 +34,6 @@ std::vector<MENU_OPTION> initializeMainMenuOptions();
 
 std::vector<MENU_OPTION> initializeStudentMenuOptions();
 
-std::vector<MENU_OPTION> initializeTeacherMenuOptions();
-
 std::vector<MENU_OPTION> initializeTeamMenuOptions();
 
 std::vector<MENU_OPTION_STUDENT> initializeEditMenuOptions();
@@ -55,8 +53,6 @@ void inputEmail(STUDENT&);
 void showMainMenu();
 
 void showStudentMenu();
-
-void showTeacherMenu();
 
 void showTeamsMenu();
 
