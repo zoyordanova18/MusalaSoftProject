@@ -22,8 +22,8 @@ int main()
 
 	//cout << sizeof(a)<<endl;
 
-	bool isOpen = STUDENT_SERVICE::open();
-	bool isOpenT = TEACHER_SERVICE::open();
+	 bool isOpen = STUDENT_SERVICE::open();
+	// bool isOpenT = TEACHER_SERVICE::open();
 
 	// PARTICIPANT_SERVICE::add({ 0,1,ROLES::SCRUM_MASTER });
 	// PARTICIPANT_SERVICE::add({ 2,1,ROLES::BACK_END });
@@ -79,9 +79,9 @@ int main()
 
 	STUDENT b = findStudentById(c, a[0].studentId);*/
 
-	STUDENT student;
+	// STUDENT student;
 
-	showMainMenu();
+	//showMainMenu();
 
 
 
@@ -90,9 +90,13 @@ int main()
 	//STUDENT_SERVICE::editFirstName(1, "GadenTellG");
 
 	//student.showAll();
+	
+	 STUDENT::showAll();
 
 	STUDENT_SERVICE::close();
-	TEACHER_SERVICE::close();
-	PARTICIPANT_SERVICE::close();
+	// TEACHER_SERVICE::close();
+	// PARTICIPANT_SERVICE::close();
+
+	//showStudentsTableHeader();
 }
 

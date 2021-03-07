@@ -18,7 +18,7 @@ struct STUDENT
 	char email[MAX_CHAR_ARRAY_LENGTH]{};
 
 	std::string toString(STUDENT&);	
-	void showAll();
+	static void showAll();
 
 
 };
