@@ -22,4 +22,6 @@ void editFirstNameMenuTeacher(int&);
 
 void showEditMenuTeacher();
 
-void editLastNameMenuTeacher(int& id);
+void editLastNameMenuTeacher(int&);
+
+void editEmailMenuTeacher(int&);
