@@ -172,3 +172,24 @@ void showStudentInTable(STUDENT student)
 	cout << setw(5) << left << student.studentClass << " | ";
 	cout << setw(30) << left << student.email << " | " << left;
 }
+
+void showTeachersTableHeader()
+{
+	cout << endl;
+	string headerLine(78, '-');
+	cout << headerLine << endl;
+	cout << "| " << setw(5) << left << "Id" << " | ";
+	cout << setw(15) << left << "First Name" << " | ";
+	cout << setw(15) << left << "Last Name" << " | ";
+	cout << setw(30) << left << "Email" << " | " << endl;
+	cout << headerLine << endl;
+}
+
+void showTeacherInTable(TEACHER teacher)
+{
+	cout << "| " << setw(5) << left << teacher.id << " | ";
+	cout << setw(15) << left << teacher.firstName << " | ";
+	cout << setw(15) << left << teacher.lastName << " | ";
+	cout << setw(30) << left << teacher.email << " | " << left;
+}
+

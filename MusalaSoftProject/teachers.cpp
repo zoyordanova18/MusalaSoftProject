@@ -1,4 +1,5 @@
 #include "teachers.h"
+#include "Presentation.h"
 #include <iostream>
 #include <vector>
 #include <fstream>
@@ -94,12 +95,12 @@ void TEACHER::showAll()
 {
 	vector<TEACHER> teachers = TEACHER_SERVICE::getAll();
 
+	showTeachersTableHeader();
+
 	for (size_t i = 0; i < teachers.size(); i++)
 	{
-		cout << "Id		|" << teachers[i].id << endl;
-		cout << "Name   |" << teachers[i].firstName << endl;
-		cout << "Surname|" << teachers[i].lastName << endl;
-		cout << "Email  |" << teachers[i].email << endl;
+		showTeacherInTable(teachers[i]);
+		cout << endl;
 	}
 
 }

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "students.h"
+#include "teachers.h"
 
 //typedef unsigned char byte;
 typedef void (*MENU_HANDLER)();
@@ -47,3 +48,7 @@ void handleUserChoiceInt(std::vector<MENU_OPTION_INT>&);
 void showStudentsTableHeader();
 
 void showStudentInTable(STUDENT student);
+
+void showTeachersTableHeader();
+
+void showTeacherInTable(TEACHER teacher);

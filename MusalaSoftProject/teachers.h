@@ -18,7 +18,7 @@ struct TEACHER
 	char email[MAX_CHAR_ARRAY_LENGTH]{};
 
 	std::string toString(TEACHER&);
-	void showAll();
+	static void showAll();
 };
 
 struct TEACHER_SERVICE

@@ -23,7 +23,7 @@ int main()
 	//cout << sizeof(a)<<endl;
 
 	 bool isOpen = STUDENT_SERVICE::open();
-	// bool isOpenT = TEACHER_SERVICE::open();
+	bool isOpenT = TEACHER_SERVICE::open();
 
 	// PARTICIPANT_SERVICE::add({ 0,1,ROLES::SCRUM_MASTER });
 	// PARTICIPANT_SERVICE::add({ 2,1,ROLES::BACK_END });
@@ -91,10 +91,10 @@ int main()
 
 	//student.showAll();
 	
-	 STUDENT::showAll();
+	 TEACHER::showAll();
 
 	STUDENT_SERVICE::close();
-	// TEACHER_SERVICE::close();
+	TEACHER_SERVICE::close();
 	// PARTICIPANT_SERVICE::close();
 
 	//showStudentsTableHeader();
