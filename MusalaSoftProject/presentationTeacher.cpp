@@ -12,8 +12,8 @@ vector<MENU_OPTION> initializeTeacherMenuOptions()
     vector<MENU_OPTION> options =
     {
         {'1', ".Add teacher", showTeacherAddMenu},
-        {'2', ".Edit teacher", showEditMenuTeacher}
-        //{'3', ".Delete teacher", /*func*/},
+        {'2', ".Edit teacher", showEditMenuTeacher},
+        {'3', ".Delete teacher", deleteTeacherMenu}
         //{'4', ".View all teachers", /*func*/},
     };
 
@@ -140,4 +140,19 @@ void editEmailMenuTeacher(int& id)
     chosen.editEmail(id, teacher.email);
 
     showMessage("\nThe information was edited successfully.");
+}
+
+void deleteTeacherMenu()
+{
+    TEACHER_SERVICE chosen;
+    int id;
+
+    showMessage("\nChoose a teacher to delete: ");
+
+    showMessage("\nEnter ID: ");
+    cin >> id;
+
+    chosen.removeTc(id);
+
+    showMessage("\nThe teacher was removed successfully.");
 }
