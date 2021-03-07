@@ -99,13 +99,13 @@ void STUDENT::showAll()
 	for (size_t i = 0; i < students.size(); i++)
 	{
 		cout << "Id     |" << students[i].id << endl;
-		cout << "Name   |" << students[i].firstName<< endl;
+		cout << "Name   |" << students[i].firstName << endl;
 		cout << "Surname|" << students[i].lastName << endl;
 		cout << "Class  |" << students[i].studentClass << endl;
 		cout << "Email  |" << students[i].email << endl;
 		cout << endl;
 	}
-	
+
 }
 
 void STUDENT_SERVICE::editFirstName(int id, const char* studentName)
@@ -128,8 +128,8 @@ void STUDENT_SERVICE::editFirstName(int id, const char* studentName)
 			}
 
 			studentsFile.seekg(-132, ios::cur);
-			if (studentsFile.write((byte*)&student, sizeof(STUDENT))) 
-{
+			if (studentsFile.write((byte*)&student, sizeof(STUDENT)))
+			{
 				return;
 			}
 			else
@@ -245,6 +245,13 @@ void STUDENT_SERVICE::editClass(int id, const char* studentClass)
 
 void STUDENT_SERVICE::removeSt(int id)
 {
+	vector<STUDENT> students = getAll();
+	STUDENT student = findStudentById(students, id);
+	editLastName(id, student.lastName + '!');
+}
+
+void STUDENT_SERVICE::superDelete(int id)
+{
 	// India starts here
 
 	ofstream temp("temp.txt", ios::binary);
@@ -265,7 +272,7 @@ void STUDENT_SERVICE::removeSt(int id)
 		}
 	}
 
-	for (size_t i = 0; i < students.size()-1; i++)
+	for (size_t i = 0; i < students.size() - 1; i++)
 	{
 		temp.write((byte*)&students[i], sizeof(STUDENT));
 	}
@@ -277,15 +284,15 @@ void STUDENT_SERVICE::removeSt(int id)
 
 	remove("students.txt");
 	int rs = rename("temp.txt", "students.txt");
-	
+
 	open();
 }
 
 STUDENT findStudentById(const vector<STUDENT>& students, int id)
 {
-	STUDENT noStudentFound = {-3, "No students found"};
+	STUDENT noStudentFound = { -3, "No students found" };
 
-	if (students.size() != 0) 
+	if (students.size() != 0)
 	{
 		for (size_t i = 0; i < students.size(); i++)
 		{
@@ -295,7 +302,7 @@ STUDENT findStudentById(const vector<STUDENT>& students, int id)
 			}
 		}
 	}
-	
+
 	return noStudentFound;
 }
 

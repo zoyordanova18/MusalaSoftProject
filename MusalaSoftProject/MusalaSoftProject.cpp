@@ -3,6 +3,7 @@
 #include "students.h"
 #include "teachers.h"
 #include "teams.h"
+#include "participants.h"
 #include "Presentation.h"
 #include "presentationStudent.h"
 using namespace std;
@@ -24,6 +25,16 @@ int main()
 	bool isOpen = STUDENT_SERVICE::open();
 	bool isOpenT = TEACHER_SERVICE::open();
 
+	// PARTICIPANT_SERVICE::add({ 0,1,ROLES::SCRUM_MASTER });
+	// PARTICIPANT_SERVICE::add({ 2,1,ROLES::BACK_END });
+	// PARTICIPANT_SERVICE::add({ 1,2,ROLES::SCRUM_MASTER });
+	// PARTICIPANT_SERVICE::add({ 3,3,ROLES::SCRUM_MASTER });
+
+	// TEAM_SERVICE::add({ 0,"Iskender Devs", "Make Duner", "1-1-1", TEAM_STATUS::IN_USE,0 });
+	// TEAM_SERVICE::add({ 0,"Jenski Hormoni", "Habii", "1-1-1", TEAM_STATUS::IN_USE,1 });
+	// TEAM_SERVICE::add({ 0,"Piko Na Filiq", "Salamuuuuu", "1-1-1", TEAM_STATUS::IN_USE,2 });
+	// TEAM_SERVICE::add({ 0,"Sasha Riko", "Udrq li te tok", "1-1-1", TEAM_STATUS::IN_USE,3});
+
 	//b.editFirstName(2, "Kandy");
 	//vector<STUDENT> c = b.getAll();
 
@@ -34,8 +45,11 @@ int main()
 	 //STUDENT_SERVICE::add({ 4, "Mokor", "Misooo", "10V", "MJMisooo18@codingburgas.bg" });
 
 	//STUDENT_SERVICE::add({ 4, "Habib", "Hujok", "10A", "HZHujok18@codingburgas.bg" });
-	//TEACHER_SERVICE::add(a);
-	//a.showAll();
+	//TEACHER_SERVICE::add({0,"Vania", "Velikova", "vvelikova@codingburgas.bg"});
+	//TEACHER_SERVICE::add({0,"Mitko", "Paynera", "mpaynera@codingburgas.bg"});
+	//TEACHER_SERVICE::add({0,"Milko", "Kalaydzhiev", "mkalaydzhiev@codingburgas.bg"});
+	//TEACHER_SERVICE::add({0,"Chico", "Turciq", "cturciq@codingburgas.bg"});
+	//a.showAll();();
 
 
 	//try
@@ -53,13 +67,21 @@ int main()
 	//cout << sizeof(a);
 	//STUDENT_SERVICE::removeSt(2);
 	//a.showAll();
-	
+
 
 	//string date =  getTodaysDate();
 
-	STUDENT student;
+	vector<PARTICIPANT>a = PARTICIPANT_SERVICE::getAllParticipantsFromTeam(1);
 
-	showMainMenu();
+	STUDENT_SERVICE::open();
+	vector<STUDENT> c = STUDENT_SERVICE::getAll();
+	STUDENT_SERVICE::close();
+
+	STUDENT b = findStudentById(c, a[0].studentId);
+
+	//STUDENT student;
+
+	//showMainMenu();
 
 
 
@@ -67,9 +89,10 @@ int main()
 
 	//STUDENT_SERVICE::editFirstName(1, "GadenTellG");
 
-	student.showAll();
+	//student.showAll();
 
 	STUDENT_SERVICE::close();
 	TEACHER_SERVICE::close();
+	PARTICIPANT_SERVICE::close();
 }
 

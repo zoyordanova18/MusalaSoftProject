@@ -77,4 +77,24 @@ void PARTICIPANT_SERVICE::removePt(int studentId, int teamId)
 	open();
 }
 
+vector<PARTICIPANT> PARTICIPANT_SERVICE::getAllParticipantsFromTeam(int teamId)
+{
+	PARTICIPANT participant;
+	vector<PARTICIPANT> participants;
+
+	participantsFile.seekg(0, ios::beg);
+
+	while (!participantsFile.eof())
+	{
+		if (participantsFile.read((byte*)&participant, sizeof(PARTICIPANT)))
+		{
+			if (participant.teamId == teamId)
+			{
+				participants.push_back(participant);
+			}
+		}
+	}
+
+	return participants;
+}
 
