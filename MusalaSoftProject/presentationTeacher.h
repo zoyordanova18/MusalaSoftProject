@@ -13,3 +13,6 @@ void inputLastName(TEACHER&);
 void inputEmail(TEACHER&);
 
 void showTeacherMenu();
+
+void showTeacherAddMenu();
+

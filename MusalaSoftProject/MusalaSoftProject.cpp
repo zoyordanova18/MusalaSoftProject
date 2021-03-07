@@ -22,6 +22,7 @@ int main()
 	//cout << sizeof(a)<<endl;
 
 	bool isOpen = STUDENT_SERVICE::open();
+	bool isOpenT = TEACHER_SERVICE::open();
 
 	//b.editFirstName(2, "Kandy");
 	//vector<STUDENT> c = b.getAll();
@@ -69,5 +70,6 @@ int main()
 	student.showAll();
 
 	STUDENT_SERVICE::close();
+	TEACHER_SERVICE::close();
 }
 

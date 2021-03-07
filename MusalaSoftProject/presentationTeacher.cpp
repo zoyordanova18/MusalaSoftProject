@@ -3,6 +3,7 @@
 #include "Presentation.h"
 #include "students.h"
 #include "teachers.h"
+#include "presentationTeacher.h"
 
 using namespace std;
 
@@ -10,10 +11,10 @@ vector<MENU_OPTION> initializeTeacherMenuOptions()
 {
     vector<MENU_OPTION> options =
     {
-        {'1', ".Add teacher", /*func*/},
-        {'2', ".Edit teacher", /*func*/},
-        {'3', ".Delete teacher", /*func*/},
-        {'4', ".View all teachers", /*func*/},
+        {'1', ".Add teacher", showTeacherAddMenu}
+       // {'2', ".Edit teacher", /*func*/},
+        //{'3', ".Delete teacher", /*func*/},
+        //{'4', ".View all teachers", /*func*/},
     };
 
     return options;
@@ -46,4 +47,19 @@ void showTeacherMenu()
 
     showMenuOptions(menu);
     handleUserChoice(menu);
+}
+
+void showTeacherAddMenu()
+{
+    TEACHER student;
+
+    inputFirstName(student);
+
+    inputLastName(student);
+
+    inputEmail(student);
+
+    TEACHER_SERVICE::add(student);
+
+    showMessage("The student is successfully registered in the system.\n");
 }
