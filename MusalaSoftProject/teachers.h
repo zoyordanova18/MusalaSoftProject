@@ -34,4 +34,7 @@ struct TEACHER_SERVICE
 	static void removeTc(int);
 };
 
+TEACHER findStudentById(const std::vector<TEACHER>&, int);
+
+
 

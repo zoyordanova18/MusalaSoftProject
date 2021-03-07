@@ -243,6 +243,25 @@ void TEACHER_SERVICE::removeTc(int id)
 	open();
 }
 
+TEACHER findTeacherById(const vector<TEACHER>& teachers, int id)
+{
+	TEACHER noTeacherFound = { -3, "No students found" };
+
+	if (teachers.size() != 0)
+	{
+		for (size_t i = 0; i < teachers.size(); i++)
+		{
+			if (id == teachers[i].id)
+			{
+				return teachers[i];
+			}
+		}
+	}
+
+	return noTeacherFound;
+}
+
+
 
 
 
