@@ -11,8 +11,8 @@ vector<MENU_OPTION> initializeTeacherMenuOptions()
 {
     vector<MENU_OPTION> options =
     {
-        {'1', ".Add teacher", showTeacherAddMenu}
-       // {'2', ".Edit teacher", /*func*/},
+        {'1', ".Add teacher", showTeacherAddMenu},
+        {'2', ".Edit teacher", showEditMenuTeacher}
         //{'3', ".Delete teacher", /*func*/},
         //{'4', ".View all teachers", /*func*/},
     };
@@ -62,4 +62,50 @@ void showTeacherAddMenu()
     TEACHER_SERVICE::add(student);
 
     showMessage("The student is successfully registered in the system.\n");
+}
+
+vector<MENU_OPTION_INT> initializeEditMenuOptionsTeacher()
+{
+    vector<MENU_OPTION_INT> options =
+    {
+       {'1', ".First name", editFirstNameMenuTeacher}
+        //{'2', ".Last name", editLastNameMenuTeacher},
+        //{'3', ".E-mail", editStudentEmailMenuTeacher}
+    };
+
+    return options;
+}
+
+void showEditMenuTeacher()
+{
+    int id = 0;
+    TEACHER teacher;
+
+    //cout << "Please choose a student to edit: ";
+
+    //student.showAll();
+
+    cout << "Choose what you want to edit: " << endl;
+
+    vector<MENU_OPTION_INT> options = initializeEditMenuOptionsTeacher();
+
+    showMenuOptionsInt(options);
+
+    handleUserChoiceInt(options);
+}
+
+void editFirstNameMenuTeacher(int& id)
+{
+    TEACHER teacher;
+    TEACHER_SERVICE chosen;
+
+    showMessage("\nEnter ID: ");
+    cin >> id;
+
+    showMessage("\nFirst name: ");
+    cin >> teacher.firstName;
+
+    chosen.editFirstName(id, teacher.firstName);
+
+    showMessage("\nThe information was edited successfully.");
 }

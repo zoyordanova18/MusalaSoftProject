@@ -16,3 +16,8 @@ void showTeacherMenu();
 
 void showTeacherAddMenu();
 
+std::vector<MENU_OPTION_INT> initializeEditMenuOptionsTeacher();
+
+void editFirstNameMenuTeacher(int&);
+
+void showEditMenuTeacher();
