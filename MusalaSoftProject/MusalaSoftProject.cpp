@@ -71,17 +71,17 @@ int main()
 
 	//string date =  getTodaysDate();
 
-	vector<PARTICIPANT>a = PARTICIPANT_SERVICE::getAllParticipantsFromTeam(1);
+	/*vector<PARTICIPANT>a = PARTICIPANT_SERVICE::getAllParticipantsFromTeam(1);
 
 	STUDENT_SERVICE::open();
 	vector<STUDENT> c = STUDENT_SERVICE::getAll();
 	STUDENT_SERVICE::close();
 
-	STUDENT b = findStudentById(c, a[0].studentId);
+	STUDENT b = findStudentById(c, a[0].studentId);*/
 
-	//STUDENT student;
+	STUDENT student;
 
-	//showMainMenu();
+	showMainMenu();
 
 
 
