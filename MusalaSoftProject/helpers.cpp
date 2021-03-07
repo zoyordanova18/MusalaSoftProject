@@ -1,5 +1,6 @@
 #include "helpers.h"
 #include <iostream>
+#include <windows.h>
 #include <regex>
 using namespace std;
 
@@ -34,4 +35,16 @@ bool isStudentClassValid(std::string studentClass)
 	("([1-9]|1[0-2])[a-z]", regex_constants::icase);
 
 	return regex_match(studentClass, pattern);
+}
+
+bool setColor(uint16_t newColor)
+{
+	HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	if (hStdOut != INVALID_HANDLE_VALUE)
+	{
+		return SetConsoleTextAttribute(hStdOut, newColor);
+	}
+
+	return false;
 }
