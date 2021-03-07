@@ -39,3 +39,4 @@ struct STUDENT_SERVICE
 };
 
 STUDENT findStudentById(const std::vector<STUDENT>&, int);
+bool isStudentDeleted(STUDENT);

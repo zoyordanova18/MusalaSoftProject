@@ -304,3 +304,15 @@ STUDENT findStudentById(const vector<STUDENT>& students, int id)
 }
 
 
+bool isStudentDeleted(STUDENT student)
+{
+	string studentStr = student.lastName;
+	if (studentStr.find('!') != string::npos)
+	{
+		return false;
+	}
+
+	return true;
+}
+
+
