@@ -1,6 +1,8 @@
 #include "helpers.h"
 #include <iostream>
+#include <vector>
 #include <windows.h>
+#include <functional>
 #include <regex>
 using namespace std;
 
@@ -47,4 +49,22 @@ bool setColor(uint16_t newColor)
 	}
 
 	return false;
+}
+
+template<class T>
+vector<T> findRecords(vector<T> records, function<bool(const T&)> const& lambda)
+{
+	vector<T> results;
+
+	auto forEachPredicate = [&](const T& record)
+	{
+		if (lambda(record))
+		{
+			results.push_back(record);
+		}
+	};
+
+	for_each(records.begin(), records.end(), forEachPredicate);
+
+	return results;
 }
