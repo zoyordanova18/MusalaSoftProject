@@ -22,6 +22,14 @@ vector<MENU_OPTION> initializeTeacherMenuOptions()
 
 void inputFirstName(TEACHER& teacher)
 {
+    bool isInputValid = false;
+
+    /*while (!isInputValid) {
+
+        showMessage("\nFirst name: ");
+        isInputValid = safeCin<const char*>(teacher.firstName);
+    }*/
+    
     showMessage("First name: ");
     cin >> teacher.firstName;
     cout << endl;
@@ -29,6 +37,14 @@ void inputFirstName(TEACHER& teacher)
 
 void inputLastName(TEACHER& teacher)
 {
+    bool isInputValid = false;
+
+    /*while (!isInputValid) {
+
+        showMessage("\nLast name: ");
+        isInputValid = safeCin<const char*>(teacher.lastName);
+    }*/
+
     showMessage("Last name: ");
     cin >> teacher.lastName;
     cout << endl;
@@ -36,6 +52,14 @@ void inputLastName(TEACHER& teacher)
 
 void inputEmail(TEACHER& teacher)
 {
+    bool isInputValid = false;
+
+    /*while (!isInputValid) {
+
+        showMessage("E-mail: ");
+        isInputValid = safeCin<const char*>(teacher.email);
+    }*/
+
     showMessage("E-mail: ");
     cin >> teacher.email;
     cout << endl;
@@ -98,10 +122,23 @@ void editFirstNameMenuTeacher(int& id)
 {
     TEACHER teacher;
     TEACHER_SERVICE chosen;
+    bool isInputValid = false;
+
+    /*while (!isInputValid) {
+
+        showMessage("\nEnter ID: ");
+        isInputValid = safeCin<int>(id);
+    }*/
 
     showMessage("\nEnter ID: ");
     cin >> id;
 
+    /*while (!isInputValid) {
+
+        showMessage("\nFirst name: ");
+        isInputValid = safeCin<const char*>(teacher.firstName);
+    }*/
+    
     showMessage("\nFirst name: ");
     cin >> teacher.firstName;
 
@@ -114,9 +151,22 @@ void editLastNameMenuTeacher(int& id)
 {
     TEACHER teacher;
     TEACHER_SERVICE chosen;
+    bool isInputValid = false;
+
+    /*while (!isInputValid) {
+
+       showMessage("\nEnter ID: ");
+       isInputValid = safeCin<int>(id);
+    }*/
 
     showMessage("\nEnter ID: ");
     cin >> id;
+
+    /*while (!isInputValid) {
+
+        showMessage("\nLast name: ");
+        isInputValid = safeCin<const char*>(teacher.lastName);
+    }*/
 
     showMessage("\nLast name: ");
     cin >> teacher.lastName;
@@ -130,9 +180,22 @@ void editEmailMenuTeacher(int& id)
 {
     TEACHER teacher;
     TEACHER_SERVICE chosen;
+    bool isInputValid = false;
+
+    /*while (!isInputValid) {
+
+       showMessage("\nEnter ID: ");
+       isInputValid = safeCin<int>(id);
+    }*/
 
     showMessage("\nEnter ID: ");
     cin >> id;
+
+    /*while (!isInputValid) {
+
+        showMessage("\nE-mail: ");
+        isInputValid = safeCin<const char*>(teacher.email);
+    }*/
 
     showMessage("\nE-mail: ");
     cin >> teacher.email;
@@ -146,11 +209,18 @@ void deleteTeacherMenu()
 {
     TEACHER_SERVICE chosen;
     int id;
+    bool isInputValid = false;
 
-    showMessage("\nChoose a teacher to delete: ");
+    showMessage("\nChoose a teacher to delete");
 
     showMessage("\nEnter ID: ");
     cin >> id;
+
+    /*while (!isInputValid) {
+
+        showMessage("\nEnter ID: ");
+        isInputValid = safeCin<int>(id);
+    }*/
 
     chosen.removeTc(id);
 

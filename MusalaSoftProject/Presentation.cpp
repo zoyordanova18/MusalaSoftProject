@@ -57,14 +57,14 @@ void showMenuOptions(vector<MENU_OPTION>& options)
 void handleUserChoice(vector<MENU_OPTION>& options)
 {
 	char choice;
-	bool validInput = false;
+	bool isInputValid = false;
 	
 	cin >> choice;
 
-	/*while (!validInput) {
+	/*while (!isInputValid) {
 
 		cout << "Enter your choice: ";
-		validInput = safeCin<char>(choice);
+		isInputValid = safeCin<char>(choice);
 	}*/
 
 	for (size_t i = 0; i < options.size(); i++)
@@ -142,15 +142,15 @@ void showMenuOptionsInt(vector<MENU_OPTION_INT>& options)
 void handleUserChoiceInt(vector<MENU_OPTION_INT>& options)
 {
 	char choice;
-	bool validInput = false;
+	bool isInputValid = false;
 
 	cout << "Enter your choice: ";
 	cin >> choice;
 
-	/*while (!validInput) {
+	/*while (!isInputValid) {
 
 		cout << "Enter your choice: ";
-		validInput = safeCin<char>(choice);
+		isInputValid = safeCin<char>(choice);
 	}*/
 
 	STUDENT student;
