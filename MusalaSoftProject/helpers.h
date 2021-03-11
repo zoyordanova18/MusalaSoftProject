@@ -14,4 +14,4 @@ bool isStudentClassValid(std::string studentClass);
 bool setColor(uint16_t newColor);
 
 template<class T>
-std::vector<T> findRecords(std::vector<T> records, function<bool(const T&)> const& lambda);
+std::vector<T> findRecords(std::vector<T> records, std::function<bool(const T&)> const& lambda);
