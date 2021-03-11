@@ -2,6 +2,7 @@
 
 #include "students.h"
 #include "teachers.h"
+#include "helpers.h"
 
 //typedef unsigned char byte;
 typedef void (*MENU_HANDLER)();

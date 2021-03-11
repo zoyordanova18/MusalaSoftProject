@@ -69,10 +69,22 @@ void editFirstNameMenu(int& id)
 {
     STUDENT student;
     STUDENT_SERVICE chosen;
+    bool validInput = false;
+
+    /*while (!validInput) {
+
+        showMessage("\nEnter ID: ");
+        validInput = safeCin<int>(id);
+    }*/
 
     showMessage("\nEnter ID: ");
     cin >> id;
 
+    /*while (!validInput) {
+
+        showMessage("\nFirst name: ");
+        validInput = safeCin<const char*>(student.firstName);
+    }*/
     showMessage("\nFirst name: ");
     cin >> student.firstName;
 
@@ -85,9 +97,22 @@ void editLastNameMenu(int& id)
 {
     STUDENT student;
     STUDENT_SERVICE chosen;
+    bool validInput = false;
+
+    /*while (!validInput) {
+
+         showMessage("\nEnter ID: ");
+         validInput = safeCin<int>(id);
+     }*/
 
     showMessage("\nEnter ID: ");
     cin >> id;
+
+    /*while (!validInput) {
+
+        showMessage("\nLast name: ");
+        validInput = safeCin<const char*>(student.lastName);
+    }*/
 
     showMessage("\nLast name: ");
     cin >> student.lastName;
@@ -101,9 +126,22 @@ void editStudentClassMenu(int& id)
 {
     STUDENT student;
     STUDENT_SERVICE chosen;
+    bool validInput = false;
+
+    /*while (!validInput) {
+
+        showMessage("\nEnter ID: ");
+        validInput = safeCin<int>(id);
+    }*/
 
     showMessage("\nEnter ID: ");
     cin >> id;
+
+    /*while (!validInput) {
+
+        showMessage("\nClass: ");
+        validInput = safeCin<const char*>(student.studentClass);
+    }*/
 
     showMessage("\nClass: ");
     cin >> student.studentClass;
@@ -117,9 +155,22 @@ void editStudentEmailMenu(int& id)
 {
     STUDENT student;
     STUDENT_SERVICE chosen;
+    bool validInput = false;
+
+    /*while (!validInput) {
+
+        showMessage("\nEnter ID: ");
+        validInput = safeCin<int>(id);
+    }*/
 
     showMessage("\nEnter ID: ");
     cin >> id;
+
+    /*while (!validInput) {
+
+        showMessage("\nE-mail: ");
+        validInput = safeCin<const char*>(student.email);
+    }*/
 
     showMessage("\nE-mail: ");
     cin >> student.email;
@@ -131,6 +182,14 @@ void editStudentEmailMenu(int& id)
 
 void inputFirstName(STUDENT& student)
 {
+    bool validInput = false;
+    
+    /*while (!validInput) {
+
+        showMessage("\nFirst name: ");
+        validInput = safeCin<const char*>(student.firstName);
+    }*/
+
     showMessage("First name: ");
     cin >> student.firstName;
     cout << endl;
@@ -138,6 +197,14 @@ void inputFirstName(STUDENT& student)
 
 void inputLastName(STUDENT& student)
 {
+    bool validInput = false;
+
+    /*while (!validInput) {
+
+        showMessage("Last name: ");
+        validInput = safeCin<const char*>(student.lastName);
+    }*/
+
     showMessage("Last name: ");
     cin >> student.lastName;
     cout << endl;
@@ -145,6 +212,14 @@ void inputLastName(STUDENT& student)
 
 void inputStudentClass(STUDENT& student)
 {
+    bool validInput = false;
+
+    /*while (!validInput) {
+
+        showMessage("Class: ");
+        validInput = safeCin<const char*>(student.studentClass);
+    }*/
+
     showMessage("Class: ");
     cin >> student.studentClass;
     cout << endl;
@@ -152,6 +227,14 @@ void inputStudentClass(STUDENT& student)
 
 void inputEmail(STUDENT& student)
 {
+    bool validInput = false;
+
+    /*while (!validInput) {
+
+        showMessage("E-mail: ");
+        validInput = safeCin<const char*>(student.email);
+    }*/
+
     showMessage("E-mail: ");
     cin >> student.email;
     cout << endl;
@@ -160,9 +243,16 @@ void inputEmail(STUDENT& student)
 void deleteStudentMenu()
 {
     STUDENT_SERVICE chosen;
+    bool validInput = false;
     int id;
 
     showMessage("\nChoose a student to delete: ");
+    
+    /*while (!validInput) {
+
+        showMessage("\nEnter ID: ");
+        validInput = safeCin<int>(id);
+    }*/
 
     showMessage("\nEnter ID: ");
     cin >> id;

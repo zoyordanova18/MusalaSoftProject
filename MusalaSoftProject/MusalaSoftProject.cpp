@@ -6,6 +6,7 @@
 #include "participants.h"
 #include "Presentation.h"
 #include "presentationStudent.h"
+#include "helpers.h"
 using namespace std;
 
 int main()

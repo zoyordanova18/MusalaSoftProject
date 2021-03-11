@@ -5,6 +5,7 @@
 #include "presentationTeacher.h"
 #include "students.h"
 #include "presentationStudent.h"
+#include "helpers.h"
 
 using namespace std;
 
@@ -56,9 +57,15 @@ void showMenuOptions(vector<MENU_OPTION>& options)
 void handleUserChoice(vector<MENU_OPTION>& options)
 {
 	char choice;
-
-	cout << "Enter your choice: ";
+	bool validInput = false;
+	
 	cin >> choice;
+
+	/*while (!validInput) {
+
+		cout << "Enter your choice: ";
+		validInput = safeCin<char>(choice);
+	}*/
 
 	for (size_t i = 0; i < options.size(); i++)
 	{
@@ -135,9 +142,16 @@ void showMenuOptionsInt(vector<MENU_OPTION_INT>& options)
 void handleUserChoiceInt(vector<MENU_OPTION_INT>& options)
 {
 	char choice;
+	bool validInput = false;
 
 	cout << "Enter your choice: ";
 	cin >> choice;
+
+	/*while (!validInput) {
+
+		cout << "Enter your choice: ";
+		validInput = safeCin<char>(choice);
+	}*/
 
 	STUDENT student;
 	int c = 0;
