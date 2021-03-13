@@ -54,11 +54,18 @@ void showMenuOptions(vector<MENU_OPTION>& options)
 	}
 }
 
+void exitProgram()
+{
+	showMessage("\nThank you for using out application!\n");
+	exit(0);
+}
+
 void handleUserChoice(vector<MENU_OPTION>& options)
 {
 	char choice;
 	bool isInputValid = false;
 	
+	showMessage("Enter your choice: ");
 	cin >> choice;
 
 	/*while (!isInputValid) {
@@ -82,7 +89,8 @@ vector<MENU_OPTION> initializeMainMenuOptions()
 	{
 		{'1', ".Students", showStudentMenu},
 		{'2', ".Teachers", showTeacherMenu},
-		{'3', ".Teams", showTeamsMenu}
+		{'3', ".Teams", showTeamsMenu},
+		{'4', ".Exit", exitProgram}
 	};
 
 	return options;

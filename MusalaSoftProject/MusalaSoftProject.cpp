@@ -26,7 +26,7 @@ int main()
 	bool isOpen = STUDENT_SERVICE::open();
 	bool isOpenT = TEACHER_SERVICE::open();
 
-	STUDENT_SERVICE::add({ 5, "Martin", "Gaorgiev", "10V", "MAGaorgiev18@codingburgas.bg" });
+	/*STUDENT_SERVICE::add({ 5, "Martin", "Gaorgiev", "10V", "MAGaorgiev18@codingburgas.bg" });
 	STUDENT_SERVICE::add({ 6, "Beroslav", "Rimpov", "10A", "berimpov18@codingburgas.bg" });
 	STUDENT_SERVICE::add({ 7, "Yeno", "Kochetkova", "10B", "YAKochetkova18@codingburgas.bg" });
 	STUDENT_SERVICE::add({ 8, "Vishko", "Krushovska", "10G", "VFKrushovska18@codingburgas.bg" });
@@ -41,7 +41,7 @@ int main()
 	TEACHER_SERVICE::add({ 8, "Mariana", "Elcheva", "MFElcheva@codingburgas.bg" });
 	TEACHER_SERVICE::add({ 9, "Monika", "Penkova", "MKPenkova@codingburgas.bg" });
 	TEACHER_SERVICE::add({ 10, "Denis", "Karakashev", "DBKarakashev@codingburgas.bg" });
-	TEACHER_SERVICE::add({ 11, "Angel", "Milenov", "APMilenov@codingburgas.bg" });
+	TEACHER_SERVICE::add({ 11, "Angel", "Milenov", "APMilenov@codingburgas.bg" });*/
 	
 	// PARTICIPANT_SERVICE::add({ 0,1,ROLES::SCRUM_MASTER });
 	// PARTICIPANT_SERVICE::add({ 2,1,ROLES::BACK_END });
@@ -99,7 +99,7 @@ int main()
 
 	// STUDENT student;
 
-	//showMainMenu();
+	showMainMenu();
 
 
 
