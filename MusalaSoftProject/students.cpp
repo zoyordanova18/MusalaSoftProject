@@ -144,6 +144,8 @@ void STUDENT_SERVICE::editLastName(int id, const char* studentSurname)
 
 	studentsFile.seekg(0, ios::beg);
 
+	//int tellg = studentsFile.tellg();
+
 	while (!studentsFile.eof())
 	{
 		studentsFile.read((byte*)&student, sizeof(STUDENT));

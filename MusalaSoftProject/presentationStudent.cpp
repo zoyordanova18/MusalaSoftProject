@@ -10,8 +10,9 @@ vector<MENU_OPTION> initializeStudentMenuOptions()
     {
         {'1', ".Add student", showStudentAddMenu},
         {'2', ".Edit student", showEditMenu},
-        {'3', ".Delete student", deleteStudentMenu}
+        {'3', ".Delete student", deleteStudentMenu},
         //{'4', ".View all students", /*func*/},
+        {'5', ".Return to the main menu", showMainMenu}
     };
 
     return mainMenu;
@@ -32,6 +33,9 @@ void showStudentAddMenu()
     STUDENT_SERVICE::add(student);
 
     showMessage("The student is successfully registered in the system.\n");
+
+    cout << endl;
+    showStudentMenu();
 }
 
 void showEditMenu()
@@ -50,6 +54,14 @@ void showEditMenu()
     showMenuOptionsInt(options);
 
     handleUserChoiceInt(options);
+
+    cout << endl;
+    showStudentMenu();
+}
+
+void returnToStudentMenu(int& mock)
+{
+    showStudentMenu();
 }
 
 vector<MENU_OPTION_INT> initializeEditMenuOptions()
@@ -60,6 +72,7 @@ vector<MENU_OPTION_INT> initializeEditMenuOptions()
         {'2', ".Last name", editLastNameMenu},
         {'3', ".Class", editStudentClassMenu},
         {'4', ".E-mail", editStudentEmailMenu},
+        {'5', ".Return to student menu", returnToStudentMenu}
     };
 
     return options;
@@ -90,7 +103,10 @@ void editFirstNameMenu(int& id)
 
     chosen.editFirstName(id, student.firstName);
 
-    showMessage("\nThe information was edited successfully.");
+    showMessage("\nThe information was edited successfully.\n");
+
+    cout << endl;
+    showEditMenu();
 }
 
 void editLastNameMenu(int& id)
@@ -119,7 +135,10 @@ void editLastNameMenu(int& id)
 
     chosen.editLastName(id, student.lastName);
 
-    showMessage("\nThe information was edited successfully.");
+    showMessage("\nThe information was edited successfully.\n");
+
+    cout << endl;
+    showEditMenu();
 }
 
 void editStudentClassMenu(int& id)
@@ -148,7 +167,10 @@ void editStudentClassMenu(int& id)
 
     chosen.editClass(id, student.studentClass);
 
-    showMessage("\nThe information was edited successfully.");
+    showMessage("\nThe information was edited successfully.\n");
+
+    cout << endl;
+    showEditMenu();
 }
 
 void editStudentEmailMenu(int& id)
@@ -177,7 +199,10 @@ void editStudentEmailMenu(int& id)
 
     chosen.editEmail(id, student.email);
 
-    showMessage("\nThe information was edited successfully.");
+    showMessage("\nThe information was edited successfully.\n");
+
+    cout << endl;
+    showEditMenu();
 }
 
 void inputFirstName(STUDENT& student)
@@ -259,5 +284,8 @@ void deleteStudentMenu()
 
     chosen.removeSt(id);
 
-    showMessage("\nThe student was removed successfully.");
+    showMessage("\nThe student was removed successfully.\n");
+
+    cout << endl;
+    showStudentMenu();
 }

@@ -64,7 +64,7 @@ void handleUserChoice(vector<MENU_OPTION>& options)
 {
 	char choice;
 	bool isInputValid = false;
-	
+
 	showMessage("Enter your choice: ");
 	cin >> choice;
 
@@ -190,7 +190,7 @@ void showStudentInTable(STUDENT student)
 {
 	cout << "| " << setw(5) << left << student.id << " | ";
 	cout << setw(15) << left << student.firstName << " | ";
-	cout << setw(15) << left << student.lastName<< " | ";
+	cout << setw(15) << left << student.lastName << " | ";
 	cout << setw(5) << left << student.studentClass << " | ";
 	cout << setw(30) << left << student.email << " | " << left;
 }
