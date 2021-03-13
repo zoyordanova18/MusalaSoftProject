@@ -35,9 +35,9 @@ int main()
 	STUDENT_SERVICE::add({ 11, "Inko", "Popov", "10B", "ILPopov18@codingburgas.bg" });
 	STUDENT_SERVICE::add({ 12, "Kasidi", "Chervenkova", "10B", "kbchervenkova18@codingburgas.bg" });
 	STUDENT_SERVICE::add({ 13, "Bogdan", "Kolev", "10V", "bjkolev18@codingburgas.bg" });
-	STUDENT_SERVICE::add({ 14, "Martin", "Benkov", "10A", "mebenkov18@codingburgas.bg" });
+	STUDENT_SERVICE::add({ 14, "Martin", "Benkov", "10A", "mebenkov18@codingburgas.bg" });*/
 
-	TEACHER_SERVICE::add({ 7, "Dilyan", "Ivanov", "DIIvanov@codingburgas.bg" });
+	/*TEACHER_SERVICE::add({ 7, "Dilyan", "Ivanov", "DIIvanov@codingburgas.bg" });
 	TEACHER_SERVICE::add({ 8, "Mariana", "Elcheva", "MFElcheva@codingburgas.bg" });
 	TEACHER_SERVICE::add({ 9, "Monika", "Penkova", "MKPenkova@codingburgas.bg" });
 	TEACHER_SERVICE::add({ 10, "Denis", "Karakashev", "DBKarakashev@codingburgas.bg" });
@@ -105,9 +105,9 @@ int main()
 
 	//STUDENT_SERVICE::editFirstName(1, "GadenTellG");
 
-	STUDENT::showAll();
+	//STUDENT::showAll();
 	
-	TEACHER::showAll();
+	//TEACHER::showAll();
 
 	STUDENT_SERVICE::close();
 	TEACHER_SERVICE::close();

@@ -33,7 +33,7 @@ bool TEACHER_SERVICE::add(TEACHER teacher)
 
 	teachersFile.seekp(0, ios::end);
 
-	if (teachersFile.write((byte*)&teacher, sizeof(TEACHER)))
+	if (teachersFile.write((byte_*)&teacher, sizeof(TEACHER)))
 	{
 		return true;
 	}
@@ -50,7 +50,7 @@ uint32_t TEACHER_SERVICE::generateId()
 
 	while (teachersFile)
 	{
-		if (teachersFile.read((byte*)&teacher, sizeof(TEACHER)))
+		if (teachersFile.read((byte_*)&teacher, sizeof(TEACHER)))
 		{
 			id = teacher.id;
 		}
@@ -74,7 +74,7 @@ vector<TEACHER> TEACHER_SERVICE::getAll()
 
 	while (!teachersFile.eof())
 	{
-		if (teachersFile.read((byte*)&teacher, sizeof(TEACHER)))
+		if (teachersFile.read((byte_*)&teacher, sizeof(TEACHER)))
 		{
 			teachers.push_back(teacher);
 		}
@@ -113,7 +113,7 @@ void TEACHER_SERVICE::editFirstName(int id, const char* teacherName)
 
 	while (!teachersFile.eof())
 	{
-		teachersFile.read((byte*)&teacher, sizeof(TEACHER));
+		teachersFile.read((byte_*)&teacher, sizeof(TEACHER));
 
 		if (teacher.id == id)
 		{
@@ -125,7 +125,7 @@ void TEACHER_SERVICE::editFirstName(int id, const char* teacherName)
 			}
 
 			teachersFile.seekg(sizeof(TEACHER), ios::cur);
-			if (teachersFile.write((byte*)&teacher, sizeof(TEACHER)))
+			if (teachersFile.write((byte_*)&teacher, sizeof(TEACHER)))
 			{
 				return;
 			}
@@ -146,7 +146,7 @@ void TEACHER_SERVICE::editLastName(int id, const char* teacherSurname)
 
 	while (!teachersFile.eof())
 	{
-		teachersFile.read((byte*)&teacher, sizeof(TEACHER));
+		teachersFile.read((byte_*)&teacher, sizeof(TEACHER));
 
 		if (teacher.id == id)
 		{
@@ -154,7 +154,7 @@ void TEACHER_SERVICE::editLastName(int id, const char* teacherSurname)
 
 			teachersFile.seekg(-132, ios::cur);
 			//cout << teachersFile.tellp() << endl;
-			if (teachersFile.write((byte*)&teacher, sizeof(TEACHER)))
+			if (teachersFile.write((byte_*)&teacher, sizeof(TEACHER)))
 			{
 				return;
 			}
@@ -180,7 +180,7 @@ void TEACHER_SERVICE::editEmail(int id, const char* teacherEmail)
 
 	while (!teachersFile.eof())
 	{
-		teachersFile.read((byte*)&teacher, sizeof(TEACHER));
+		teachersFile.read((byte_*)&teacher, sizeof(TEACHER));
 
 		if (teacher.id == id)
 		{
@@ -188,7 +188,7 @@ void TEACHER_SERVICE::editEmail(int id, const char* teacherEmail)
 
 			teachersFile.seekg(-132, ios::cur);
 			//cout << teachersFile.tellp() << endl;
-			if (teachersFile.write((byte*)&teacher, sizeof(TEACHER)))
+			if (teachersFile.write((byte_*)&teacher, sizeof(TEACHER)))
 			{
 				return;
 			}
@@ -220,7 +220,7 @@ void TEACHER_SERVICE::removeTc(int id)
 
 	while (!teachersFile.eof())
 	{
-		teachersFile.read((byte*)&teacher, sizeof(TEACHER));
+		teachersFile.read((byte_*)&teacher, sizeof(TEACHER));
 
 		if (teacher.id != id)
 		{
@@ -230,7 +230,7 @@ void TEACHER_SERVICE::removeTc(int id)
 
 	for (size_t i = 0; i < teachers.size() - 1; i++)
 	{
-		temp.write((byte*)&teachers[i], sizeof(TEACHER));
+		temp.write((byte_*)&teachers[i], sizeof(TEACHER));
 	}
 
 	//throw exception("Invalid ID");

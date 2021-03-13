@@ -11,7 +11,7 @@ vector<MENU_OPTION> initializeStudentMenuOptions()
         {'1', ".Add student", showStudentAddMenu},
         {'2', ".Edit student", showEditMenu},
         {'3', ".Delete student", deleteStudentMenu},
-        //{'4', ".View all students", /*func*/},
+        {'4', ".View all students", showAllMenu},
         {'5', ".Return to the main menu", showMainMenu}
     };
 
@@ -84,22 +84,24 @@ void editFirstNameMenu(int& id)
     STUDENT_SERVICE chosen;
     bool isInputValid = false;
 
-    /*while (!isInputValid) {
+    while (!isInputValid) {
 
         showMessage("\nEnter ID: ");
         isInputValid = safeCin<int>(id);
-    }*/
+    }
 
-    showMessage("\nEnter ID: ");
-    cin >> id;
+    //showMessage("\nEnter ID: ");
+   // cin >> id;
 
-    /*while (!isInputValid) {
+    while (!isInputValid) {
 
         showMessage("\nFirst name: ");
-        isInputValid = safeCin<const char*>(student.firstName);
-    }*/
-    showMessage("\nFirst name: ");
-    cin >> student.firstName;
+        string nameStr;
+        isInputValid = safeCin<string>(nameStr);
+        strcpy_s(student.firstName, nameStr.c_str());
+    }
+    //showMessage("\nFirst name: ");
+    //cin >> student.firstName;
 
     chosen.editFirstName(id, student.firstName);
 
@@ -286,6 +288,13 @@ void deleteStudentMenu()
 
     showMessage("\nThe student was removed successfully.\n");
 
+    cout << endl;
+    showStudentMenu();
+}
+
+void showAllMenu()
+{
+    STUDENT::showAll();
     cout << endl;
     showStudentMenu();
 }

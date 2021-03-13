@@ -62,7 +62,7 @@ uint32_t TEAM_SERVICE::generateId()
 
 	while (teamsFile)
 	{
-		if (teamsFile.read((byte*)&team, sizeof(TEAM)))
+		if (teamsFile.read((byte_*)&team, sizeof(TEAM)))
 		{
 			id = team.id;
 		}
@@ -84,7 +84,7 @@ bool TEAM_SERVICE::add(TEAM team)
 
 	teamsFile.seekp(0, ios::end);
 
-	if (teamsFile.write((byte*)&team, sizeof(TEAM)))
+	if (teamsFile.write((byte_*)&team, sizeof(TEAM)))
 	{
 		return true;
 	}

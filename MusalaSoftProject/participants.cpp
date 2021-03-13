@@ -31,7 +31,7 @@ bool PARTICIPANT_SERVICE::add(PARTICIPANT participant)
 {
 	participantsFile.seekp(0, ios::end);
 
-	if (participantsFile.write((byte*)&participant, sizeof(PARTICIPANT)))
+	if (participantsFile.write((byte_*)&participant, sizeof(PARTICIPANT)))
 	{
 		return true;
 	}
@@ -53,7 +53,7 @@ void PARTICIPANT_SERVICE::removePt(int studentId, int teamId)
 
 	while (!participantsFile.eof())
 	{
-		participantsFile.read((byte*)&participant, sizeof(PARTICIPANT));
+		participantsFile.read((byte_*)&participant, sizeof(PARTICIPANT));
 
 		if (participant.studentId != studentId && participant.teamId != teamId)
 		{
@@ -63,7 +63,7 @@ void PARTICIPANT_SERVICE::removePt(int studentId, int teamId)
 
 	for (size_t i = 0; i < participants.size() - 1; i++)
 	{
-		temp.write((byte*)&participants[i], sizeof(PARTICIPANT));
+		temp.write((byte_*)&participants[i], sizeof(PARTICIPANT));
 	}
 
 	//throw exception("Invalid ID");
@@ -86,7 +86,7 @@ vector<PARTICIPANT> PARTICIPANT_SERVICE::getAllParticipantsFromTeam(int teamId)
 
 	while (!participantsFile.eof())
 	{
-		if (participantsFile.read((byte*)&participant, sizeof(PARTICIPANT)))
+		if (participantsFile.read((byte_*)&participant, sizeof(PARTICIPANT)))
 		{
 			if (participant.teamId == teamId)
 			{

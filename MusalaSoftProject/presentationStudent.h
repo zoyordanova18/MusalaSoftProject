@@ -31,6 +31,8 @@ void deleteStudentMenu();
 
 void returnToStudentMenu(int&);
 
+void showAllMenu();
+
 
 
 

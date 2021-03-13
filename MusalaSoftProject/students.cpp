@@ -34,7 +34,9 @@ bool STUDENT_SERVICE::add(STUDENT student)
 
 	studentsFile.seekp(0, ios::end);
 
-	if (studentsFile.write((byte*)&student, sizeof(STUDENT)))
+	int a = studentsFile.tellg();
+
+	if (studentsFile.write((byte_*)&student, sizeof(STUDENT)))
 	{
 		return true;
 	}
@@ -51,7 +53,7 @@ uint32_t STUDENT_SERVICE::generateId()
 
 	while (studentsFile)
 	{
-		if (studentsFile.read((byte*)&student, sizeof(STUDENT)))
+		if (studentsFile.read((byte_*)&student, sizeof(STUDENT)))
 		{
 			id = student.id;
 		}
@@ -71,15 +73,20 @@ vector<STUDENT> STUDENT_SERVICE::getAll()
 	STUDENT student;
 	vector<STUDENT> students;
 
+	studentsFile.seekg(0, ios::end);
+	streampos fileSize = studentsFile.tellg();
 	studentsFile.seekg(0, ios::beg);
 
-	while (!studentsFile.eof())
+	//while (!studentsFile.eof())
+	while (studentsFile.tellg() < fileSize)
 	{
-		if (studentsFile.read((byte*)&student, sizeof(STUDENT)))
+		if (studentsFile.read((byte_*)&student, sizeof(STUDENT)))
 		{
 			students.push_back(student);
 		}
 	}
+
+	//studentsFile.clear();
 
 	return students;
 
@@ -111,9 +118,11 @@ void STUDENT_SERVICE::editFirstName(int id, const char* studentName)
 
 	studentsFile.seekg(0, ios::beg);
 
+	int a = studentsFile.tellg();
+
 	while (!studentsFile.eof())
 	{
-		studentsFile.read((byte*)&student, sizeof(STUDENT));
+		studentsFile.read((byte_*)&student, sizeof(STUDENT));
 
 		if (student.id == id)
 		{
@@ -125,7 +134,7 @@ void STUDENT_SERVICE::editFirstName(int id, const char* studentName)
 			}
 
 			studentsFile.seekg(-132, ios::cur);
-			if (studentsFile.write((byte*)&student, sizeof(STUDENT)))
+			if (studentsFile.write((byte_*)&student, sizeof(STUDENT)))
 			{
 				return;
 			}
@@ -143,12 +152,14 @@ void STUDENT_SERVICE::editLastName(int id, const char* studentSurname)
 	STUDENT student;
 
 	studentsFile.seekg(0, ios::beg);
+	bool bb = studentsFile.bad();
+	bool fb = studentsFile.fail();
 
-	//int tellg = studentsFile.tellg();
+	int tellg = studentsFile.tellg();
 
 	while (!studentsFile.eof())
 	{
-		studentsFile.read((byte*)&student, sizeof(STUDENT));
+		studentsFile.read((byte_*)&student, sizeof(STUDENT));
 
 		if (student.id == id)
 		{
@@ -156,7 +167,7 @@ void STUDENT_SERVICE::editLastName(int id, const char* studentSurname)
 
 			studentsFile.seekg(-132, ios::cur);
 			//cout << studentsFile.tellp() << endl;
-			if (studentsFile.write((byte*)&student, sizeof(STUDENT)))
+			if (studentsFile.write((byte_*)&student, sizeof(STUDENT)))
 			{
 				return;
 			}
@@ -182,7 +193,7 @@ void STUDENT_SERVICE::editEmail(int id, const char* studentEmail)
 
 	while (!studentsFile.eof())
 	{
-		studentsFile.read((byte*)&student, sizeof(STUDENT));
+		studentsFile.read((byte_*)&student, sizeof(STUDENT));
 
 		if (student.id == id)
 		{
@@ -190,7 +201,7 @@ void STUDENT_SERVICE::editEmail(int id, const char* studentEmail)
 
 			studentsFile.seekg(-132, ios::cur);
 			//cout << studentsFile.tellp() << endl;
-			if (studentsFile.write((byte*)&student, sizeof(STUDENT)))
+			if (studentsFile.write((byte_*)&student, sizeof(STUDENT)))
 			{
 				return;
 			}
@@ -216,7 +227,7 @@ void STUDENT_SERVICE::editClass(int id, const char* studentClass)
 
 	while (!studentsFile.eof())
 	{
-		studentsFile.read((byte*)&student, sizeof(STUDENT));
+		studentsFile.read((byte_*)&student, sizeof(STUDENT));
 
 		if (student.id == id)
 		{
@@ -224,7 +235,7 @@ void STUDENT_SERVICE::editClass(int id, const char* studentClass)
 
 			studentsFile.seekg(-132, ios::cur);
 			//cout << studentsFile.tellp() << endl;
-			if (studentsFile.write((byte*)&student, sizeof(STUDENT)))
+			if (studentsFile.write((byte_*)&student, sizeof(STUDENT)))
 			{
 				return;
 			}
@@ -246,7 +257,11 @@ void STUDENT_SERVICE::removeSt(int id)
 {
 	vector<STUDENT> students = getAll();
 	STUDENT student = findStudentById(students, id);
-	editLastName(id, student.lastName + '!');
+
+	string vanishedLastName = student.lastName;
+	vanishedLastName += "!";
+
+	editLastName(id, vanishedLastName.c_str());
 }
 
 void STUDENT_SERVICE::superDelete(int id)
@@ -263,7 +278,7 @@ void STUDENT_SERVICE::superDelete(int id)
 
 	while (!studentsFile.eof())
 	{
-		studentsFile.read((byte*)&student, sizeof(STUDENT));
+		studentsFile.read((byte_*)&student, sizeof(STUDENT));
 
 		if (student.id != id)
 		{
@@ -273,7 +288,7 @@ void STUDENT_SERVICE::superDelete(int id)
 
 	for (size_t i = 0; i < students.size() - 1; i++)
 	{
-		temp.write((byte*)&students[i], sizeof(STUDENT));
+		temp.write((byte_*)&students[i], sizeof(STUDENT));
 	}
 
 	//throw exception("Invalid ID");

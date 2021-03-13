@@ -6,22 +6,6 @@
 #include <regex>
 using namespace std;
 
-
-
-template <class T>
-bool safeCin(T& input)
-{
-	if (!(cin >> input))
-	{
-		cin.clear();
-		cin.ignore(INT_MAX, '\n');
-
-		return false;
-	}
-
-	return true;
-}
-
 bool isEmailValid(std::string email)
 {
 		regex pattern
@@ -51,20 +35,3 @@ bool setColor(uint16_t newColor)
 	return false;
 }
 
-template<class T>
-vector<T> findRecords(vector<T> records, function<bool(const T&)> const& lambda)
-{
-	vector<T> results;
-
-	auto forEachPredicate = [&](const T& record)
-	{
-		if (lambda(record))
-		{
-			results.push_back(record);
-		}
-	};
-
-	for_each(records.begin(), records.end(), forEachPredicate);
-
-	return results;
-}

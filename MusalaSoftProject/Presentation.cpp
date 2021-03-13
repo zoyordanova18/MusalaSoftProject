@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <iomanip>
+#include <windows.h>
 #include "Presentation.h"
 #include "presentationTeacher.h"
 #include "students.h"
@@ -176,23 +177,59 @@ void handleUserChoiceInt(vector<MENU_OPTION_INT>& options)
 void showStudentsTableHeader()
 {
 	cout << endl;
-	string headerLine(86, '-');
+	string headerLine(91, '-');
 	cout << headerLine << endl;
 	cout << "| " << setw(5) << left << "Id" << " | ";
 	cout << setw(15) << left << "First Name" << " | ";
 	cout << setw(15) << left << "Last Name" << " | ";
 	cout << setw(5) << left << "Class" << " | ";
-	cout << setw(30) << left << "Email" << " | " << endl;
+	cout << setw(35) << left << "Email" << " | " << endl;
 	cout << headerLine << endl;
 }
 
 void showStudentInTable(STUDENT student)
 {
-	cout << "| " << setw(5) << left << student.id << " | ";
-	cout << setw(15) << left << student.firstName << " | ";
-	cout << setw(15) << left << student.lastName << " | ";
-	cout << setw(5) << left << student.studentClass << " | ";
-	cout << setw(30) << left << student.email << " | " << left;
+	string lastNameStr = student.lastName;
+
+	if (lastNameStr.find('!') == string::npos)
+	{
+		cout << "| " << setw(5) << left << student.id << " | ";
+		cout << setw(15) << left << student.firstName << " | ";
+		cout << setw(15) << left << student.lastName << " | ";
+		cout << setw(5) << left << student.studentClass << " | ";
+		cout << setw(35) << left << student.email << " | " << left;
+	}
+	else
+	{
+		lastNameStr.pop_back();
+
+		cout << "| " << setw(5) << left;
+		setColor(12);
+		cout << student.id;
+		setColor(7);
+		cout << " | ";
+		cout << setw(15) << left;
+		setColor(12);
+		cout << student.firstName; 
+		setColor(7);
+		cout << " | ";
+		cout << setw(15) << left; 
+		setColor(12);
+		cout << lastNameStr; 
+		setColor(7);
+		cout << " | ";
+		cout << setw(5) << left; 
+		setColor(12);
+		cout << student.studentClass;
+		setColor(7);
+		cout << " | ";
+		cout << setw(35) << left;
+		setColor(12);
+		cout << student.email;
+		setColor(7);
+		cout << " | " << left;
+	}
+
 }
 
 void showTeachersTableHeader()
