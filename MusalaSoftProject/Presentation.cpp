@@ -261,25 +261,25 @@ void showTeacherInTable(TEACHER teacher)
 		lastNameStr.pop_back();
 
 		cout << "| " << setw(5) << left;
-		setColor(12);
+		setColor(RED);
 		cout << teacher.id;
-		setColor(7);
+		setColor(WHITE);
 		cout << " | ";
 		cout << setw(15) << left;
-		setColor(12);
+		setColor(RED);
 		cout << teacher.firstName;
-		setColor(7);
+		setColor(WHITE);
 		cout << " | ";
 		cout << setw(15) << left;
-		setColor(12);
+		setColor(RED);
 		cout << lastNameStr;
-		setColor(7);
+		setColor(WHITE);
 		cout << setw(3) << left;
 		cout << " | ";
 		cout << setw(35) << left;
-		setColor(12);
+		setColor(RED);
 		cout << teacher.email;
-		setColor(7);
+		setColor(WHITE);
 		cout << " | " << left;
 	}
 
