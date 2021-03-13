@@ -29,6 +29,8 @@ void editStudentEmailMenu(int&);
 
 void deleteStudentMenu();
 
+void returnToStudentMenu(int&);
+
 
 
 

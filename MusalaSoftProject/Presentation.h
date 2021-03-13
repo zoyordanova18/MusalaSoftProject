@@ -53,3 +53,5 @@ void showStudentInTable(STUDENT student);
 void showTeachersTableHeader();
 
 void showTeacherInTable(TEACHER teacher);
+
+void exitProgram();
