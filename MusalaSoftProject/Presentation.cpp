@@ -235,20 +235,57 @@ void showStudentInTable(STUDENT student)
 void showTeachersTableHeader()
 {
 	cout << endl;
-	string headerLine(78, '-');
+	string headerLine(83, '-');
 	cout << headerLine << endl;
 	cout << "| " << setw(5) << left << "Id" << " | ";
 	cout << setw(15) << left << "First Name" << " | ";
 	cout << setw(15) << left << "Last Name" << " | ";
-	cout << setw(30) << left << "Email" << " | " << endl;
+	cout << setw(35) << left << "Email" << " | " << endl;
 	cout << headerLine << endl;
 }
 
 void showTeacherInTable(TEACHER teacher)
 {
-	cout << "| " << setw(5) << left << teacher.id << " | ";
+
+	string lastNameStr = teacher.lastName;
+
+	if (lastNameStr.find('!') == string::npos)
+	{
+		cout << "| " << setw(5) << left << teacher.id << " | ";
+		cout << setw(15) << left << teacher.firstName << " | ";
+		cout << setw(15) << left << teacher.lastName << " | ";
+		cout << setw(35) << left << teacher.email << " | " << left;
+	}
+	else
+	{
+		lastNameStr.pop_back();
+
+		cout << "| " << setw(5) << left;
+		setColor(12);
+		cout << teacher.id;
+		setColor(7);
+		cout << " | ";
+		cout << setw(15) << left;
+		setColor(12);
+		cout << teacher.firstName;
+		setColor(7);
+		cout << " | ";
+		cout << setw(15) << left;
+		setColor(12);
+		cout << lastNameStr;
+		setColor(7);
+		cout << setw(3) << left;
+		cout << " | ";
+		cout << setw(35) << left;
+		setColor(12);
+		cout << teacher.email;
+		setColor(7);
+		cout << " | " << left;
+	}
+
+	/*cout << "| " << setw(5) << left << teacher.id << " | ";
 	cout << setw(15) << left << teacher.firstName << " | ";
 	cout << setw(15) << left << teacher.lastName << " | ";
-	cout << setw(30) << left << teacher.email << " | " << left;
+	cout << setw(30) << left << teacher.email << " | " << left;*/
 }
 

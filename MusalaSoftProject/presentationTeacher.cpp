@@ -13,8 +13,9 @@ vector<MENU_OPTION> initializeTeacherMenuOptions()
     {
         {'1', ".Add teacher", showTeacherAddMenu},
         {'2', ".Edit teacher", showEditMenuTeacher},
-        {'3', ".Delete teacher", deleteTeacherMenu}
-        //{'4', ".View all teachers", /*func*/},
+        {'3', ".Delete teacher", deleteTeacherMenu},
+        {'4', ".View all teachers", showAllTeacherMenu},
+        {'5', ".Return to main menu", showMainMenu}
     };
 
     return options;
@@ -86,6 +87,10 @@ void showTeacherAddMenu()
     TEACHER_SERVICE::add(student);
 
     showMessage("The student is successfully registered in the system.\n");
+
+    cout << endl;
+
+    showTeacherMenu();
 }
 
 vector<MENU_OPTION_INT> initializeEditMenuOptionsTeacher()
@@ -116,6 +121,10 @@ void showEditMenuTeacher()
     showMenuOptionsInt(options);
 
     handleUserChoiceInt(options);
+
+    cout << endl;
+
+    showTeacherMenu();
 }
 
 void editFirstNameMenuTeacher(int& id)
@@ -225,4 +234,15 @@ void deleteTeacherMenu()
     chosen.removeTc(id);
 
     showMessage("\nThe teacher was removed successfully.");
+
+    cout << endl;
+
+    showTeacherMenu();
+}
+
+void showAllTeacherMenu()
+{
+    TEACHER::showAll();
+    cout << endl;
+    showTeacherMenu();
 }

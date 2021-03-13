@@ -11,6 +11,8 @@ using namespace std;
 
 int main()
 {
+	// cout << sizeof(TEACHER);
+
 	/*TEAM a{ 0, "Chupacabra", "Lovqt Riba", "dfdf", TEAM_STATUS::IN_USE, 0};
 
 	bool isOpen = TEAM_SERVICE::open();
@@ -37,12 +39,12 @@ int main()
 	STUDENT_SERVICE::add({ 13, "Bogdan", "Kolev", "10V", "bjkolev18@codingburgas.bg" });
 	STUDENT_SERVICE::add({ 14, "Martin", "Benkov", "10A", "mebenkov18@codingburgas.bg" });*/
 
-	/*TEACHER_SERVICE::add({ 7, "Dilyan", "Ivanov", "DIIvanov@codingburgas.bg" });
-	TEACHER_SERVICE::add({ 8, "Mariana", "Elcheva", "MFElcheva@codingburgas.bg" });
-	TEACHER_SERVICE::add({ 9, "Monika", "Penkova", "MKPenkova@codingburgas.bg" });
-	TEACHER_SERVICE::add({ 10, "Denis", "Karakashev", "DBKarakashev@codingburgas.bg" });
-	TEACHER_SERVICE::add({ 11, "Angel", "Milenov", "APMilenov@codingburgas.bg" });*/
-	
+	//TEACHER_SERVICE::add({ 7, "Dilyan", "Ivanov", "DIIvanov@codingburgas.bg" });
+	//TEACHER_SERVICE::add({ 8, "Mariana", "Elcheva", "MFElcheva@codingburgas.bg" });
+	//TEACHER_SERVICE::add({ 9, "Monika", "Penkova", "MKPenkova@codingburgas.bg" });
+	//TEACHER_SERVICE::add({ 10, "Denis", "Karakashev", "DBKarakashev@codingburgas.bg" });
+	//TEACHER_SERVICE::add({ 11, "Angel", "Milenov", "APMilenov@codingburgas.bg" });
+	//
 	// PARTICIPANT_SERVICE::add({ 0,1,ROLES::SCRUM_MASTER });
 	// PARTICIPANT_SERVICE::add({ 2,1,ROLES::BACK_END });
 	// PARTICIPANT_SERVICE::add({ 1,2,ROLES::SCRUM_MASTER });

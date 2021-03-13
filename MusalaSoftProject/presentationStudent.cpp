@@ -284,7 +284,7 @@ void deleteStudentMenu()
     showMessage("\nEnter ID: ");
     cin >> id;
 
-    chosen.removeSt(id);
+    chosen.softDeleteStudent(id);
 
     showMessage("\nThe student was removed successfully.\n");
 

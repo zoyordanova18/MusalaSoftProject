@@ -27,3 +27,5 @@ void editLastNameMenuTeacher(int&);
 void editEmailMenuTeacher(int&);
 
 void deleteTeacherMenu();
+
+void showAllTeacherMenu();

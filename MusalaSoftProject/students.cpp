@@ -253,7 +253,7 @@ void STUDENT_SERVICE::editClass(int id, const char* studentClass)
 	//return false;
 }
 
-void STUDENT_SERVICE::removeSt(int id)
+void STUDENT_SERVICE::softDeleteStudent(int id)
 {
 	vector<STUDENT> students = getAll();
 	STUDENT student = findStudentById(students, id);
@@ -264,43 +264,7 @@ void STUDENT_SERVICE::removeSt(int id)
 	editLastName(id, vanishedLastName.c_str());
 }
 
-void STUDENT_SERVICE::superDelete(int id)
-{
-	// India starts here
 
-	ofstream temp("temp.txt", ios::binary);
-
-	STUDENT student;
-
-	studentsFile.seekg(0, ios::beg);
-
-	vector<STUDENT> students;
-
-	while (!studentsFile.eof())
-	{
-		studentsFile.read((byte_*)&student, sizeof(STUDENT));
-
-		if (student.id != id)
-		{
-			students.push_back(student);
-		}
-	}
-
-	for (size_t i = 0; i < students.size() - 1; i++)
-	{
-		temp.write((byte_*)&students[i], sizeof(STUDENT));
-	}
-
-	//throw exception("Invalid ID");
-
-	close();
-	temp.close();
-
-	remove("students.txt");
-	int rs = rename("temp.txt", "students.txt");
-
-	open();
-}
 
 STUDENT findStudentById(const vector<STUDENT>& students, int id)
 {

@@ -70,15 +70,22 @@ vector<TEACHER> TEACHER_SERVICE::getAll()
 	TEACHER teacher;
 	vector<TEACHER> teachers;
 
+	teachersFile.seekg(0, ios::end);
+	streampos fileSize = teachersFile.tellg();
 	teachersFile.seekg(0, ios::beg);
 
-	while (!teachersFile.eof())
+	int t = teachersFile.tellg();
+
+	//while (!studentsFile.eof())
+	while (teachersFile.tellg() < fileSize)
 	{
 		if (teachersFile.read((byte_*)&teacher, sizeof(TEACHER)))
 		{
 			teachers.push_back(teacher);
 		}
 	}
+
+	//studentsFile.clear();
 
 	return teachers;
 
@@ -107,35 +114,42 @@ void TEACHER::showAll()
 
 void TEACHER_SERVICE::editFirstName(int id, const char* teacherName)
 {
+
 	TEACHER teacher;
 
+	teachersFile.seekg(0, ios::end);
+	streampos fileSize = teachersFile.tellg();
 	teachersFile.seekg(0, ios::beg);
 
-	while (!teachersFile.eof())
+	int t = teachersFile.tellg();
+
+	//while (!studentsFile.eof())
+	while (teachersFile.tellg() < fileSize)
 	{
-		teachersFile.read((byte_*)&teacher, sizeof(TEACHER));
-
-		if (teacher.id == id)
+		if (teachersFile.read((byte_*)&teacher, sizeof(TEACHER)))
 		{
-			int res = strcpy_s(teacher.firstName, sizeof(teacher.firstName), teacherName);
+			if (teacher.id == id)
+			{
+				int res = strcpy_s(teacher.firstName, sizeof(teacher.firstName), teacherName);
 
-			if (res != 0)
-			{
-				throw exception("Cannot copy strings!");
-			}
+				if (res != 0)
+				{
+					throw exception("Cannot copy strings!");
+				}
 
-			teachersFile.seekg(sizeof(TEACHER), ios::cur);
-			if (teachersFile.write((byte_*)&teacher, sizeof(TEACHER)))
-			{
-				return;
-			}
-			else
-			{
-				throw exception("A wild error appeard!");
+				teachersFile.seekg(-100, ios::cur);
+				if (teachersFile.write((byte_*)&teacher, sizeof(TEACHER)))
+				{
+					return;
+				}
+				else
+				{
+					throw exception("A wild error appeard!");
+				}
 			}
 		}
 	}
-	throw exception("Invalid ID");
+
 }
 
 void TEACHER_SERVICE::editLastName(int id, const char* teacherSurname)
@@ -152,7 +166,7 @@ void TEACHER_SERVICE::editLastName(int id, const char* teacherSurname)
 		{
 			int res = strcpy_s(teacher.lastName, sizeof(teacher.lastName), teacherSurname);
 
-			teachersFile.seekg(-132, ios::cur);
+			teachersFile.seekg(-100, ios::cur);
 			//cout << teachersFile.tellp() << endl;
 			if (teachersFile.write((byte_*)&teacher, sizeof(TEACHER)))
 			{
@@ -186,7 +200,7 @@ void TEACHER_SERVICE::editEmail(int id, const char* teacherEmail)
 		{
 			int res = strcpy_s(teacher.email, sizeof(teacher.email), teacherEmail);
 
-			teachersFile.seekg(-132, ios::cur);
+			teachersFile.seekg(-100, ios::cur);
 			//cout << teachersFile.tellp() << endl;
 			if (teachersFile.write((byte_*)&teacher, sizeof(TEACHER)))
 			{
@@ -206,43 +220,6 @@ void TEACHER_SERVICE::editEmail(int id, const char* teacherEmail)
 	//return false;
 }
 
-void TEACHER_SERVICE::removeTc(int id)
-{
-	// India starts here
-
-	ofstream temp("temp.txt", ios::binary);
-
-	TEACHER teacher;
-
-	teachersFile.seekg(0, ios::beg);
-
-	vector<TEACHER> teachers;
-
-	while (!teachersFile.eof())
-	{
-		teachersFile.read((byte_*)&teacher, sizeof(TEACHER));
-
-		if (teacher.id != id)
-		{
-			teachers.push_back(teacher);
-		}
-	}
-
-	for (size_t i = 0; i < teachers.size() - 1; i++)
-	{
-		temp.write((byte_*)&teachers[i], sizeof(TEACHER));
-	}
-
-	//throw exception("Invalid ID");
-
-	close();
-	temp.close();
-
-	remove("teachers.txt");
-	int rs = rename("temp.txt", "teachers.txt");
-
-	open();
-}
 
 TEACHER findTeacherById(const vector<TEACHER>& teachers, int id)
 {
@@ -261,6 +238,19 @@ TEACHER findTeacherById(const vector<TEACHER>& teachers, int id)
 
 	return noTeacherFound;
 }
+
+void TEACHER_SERVICE::removeTc(int id)
+{
+	vector<TEACHER> teachers = getAll();
+	TEACHER teacher = findTeacherById(teachers, id);
+
+	string vanishedLastName = teacher.lastName;
+	vanishedLastName += "!";
+
+	editLastName(id, vanishedLastName.c_str());
+}
+
+
 
 
 

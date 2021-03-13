@@ -34,7 +34,7 @@ struct STUDENT_SERVICE
 	static void editLastName(int, const char*);
 	static void editEmail(int, const char*);
 	static void editClass(int, const char*);
-	static void removeSt(int);
+	static void softDeleteStudent(int);
 	static void superDelete(int);
 };
 
