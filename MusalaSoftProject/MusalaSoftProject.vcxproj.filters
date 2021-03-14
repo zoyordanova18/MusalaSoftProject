@@ -42,6 +42,9 @@
     <ClCompile Include="presentationStudent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="presentationTeam.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -69,6 +72,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="presentationStudent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="presentationTeam.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

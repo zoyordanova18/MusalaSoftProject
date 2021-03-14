@@ -12,6 +12,7 @@ using namespace std;
 
 void showMainMenuHeading()
 {
+	system("cls");
 	cout << "  __  __       _                                    " << endl;
 	cout << " |  \\/  |     (_)                                   " << endl;
 	cout << " | \\  / | __ _ _ _ __    _ __ ___   ___ _ __  _   _ " << endl;
@@ -40,6 +41,56 @@ void showSchoolArt()
 	cout << "         `''''/             \ \ \\:'-'-'-'-" << endl;
 }
 
+void showStudentNadpis()
+{
+	string str = "\r\n"
+		"  ____    _____    _"
+		"   _   ____  U _____"
+		" u_   _     _____   "
+		"     __  __  U _____"
+		" u_   _       _   _ "
+		" \r\n"
+		" / __\"| u|_ \" _|U "
+		"|\"|u| | |  _\"\\ \\"
+		"| ___\"|/ \\ |\"|   "
+		"|_ \" _|     U|\' \\"
+		"/ \'|u\\| ___\"|/ \\"
+		" |\"|   U |\"|u| | "
+		"\r\n"
+		"<\\___ \\/   | |   "
+		"\\| |\\| |/| | | | |"
+		"  _|\"<|  \\| |>    "
+		"| |       \\| |\\/| "
+		"|/ |  _|\"<|  \\| |>"
+		"   \\| |\\| | \r\n"
+		" u___) |  /| |\\   |"
+		" |_| |U| |_| |\\| |_"
+		"__U| |\\  |u   /| |"
+		"\\       | |  | |  |"
+		" |___U| |\\  |u    |"
+		" |_| | \r\n"
+		" |____/>>u |_|U  <<"
+		"\\___/  |____/ u|___"
+		"__||_| \\_|   u |_|U"
+		"       |_|  |_|  |__"
+		"___||_| \\_|    <<\\"
+		"___/  \r\n"
+		"  )(  (__)// \\\\_(_"
+		"_) )(    |||_   <<  "
+		" >>||   \\\\,-._// "
+		"\\\\_     <<,-,,-.  "
+		" <<   >>||   \\\\,-."
+		"(__) )(   \r\n"
+		" (__)   (__) (__)   "
+		"(__)  (__)_) (__) (_"
+		"_|_\")  (_/(__) (__)"
+		"     (./  \\.) (__) "
+		"(__|_\")  (_/     (_"
+		"_)  \r\n";
+	
+	cout << str;
+}
+
 void showMessage(const char* message)
 {
 	cout << message;
@@ -47,6 +98,8 @@ void showMessage(const char* message)
 
 void showMenuOptions(vector<MENU_OPTION>& options)
 {
+	cout << endl;
+
 	for (size_t i = 0; i < options.size(); i++)
 	{
 		cout << options.at(i).number;
@@ -66,7 +119,7 @@ void handleUserChoice(vector<MENU_OPTION>& options)
 	char choice;
 	bool isInputValid = false;
 
-	showMessage("Enter your choice: ");
+	showMessage("\nEnter your choice: ");
 	cin >> choice;
 
 	/*while (!isInputValid) {
@@ -97,19 +150,6 @@ vector<MENU_OPTION> initializeMainMenuOptions()
 	return options;
 }
 
-vector<MENU_OPTION> initializeTeamMenuOptions()
-{
-	vector<MENU_OPTION> options =
-	{
-		{'1', ".Add team", /*func*/},
-		{'2', ".Edit team", /*func*/},
-		{'3', ".Delete team", /*func*/},
-		{'4', ".View all teams", /*func*/},
-	};
-
-	return options;
-}
-
 void showMainMenu()
 {
 	STUDENT student;
@@ -124,6 +164,10 @@ void showMainMenu()
 
 void showStudentMenu()
 {
+	system("cls");
+
+	showStudentNadpis();
+
 	vector<MENU_OPTION> menu = initializeStudentMenuOptions();
 
 	showMenuOptions(menu);
@@ -132,6 +176,8 @@ void showStudentMenu()
 
 void showTeamsMenu()
 {
+	system("cls");
+
 	vector<MENU_OPTION> menu = initializeTeamMenuOptions();
 
 	showMenuOptions(menu);
@@ -153,7 +199,7 @@ void handleUserChoiceInt(vector<MENU_OPTION_INT>& options)
 	char choice;
 	bool isInputValid = false;
 
-	cout << "Enter your choice: ";
+	showMessage("\nEnter your choice: ");
 	cin >> choice;
 
 	/*while (!isInputValid) {

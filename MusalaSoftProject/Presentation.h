@@ -3,10 +3,12 @@
 #include "students.h"
 #include "teachers.h"
 #include "helpers.h"
+#include "teams.h"
 
 //typedef unsigned char byte;
 typedef void (*MENU_HANDLER)();
 typedef void (*MENU_HANDLER_INT)(int&);
+typedef void (*MENU_HANDLER_STATUS)(TEAM&);
 
 struct MENU_OPTION
 {
@@ -20,6 +22,13 @@ struct MENU_OPTION_INT
     char number;
     const char* text;
     MENU_HANDLER_INT handler;
+};
+
+struct MENU_OPTION_STATUS
+{
+    char number;
+    const char* text;
+    MENU_HANDLER_STATUS handler;
 };
 
 void showMainMenuHeading();
@@ -55,3 +64,9 @@ void showTeachersTableHeader();
 void showTeacherInTable(TEACHER teacher);
 
 void exitProgram();
+
+void showMenuOptionsStatus(std::vector<MENU_OPTION_STATUS>&);
+
+void handleUserChoiceStatus(std::vector<MENU_OPTION_STATUS>&);
+
+void showStudentNadpis();

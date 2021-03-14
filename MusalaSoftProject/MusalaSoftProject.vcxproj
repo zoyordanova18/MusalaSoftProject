@@ -145,6 +145,7 @@
     <ClCompile Include="Presentation.cpp" />
     <ClCompile Include="presentationStudent.cpp" />
     <ClCompile Include="presentationTeacher.cpp" />
+    <ClCompile Include="presentationTeam.cpp" />
     <ClCompile Include="students.cpp" />
     <ClCompile Include="teachers.cpp" />
     <ClCompile Include="teams.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="Presentation.h" />
     <ClInclude Include="presentationStudent.h" />
     <ClInclude Include="presentationTeacher.h" />
+    <ClInclude Include="presentationTeam.h" />
     <ClInclude Include="students.h" />
     <ClInclude Include="teachers.h" />
     <ClInclude Include="teams.h" />

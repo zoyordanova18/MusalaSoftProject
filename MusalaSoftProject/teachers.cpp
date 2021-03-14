@@ -149,6 +149,7 @@ void TEACHER_SERVICE::editFirstName(int id, const char* teacherName)
 			}
 		}
 	}
+	throw exception("Invalid Id");
 
 }
 
@@ -239,7 +240,7 @@ TEACHER findTeacherById(const vector<TEACHER>& teachers, int id)
 	return noTeacherFound;
 }
 
-void TEACHER_SERVICE::removeTc(int id)
+void TEACHER_SERVICE::softDeleteTeacher(int id)
 {
 	vector<TEACHER> teachers = getAll();
 	TEACHER teacher = findTeacherById(teachers, id);

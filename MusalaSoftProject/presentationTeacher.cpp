@@ -3,6 +3,7 @@
 #include "Presentation.h"
 #include "students.h"
 #include "teachers.h"
+#include "helpers.h"
 #include "presentationTeacher.h"
 
 using namespace std;
@@ -25,14 +26,14 @@ void inputFirstName(TEACHER& teacher)
 {
     bool isInputValid = false;
 
-    /*while (!isInputValid) {
+    while (!isInputValid) 
+    {
+        showMessage("\nFirst Name: ");
+        string firstNameStr;
+        isInputValid = safeCin<string>(firstNameStr);
+        strcpy_s(teacher.firstName, firstNameStr.c_str());
+    }
 
-        showMessage("\nFirst name: ");
-        isInputValid = safeCin<const char*>(teacher.firstName);
-    }*/
-    
-    showMessage("First name: ");
-    cin >> teacher.firstName;
     cout << endl;
 }
 
@@ -40,14 +41,14 @@ void inputLastName(TEACHER& teacher)
 {
     bool isInputValid = false;
 
-    /*while (!isInputValid) {
+    while (!isInputValid)
+    {
+        showMessage("\nLast Name: ");
+        string lastNameStr;
+        isInputValid = safeCin<string>(lastNameStr);
+        strcpy_s(teacher.lastName, lastNameStr.c_str());
+    }
 
-        showMessage("\nLast name: ");
-        isInputValid = safeCin<const char*>(teacher.lastName);
-    }*/
-
-    showMessage("Last name: ");
-    cin >> teacher.lastName;
     cout << endl;
 }
 
@@ -55,14 +56,15 @@ void inputEmail(TEACHER& teacher)
 {
     bool isInputValid = false;
 
-    /*while (!isInputValid) {
+    while (!isInputValid)
+    {
+        showMessage("\nEmail: ");
+        string emailStr;
+        isInputValid = safeCin<string>(emailStr);
+        isInputValid = isEmailValid(emailStr);
+        strcpy_s(teacher.email, emailStr.c_str());
+    }
 
-        showMessage("E-mail: ");
-        isInputValid = safeCin<const char*>(teacher.email);
-    }*/
-
-    showMessage("E-mail: ");
-    cin >> teacher.email;
     cout << endl;
 }
 
@@ -86,7 +88,7 @@ void showTeacherAddMenu()
 
     TEACHER_SERVICE::add(student);
 
-    showMessage("The student is successfully registered in the system.\n");
+    showMessage("The teacher is successfully registered in the system.\n");
 
     cout << endl;
 
@@ -133,27 +135,35 @@ void editFirstNameMenuTeacher(int& id)
     TEACHER_SERVICE chosen;
     bool isInputValid = false;
 
-    /*while (!isInputValid) {
+    while (!isInputValid) 
+    {
 
         showMessage("\nEnter ID: ");
         isInputValid = safeCin<int>(id);
-    }*/
+    }
 
-    showMessage("\nEnter ID: ");
-    cin >> id;
+    isInputValid = false;
 
-    /*while (!isInputValid) {
+    while (!isInputValid) 
+    {
 
-        showMessage("\nFirst name: ");
-        isInputValid = safeCin<const char*>(teacher.firstName);
-    }*/
+        showMessage("\nFirst Name: ");
+        string firstNameStr;
+        isInputValid = safeCin<string>(firstNameStr);
+        strcpy_s(teacher.firstName, firstNameStr.c_str());
+    }
     
-    showMessage("\nFirst name: ");
-    cin >> teacher.firstName;
+    try
+    {
+        chosen.editFirstName(id, teacher.firstName);
+        showMessage("\nThe information was edited successfully.");
+    }
+    catch (const std::exception& e)
+    {
+        cout << e.what();
+    }
 
-    chosen.editFirstName(id, teacher.firstName);
-
-    showMessage("\nThe information was edited successfully.");
+    showTeacherMenu();
 }
 
 void editLastNameMenuTeacher(int& id)
@@ -162,27 +172,35 @@ void editLastNameMenuTeacher(int& id)
     TEACHER_SERVICE chosen;
     bool isInputValid = false;
 
-    /*while (!isInputValid) {
+    while (!isInputValid)
+    {
 
-       showMessage("\nEnter ID: ");
-       isInputValid = safeCin<int>(id);
-    }*/
+        showMessage("\nEnter ID: ");
+        isInputValid = safeCin<int>(id);
+    }
 
-    showMessage("\nEnter ID: ");
-    cin >> id;
+    isInputValid = false;
 
-    /*while (!isInputValid) {
+    while (!isInputValid)
+    {
 
-        showMessage("\nLast name: ");
-        isInputValid = safeCin<const char*>(teacher.lastName);
-    }*/
+        showMessage("\nLast Name: ");
+        string lastNameStr;
+        isInputValid = safeCin<string>(lastNameStr);
+        strcpy_s(teacher.lastName, lastNameStr.c_str());
+    }
 
-    showMessage("\nLast name: ");
-    cin >> teacher.lastName;
+    try
+    {
+        chosen.editLastName(id, teacher.lastName);
+        showMessage("\nThe information was edited successfully.");
+    }
+    catch (const std::exception& e)
+    {
+        cout << e.what();
+    }
 
-    chosen.editLastName(id, teacher.lastName);
-
-    showMessage("\nThe information was edited successfully.");
+    showTeacherMenu();
 }
 
 void editEmailMenuTeacher(int& id)
@@ -191,27 +209,34 @@ void editEmailMenuTeacher(int& id)
     TEACHER_SERVICE chosen;
     bool isInputValid = false;
 
-    /*while (!isInputValid) {
-
+    while (!isInputValid) 
+    {
        showMessage("\nEnter ID: ");
        isInputValid = safeCin<int>(id);
-    }*/
+    }
 
-    showMessage("\nEnter ID: ");
-    cin >> id;
+    isInputValid = false;
 
-    /*while (!isInputValid) {
+    while (!isInputValid)
+    {
+        showMessage("\nEmail: ");
+        string emailStr;
+        isInputValid = safeCin<string>(emailStr);
+        isInputValid = isEmailValid(emailStr);
+        strcpy_s(teacher.email, emailStr.c_str());
+    }
+    
+    try
+    {
+        chosen.editEmail(id, teacher.email);
+        showMessage("\nThe information was edited successfully."); 
+    }
+    catch (const std::exception& e)
+    {
+        cout << e.what();
+    }
 
-        showMessage("\nE-mail: ");
-        isInputValid = safeCin<const char*>(teacher.email);
-    }*/
-
-    showMessage("\nE-mail: ");
-    cin >> teacher.email;
-
-    chosen.editEmail(id, teacher.email);
-
-    showMessage("\nThe information was edited successfully.");
+    showTeacherMenu();
 }
 
 void deleteTeacherMenu()
@@ -225,13 +250,14 @@ void deleteTeacherMenu()
     showMessage("\nEnter ID: ");
     cin >> id;
 
-    /*while (!isInputValid) {
+    while (!isInputValid) 
+    {
 
         showMessage("\nEnter ID: ");
         isInputValid = safeCin<int>(id);
-    }*/
+    }
 
-    chosen.removeTc(id);
+    chosen.softDeleteTeacher(id);
 
     showMessage("\nThe teacher was removed successfully.");
 
@@ -242,7 +268,15 @@ void deleteTeacherMenu()
 
 void showAllTeacherMenu()
 {
-    TEACHER::showAll();
+    try
+    {
+        TEACHER::showAll();
+    }
+    catch (const std::exception& e)
+    {
+        cout << e.what();
+    }
+ 
     cout << endl;
     showTeacherMenu();
 }

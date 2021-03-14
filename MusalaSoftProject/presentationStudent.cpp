@@ -43,11 +43,7 @@ void showEditMenu()
     int id = 0;
     STUDENT student;
 
-    //cout << "Please choose a student to edit: ";
-
-    //student.showAll();
-
-    cout << "Choose what you want to edit: " << endl;
+    showMessage("\nChoose what you want to edit\n\n");
 
     vector<MENU_OPTION_INT> options = initializeEditMenuOptions();
 
@@ -84,29 +80,33 @@ void editFirstNameMenu(int& id)
     STUDENT_SERVICE chosen;
     bool isInputValid = false;
 
-    while (!isInputValid) {
-
+    while (!isInputValid) 
+    {
         showMessage("\nEnter ID: ");
         isInputValid = safeCin<int>(id);
     }
 
-    //showMessage("\nEnter ID: ");
-   // cin >> id;
-
-    while (!isInputValid) {
-
+    isInputValid = false;
+    while (!isInputValid) 
+    {
         showMessage("\nFirst name: ");
         string nameStr;
         isInputValid = safeCin<string>(nameStr);
         strcpy_s(student.firstName, nameStr.c_str());
     }
-    //showMessage("\nFirst name: ");
-    //cin >> student.firstName;
 
-    chosen.editFirstName(id, student.firstName);
+    try
+    {
+        chosen.editFirstName(id, student.firstName);
 
-    showMessage("\nThe information was edited successfully.\n");
+        showMessage("\nThe information was edited successfully.\n");
+    }
+    catch (const std::exception& e)
+    {
+        cout << e.what();
+    }
 
+  
     cout << endl;
     showEditMenu();
 }
@@ -117,27 +117,30 @@ void editLastNameMenu(int& id)
     STUDENT_SERVICE chosen;
     bool isInputValid = false;
 
-    /*while (!isInputValid) {
-
+    while (!isInputValid) 
+    {
          showMessage("\nEnter ID: ");
          isInputValid = safeCin<int>(id);
-     }*/
+    }
 
-    showMessage("\nEnter ID: ");
-    cin >> id;
-
-    /*while (!isInputValid) {
-
+    isInputValid = false;
+    while (!isInputValid)
+    {
         showMessage("\nLast name: ");
-        isInputValid = safeCin<const char*>(student.lastName);
-    }*/
+        string nameStr;
+        isInputValid = safeCin<string>(nameStr);
+        strcpy_s(student.lastName, nameStr.c_str());
+    }
 
-    showMessage("\nLast name: ");
-    cin >> student.lastName;
-
-    chosen.editLastName(id, student.lastName);
-
-    showMessage("\nThe information was edited successfully.\n");
+    try
+    {
+        chosen.editLastName(id, student.lastName);
+        showMessage("\nThe information was edited successfully.\n");
+    }
+    catch (const std::exception& e)
+    {
+        cout << e.what();
+    }
 
     cout << endl;
     showEditMenu();
@@ -149,27 +152,33 @@ void editStudentClassMenu(int& id)
     STUDENT_SERVICE chosen;
     bool isInputValid = false;
 
-    /*while (!isInputValid) {
+    while (!isInputValid) 
+    {
 
         showMessage("\nEnter ID: ");
         isInputValid = safeCin<int>(id);
-    }*/
+    }
 
-    showMessage("\nEnter ID: ");
-    cin >> id;
-
-    /*while (!isInputValid) {
+    isInputValid = false;
+    while (!isInputValid) {
 
         showMessage("\nClass: ");
-        isInputValid = safeCin<const char*>(student.studentClass);
-    }*/
+        string classStr;
+        isInputValid = safeCin<string>(classStr);
+        isInputValid = isStudentClassValid(classStr);
+        strcpy_s(student.studentClass, classStr.c_str());
+    }
 
-    showMessage("\nClass: ");
-    cin >> student.studentClass;
+    try
+    {
+        chosen.editClass(id, student.studentClass);
 
-    chosen.editClass(id, student.studentClass);
-
-    showMessage("\nThe information was edited successfully.\n");
+        showMessage("\nThe information was edited successfully.\n");
+    }
+    catch (const std::exception& e)
+    {
+        cout << e.what();
+    }
 
     cout << endl;
     showEditMenu();
@@ -181,27 +190,33 @@ void editStudentEmailMenu(int& id)
     STUDENT_SERVICE chosen;
     bool isInputValid = false;
 
-    /*while (!isInputValid) {
+    while (!isInputValid) 
+    {
 
         showMessage("\nEnter ID: ");
         isInputValid = safeCin<int>(id);
-    }*/
+    }
 
-    showMessage("\nEnter ID: ");
-    cin >> id;
+    isInputValid = false;
+    while (!isInputValid) 
+    {
+        showMessage("\nEmail: ");
+        string emailStr;
+        isInputValid = safeCin<string>(emailStr);
+        isInputValid = isEmailValid(emailStr);
+        strcpy_s(student.studentClass, emailStr.c_str());
+    }
 
-    /*while (!isInputValid) {
+    try
+    {
+        chosen.editEmail(id, student.email);
 
-        showMessage("\nE-mail: ");
-        isInputValid = safeCin<const char*>(student.email);
-    }*/
-
-    showMessage("\nE-mail: ");
-    cin >> student.email;
-
-    chosen.editEmail(id, student.email);
-
-    showMessage("\nThe information was edited successfully.\n");
+        showMessage("\nThe information was edited successfully.\n");
+    }
+    catch (const std::exception& e)
+    {
+        cout << e.what();
+    }
 
     cout << endl;
     showEditMenu();
@@ -211,14 +226,14 @@ void inputFirstName(STUDENT& student)
 {
     bool isInputValid = false;
     
-    /*while (!isInputValid) {
-
+    while (!isInputValid) 
+    {
         showMessage("\nFirst name: ");
-        isInputValid = safeCin<const char*>(student.firstName);
-    }*/
+        string nameStr;
+        isInputValid = safeCin<string>(nameStr);
+        strcpy_s(student.firstName, nameStr.c_str());
+    }
 
-    showMessage("First name: ");
-    cin >> student.firstName;
     cout << endl;
 }
 
@@ -226,14 +241,14 @@ void inputLastName(STUDENT& student)
 {
     bool isInputValid = false;
 
-    /*while (!isInputValid) {
+    while (!isInputValid) 
+    {
+        showMessage("\nLast name: ");
+        string nameStr;
+        isInputValid = safeCin<string>(nameStr);
+        strcpy_s(student.lastName, nameStr.c_str());
+    }
 
-        showMessage("Last name: ");
-        isInputValid = safeCin<const char*>(student.lastName);
-    }*/
-
-    showMessage("Last name: ");
-    cin >> student.lastName;
     cout << endl;
 }
 
@@ -241,14 +256,15 @@ void inputStudentClass(STUDENT& student)
 {
     bool isInputValid = false;
 
-    /*while (!isInputValid) {
+    while (!isInputValid) {
 
-        showMessage("Class: ");
-        isInputValid = safeCin<const char*>(student.studentClass);
-    }*/
+        showMessage("\nClass: ");
+        string classStr;
+        isInputValid = safeCin<string>(classStr);
+        isInputValid = isStudentClassValid(classStr);
+        strcpy_s(student.studentClass, classStr.c_str());
+    }
 
-    showMessage("Class: ");
-    cin >> student.studentClass;
     cout << endl;
 }
 
@@ -256,14 +272,15 @@ void inputEmail(STUDENT& student)
 {
     bool isInputValid = false;
 
-    /*while (!isInputValid) {
+    while (!isInputValid)
+    {
+        showMessage("\nEmail: ");
+        string emailStr;
+        isInputValid = safeCin<string>(emailStr);
+        isInputValid = isEmailValid(emailStr);
+        strcpy_s(student.email, emailStr.c_str());
+    }
 
-        showMessage("E-mail: ");
-        isInputValid = safeCin<const char*>(student.email);
-    }*/
-
-    showMessage("E-mail: ");
-    cin >> student.email;
     cout << endl;
 }
 
@@ -275,18 +292,21 @@ void deleteStudentMenu()
 
     showMessage("\nChoose a student to delete: ");
     
-    /*while (!isInputValid) {
-
+    while (!isInputValid) 
+    {
         showMessage("\nEnter ID: ");
         isInputValid = safeCin<int>(id);
-    }*/
+    }
 
-    showMessage("\nEnter ID: ");
-    cin >> id;
-
-    chosen.softDeleteStudent(id);
-
-    showMessage("\nThe student was removed successfully.\n");
+    try
+    {
+        chosen.softDeleteStudent(id);
+        showMessage("\nThe student was removed successfully.\n");
+    }
+    catch (const std::exception& e)
+    {
+        e.what();
+    }
 
     cout << endl;
     showStudentMenu();
@@ -294,7 +314,15 @@ void deleteStudentMenu()
 
 void showAllMenu()
 {
-    STUDENT::showAll();
+    try
+    {
+        STUDENT::showAll();
+    }
+    catch (const std::exception& e)
+    {
+        e.what();
+    }
+
     cout << endl;
     showStudentMenu();
 }

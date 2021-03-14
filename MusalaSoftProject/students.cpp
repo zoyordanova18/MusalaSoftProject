@@ -84,6 +84,10 @@ vector<STUDENT> STUDENT_SERVICE::getAll()
 		{
 			students.push_back(student);
 		}
+		else
+		{
+			throw("A wild error appeard!");
+		}
 	}
 
 	//studentsFile.clear();
@@ -215,8 +219,7 @@ void STUDENT_SERVICE::editEmail(int id, const char* studentEmail)
 
 	}
 	throw exception("Invalid ID");
-	// closeFile();
-	//return false;
+
 }
 
 void STUDENT_SERVICE::editClass(int id, const char* studentClass)
@@ -249,8 +252,6 @@ void STUDENT_SERVICE::editClass(int id, const char* studentClass)
 
 	}
 	throw exception("Invalid ID");
-	// closeFile();
-	//return false;
 }
 
 void STUDENT_SERVICE::softDeleteStudent(int id)

@@ -5,7 +5,6 @@
 #include "teams.h"
 #include "participants.h"
 #include "Presentation.h"
-#include "presentationStudent.h"
 #include "helpers.h"
 using namespace std;
 
@@ -27,6 +26,7 @@ int main()
 
 	bool isOpen = STUDENT_SERVICE::open();
 	bool isOpenT = TEACHER_SERVICE::open();
+	bool isOpenTeam = TEAM_SERVICE::open();
 
 	/*STUDENT_SERVICE::add({ 5, "Martin", "Gaorgiev", "10V", "MAGaorgiev18@codingburgas.bg" });
 	STUDENT_SERVICE::add({ 6, "Beroslav", "Rimpov", "10A", "berimpov18@codingburgas.bg" });
@@ -37,7 +37,7 @@ int main()
 	STUDENT_SERVICE::add({ 11, "Inko", "Popov", "10B", "ILPopov18@codingburgas.bg" });
 	STUDENT_SERVICE::add({ 12, "Kasidi", "Chervenkova", "10B", "kbchervenkova18@codingburgas.bg" });
 	STUDENT_SERVICE::add({ 13, "Bogdan", "Kolev", "10V", "bjkolev18@codingburgas.bg" });
-	STUDENT_SERVICE::add({ 14, "Martin", "Benkov", "10A", "mebenkov18@codingburgas.bg" });*/
+	STUDENT_SERVICE::add({ 14, "Martin", "Benkov", "10A", "mebenkov18@codingburgas.bg" });
 
 	//TEACHER_SERVICE::add({ 7, "Dilyan", "Ivanov", "DIIvanov@codingburgas.bg" });
 	//TEACHER_SERVICE::add({ 8, "Mariana", "Elcheva", "MFElcheva@codingburgas.bg" });
@@ -113,6 +113,7 @@ int main()
 
 	STUDENT_SERVICE::close();
 	TEACHER_SERVICE::close();
+	TEAM_SERVICE::close();
 	// PARTICIPANT_SERVICE::close();
 
 	//showStudentsTableHeader();
