@@ -31,6 +31,9 @@ void inputFirstName(TEACHER& teacher)
         showMessage("\nFirst Name: ");
         string firstNameStr;
         isInputValid = safeCin<string>(firstNameStr);
+        isInputValid = isNameValid(firstNameStr);
+        if (!isInputValid)
+            showMessage("\nPlease enter a valid first name!\n");
         strcpy_s(teacher.firstName, firstNameStr.c_str());
     }
 
@@ -46,6 +49,9 @@ void inputLastName(TEACHER& teacher)
         showMessage("\nLast Name: ");
         string lastNameStr;
         isInputValid = safeCin<string>(lastNameStr);
+        isInputValid = isNameValid(lastNameStr);
+        if (!isInputValid)
+            showMessage("\nPlease enter a valid last name!\n");
         strcpy_s(teacher.lastName, lastNameStr.c_str());
     }
 
@@ -58,10 +64,16 @@ void inputEmail(TEACHER& teacher)
 
     while (!isInputValid)
     {
-        showMessage("\nEmail: ");
+        setColor(WHITE);
+        showMessage("\nE-mail: ");
         string emailStr;
         isInputValid = safeCin<string>(emailStr);
         isInputValid = isEmailValid(emailStr);
+        if (!isInputValid)
+        {
+            setColor(RED);
+            cout << INVALID_EMAIL_MESSAGE;
+        }
         strcpy_s(teacher.email, emailStr.c_str());
     }
 
@@ -116,7 +128,7 @@ void showEditMenuTeacher()
 
     //student.showAll();
 
-    cout << "Choose what you want to edit: " << endl;
+    cout << "\nChoose what you want to edit\n\n";
 
     vector<MENU_OPTION_INT> options = initializeEditMenuOptionsTeacher();
 
@@ -137,26 +149,37 @@ void editFirstNameMenuTeacher(int& id)
 
     while (!isInputValid) 
     {
-
+        setColor(WHITE);
         showMessage("\nEnter ID: ");
         isInputValid = safeCin<int>(id);
+        if (!isInputValid)
+        {
+            setColor(RED);
+            cout << INVALID_ID_MESSAGE;
+        }
     }
 
     isInputValid = false;
 
     while (!isInputValid) 
     {
-
+        setColor(WHITE);
         showMessage("\nFirst Name: ");
         string firstNameStr;
         isInputValid = safeCin<string>(firstNameStr);
+        isInputValid = isNameValid(firstNameStr);
+        if (!isInputValid)
+        {
+            setColor(RED);
+            cout << INVALID_FIRSTNAME_MESSAGE;
+        }
         strcpy_s(teacher.firstName, firstNameStr.c_str());
     }
     
     try
     {
         chosen.editFirstName(id, teacher.firstName);
-        showMessage("\nThe information was edited successfully.");
+        cout << INFORMATION_EDITED_SUCCESSFULLY_MESSAGE;
     }
     catch (const std::exception& e)
     {
@@ -174,26 +197,37 @@ void editLastNameMenuTeacher(int& id)
 
     while (!isInputValid)
     {
-
+        setColor(WHITE);
         showMessage("\nEnter ID: ");
         isInputValid = safeCin<int>(id);
+        if (!isInputValid)
+        {
+            setColor(RED);
+            cout << INVALID_ID_MESSAGE;
+        }
     }
 
     isInputValid = false;
 
     while (!isInputValid)
     {
-
+        setColor(WHITE);
         showMessage("\nLast Name: ");
         string lastNameStr;
         isInputValid = safeCin<string>(lastNameStr);
+        isInputValid = isNameValid(lastNameStr);
+        if (!isInputValid)
+        {
+            setColor(RED);
+            cout << INVALID_LASTNAME_MESSAGE;
+        }
         strcpy_s(teacher.lastName, lastNameStr.c_str());
     }
 
     try
     {
         chosen.editLastName(id, teacher.lastName);
-        showMessage("\nThe information was edited successfully.");
+        cout << INFORMATION_EDITED_SUCCESSFULLY_MESSAGE;
     }
     catch (const std::exception& e)
     {
@@ -211,25 +245,37 @@ void editEmailMenuTeacher(int& id)
 
     while (!isInputValid) 
     {
+       setColor(WHITE);
        showMessage("\nEnter ID: ");
        isInputValid = safeCin<int>(id);
+       if (!isInputValid)
+       {
+           setColor(RED);
+           cout << INVALID_ID_MESSAGE;
+       }
     }
 
     isInputValid = false;
 
     while (!isInputValid)
     {
+        setColor(WHITE);
         showMessage("\nEmail: ");
         string emailStr;
         isInputValid = safeCin<string>(emailStr);
         isInputValid = isEmailValid(emailStr);
+        if (!isInputValid)
+        {
+            setColor(RED);
+            cout << INVALID_EMAIL_MESSAGE;
+        }
         strcpy_s(teacher.email, emailStr.c_str());
     }
     
     try
     {
         chosen.editEmail(id, teacher.email);
-        showMessage("\nThe information was edited successfully."); 
+        cout << INFORMATION_EDITED_SUCCESSFULLY_MESSAGE;
     }
     catch (const std::exception& e)
     {
@@ -247,14 +293,19 @@ void deleteTeacherMenu()
 
     showMessage("\nChoose a teacher to delete");
 
-    showMessage("\nEnter ID: ");
-    cin >> id;
+    /*showMessage("\nEnter ID: ");
+    cin >> id;*/
 
     while (!isInputValid) 
     {
-
+        setColor(WHITE);
         showMessage("\nEnter ID: ");
         isInputValid = safeCin<int>(id);
+        if (!isInputValid)
+        {
+            setColor(RED);
+            cout << INVALID_ID_MESSAGE;
+        }
     }
 
     chosen.softDeleteTeacher(id);

@@ -101,6 +101,7 @@ int main()
 
 	// STUDENT student;
 
+	setColor(WHITE);
 	showMainMenu();
 
 	//student.showAll();

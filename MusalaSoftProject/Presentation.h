@@ -69,4 +69,4 @@ void showMenuOptionsStatus(std::vector<MENU_OPTION_STATUS>&);
 
 void handleUserChoiceStatus(std::vector<MENU_OPTION_STATUS>&);
 
-void showStudentNadpis();
+void showStudentMenuHeading();

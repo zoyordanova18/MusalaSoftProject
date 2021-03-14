@@ -20,6 +20,8 @@ vector<MENU_OPTION> initializeStudentMenuOptions()
 
 void showStudentAddMenu()
 {
+    system("cls");
+
     STUDENT student;
 
     inputFirstName(student);

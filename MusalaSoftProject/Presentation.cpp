@@ -12,7 +12,6 @@ using namespace std;
 
 void showMainMenuHeading()
 {
-	system("cls");
 	cout << "  __  __       _                                    " << endl;
 	cout << " |  \\/  |     (_)                                   " << endl;
 	cout << " | \\  / | __ _ _ _ __    _ __ ___   ___ _ __  _   _ " << endl;
@@ -41,7 +40,7 @@ void showSchoolArt()
 	cout << "         `''''/             \ \ \\:'-'-'-'-" << endl;
 }
 
-void showStudentNadpis()
+void showStudentMenuHeading()
 {
 	string str = "\r\n"
 		"  ____    _____    _"
@@ -164,9 +163,7 @@ void showMainMenu()
 
 void showStudentMenu()
 {
-	system("cls");
-
-	showStudentNadpis();
+	showStudentMenuHeading();
 
 	vector<MENU_OPTION> menu = initializeStudentMenuOptions();
 
@@ -176,8 +173,6 @@ void showStudentMenu()
 
 void showTeamsMenu()
 {
-	system("cls");
-
 	vector<MENU_OPTION> menu = initializeTeamMenuOptions();
 
 	showMenuOptions(menu);
@@ -250,32 +245,31 @@ void showStudentInTable(STUDENT student)
 		lastNameStr.pop_back();
 
 		cout << "| " << setw(5) << left;
-		setColor(12);
+		setColor(RED);
 		cout << student.id;
-		setColor(7);
+		setColor(WHITE);
 		cout << " | ";
 		cout << setw(15) << left;
-		setColor(12);
+		setColor(RED);
 		cout << student.firstName; 
-		setColor(7);
+		setColor(WHITE);
 		cout << " | ";
 		cout << setw(15) << left; 
-		setColor(12);
+		setColor(RED);
 		cout << lastNameStr; 
-		setColor(7);
+		setColor(WHITE);
 		cout << " | ";
 		cout << setw(5) << left; 
-		setColor(12);
+		setColor(RED);
 		cout << student.studentClass;
-		setColor(7);
+		setColor(WHITE);
 		cout << " | ";
 		cout << setw(35) << left;
-		setColor(12);
+		setColor(RED);
 		cout << student.email;
-		setColor(7);
+		setColor(WHITE);
 		cout << " | " << left;
 	}
-
 }
 
 void showTeachersTableHeader()
@@ -292,7 +286,6 @@ void showTeachersTableHeader()
 
 void showTeacherInTable(TEACHER teacher)
 {
-
 	string lastNameStr = teacher.lastName;
 
 	if (lastNameStr.find('!') == string::npos)

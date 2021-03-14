@@ -23,6 +23,15 @@ bool isStudentClassValid(std::string studentClass)
 	return regex_match(studentClass, pattern);
 }
 
+bool isNameValid(std::string name)
+{
+	regex pattern
+	("[a-z-A-Z]+",
+		regex_constants::icase);
+
+	return regex_match(name, pattern);
+}
+
 bool setColor(uint16_t newColor)
 {
 	HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
