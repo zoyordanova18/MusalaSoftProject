@@ -1,8 +1,13 @@
 #include "participants.h"
+#include "students.h"
 #include "define.h"
+#include "helpers.h"
+#include "teams.h"
 #include <iostream>
+#include <algorithm>
 #include <vector>
 #include <fstream>
+#include <map>
 
 using namespace std;
 
@@ -75,6 +80,53 @@ void PARTICIPANT_SERVICE::removePt(int studentId, int teamId)
 	int rs = rename("temp.txt", "participants.txt");
 
 	open();
+}
+
+
+vector<PARTICIPANT> PARTICIPANT_SERVICE::getAll()
+{
+	PARTICIPANT participant;
+	vector<PARTICIPANT> participants;
+
+	participantsFile.seekg(0, ios::end);
+	streampos fileSize = participantsFile.tellg();
+	participantsFile.seekg(0, ios::beg);
+
+	while (participantsFile.tellg() < fileSize)
+	{
+		if (participantsFile.read((byte_*)&participant, sizeof(PARTICIPANT)))
+		{
+			participants.push_back(participant);
+		}
+		else
+		{
+			throw("A wild error appeard!");
+		}
+	}
+
+	return participants;
+
+}
+
+map<string, string> getParticipantNameAndRole(vector<PARTICIPANT> participant, int teamId)
+{
+	string firstNameStr, lastNameStr;
+	vector<STUDENT> students = STUDENT_SERVICE::getAll();
+
+	map<string, string> result;
+
+	for (size_t i = 0; i < participant.size(); i++)
+	{
+		if (participant[i].teamId == teamId)
+		{
+			firstNameStr = findStudentById(students, participant[i].studentId).firstName;
+			lastNameStr = findStudentById(students, participant[i].studentId).lastName;
+
+			result[enumRoleToString(participant[i].role)] = firstNameStr + " " + lastNameStr;
+		}
+	}
+
+	return result;
 }
 
 vector<PARTICIPANT> PARTICIPANT_SERVICE::getAllParticipantsFromTeam(int teamId)

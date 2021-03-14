@@ -1,6 +1,7 @@
 #pragma once
 #include "define.h"
 #include <fstream>
+#include <vector>
 
 extern std::fstream teamsFile;
 
@@ -23,6 +24,7 @@ struct TEAM
 
 struct TEAM_SERVICE
 {
+	static std::vector<TEAM> getAll();
 	static bool open(const char* fileName = "teams.txt");
 	static void close();
 	static uint32_t generateId();
@@ -31,4 +33,6 @@ struct TEAM_SERVICE
 
 
 std::string getTodaysDate();
+
+void consoleSetup();
 

@@ -34,7 +34,7 @@ struct TEACHER_SERVICE
 	static void softDeleteTeacher(int);
 };
 
-TEACHER findStudentById(const std::vector<TEACHER>&, int);
+TEACHER findTeacherById(const std::vector<TEACHER>& teachers, int id);
 
 
 

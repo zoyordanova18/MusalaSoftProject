@@ -1,4 +1,5 @@
 #include <iostream>
+#include <map>
 #include <vector>
 #include <iomanip>
 #include <windows.h>
@@ -7,6 +8,8 @@
 #include "students.h"
 #include "presentationStudent.h"
 #include "helpers.h"
+#include <string_view>
+#include "teachers.h"
 
 using namespace std;
 
@@ -86,7 +89,7 @@ void showStudentMenuHeading()
 		"     (./  \\.) (__) "
 		"(__|_\")  (_/     (_"
 		"_)  \r\n";
-	
+
 	cout << str;
 }
 
@@ -326,5 +329,53 @@ void showTeacherInTable(TEACHER teacher)
 	cout << setw(15) << left << teacher.firstName << " | ";
 	cout << setw(15) << left << teacher.lastName << " | ";
 	cout << setw(30) << left << teacher.email << " | " << left;*/
+}
+
+void showTeamTableHeader()
+{
+	cout << endl;
+	string headerLine(140, '-');
+	cout << headerLine << endl;
+	cout << "| " << setw(5) << left << "Id" << " | ";
+	cout << setw(15) << left << "Name" << " | ";
+	cout << setw(30) << left << "Description" << " | ";
+	cout << setw(30) << left << "Participants" << " | ";
+	cout << setw(10) << left << "Date Of Setup" << " | ";
+	cout << setw(10) << left << "Status" << " | ";
+	cout << setw(15) << left << "Teacher" << " | " << endl;
+	cout << headerLine << endl;
+}
+
+void showTeamInTable(TEAM team, map<string, string> participants)
+{
+	vector<TEACHER> teachers = TEACHER_SERVICE::getAll();
+	string descrptionStr = team.description;
+
+	TEACHER teamTeacher = findTeacherById(teachers, team.teacherId);
+
+	cout << "| " << setw(5) << left << team.id << " | ";
+	cout << setw(15) << left << team.name << " | ";
+	if (descrptionStr.size() > 30)
+	{
+		for (size_t i = 0; i < descrptionStr.size(); i += 30)
+		{
+			descrptionStr.insert(i, 1, '\n');
+		}
+
+		cout << setw(30) << left << descrptionStr << " | ";
+	}
+
+	for (auto it = participants.cbegin(); it != participants.cend(); it++) 
+	{
+		cout << (*it).first << ": " << (*it).second << endl;
+	}
+	cout << " | ";
+
+	cout << setw(5) << left << team.dateOfSetup << " | ";
+	cout << setw(5) << left << enumStatusToString(team.status) << " | ";
+	cout << setw(20) << left << teamTeacher.firstName << " "<<
+		teamTeacher.lastName << " | " << left;
+
+
 }
 
