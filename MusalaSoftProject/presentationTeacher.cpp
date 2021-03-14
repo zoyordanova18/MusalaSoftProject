@@ -28,12 +28,17 @@ void inputFirstName(TEACHER& teacher)
 
     while (!isInputValid) 
     {
+        setColor(WHITE);
         showMessage("\nFirst Name: ");
         string firstNameStr;
         isInputValid = safeCin<string>(firstNameStr);
         isInputValid = isNameValid(firstNameStr);
         if (!isInputValid)
-            showMessage("\nPlease enter a valid first name!\n");
+        {
+            setColor(RED);
+            cout << INVALID_FIRSTNAME_MESSAGE;
+        }
+            
         strcpy_s(teacher.firstName, firstNameStr.c_str());
     }
 
@@ -46,12 +51,16 @@ void inputLastName(TEACHER& teacher)
 
     while (!isInputValid)
     {
+        setColor(WHITE);
         showMessage("\nLast Name: ");
         string lastNameStr;
         isInputValid = safeCin<string>(lastNameStr);
         isInputValid = isNameValid(lastNameStr);
         if (!isInputValid)
-            showMessage("\nPlease enter a valid last name!\n");
+        {
+            setColor(RED);
+            cout << INVALID_LASTNAME_MESSAGE;
+        }
         strcpy_s(teacher.lastName, lastNameStr.c_str());
     }
 
