@@ -33,11 +33,3 @@ void inactiveStatusMenu(TEAM&);
 void chooseTeamStatus(TEAM&);
 
 void archivedStatusMenu(TEAM&);
-
-
-
-
-
-
-
-

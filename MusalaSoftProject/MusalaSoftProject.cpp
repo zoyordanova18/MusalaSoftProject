@@ -1,5 +1,11 @@
 #include <iostream>
 #include <string>
+#include <sstream>
+#include <map>
+#include <windows.h>
+#include <tchar.h>
+#include <conio.h>
+#include <strsafe.h>	
 #include "students.h"
 #include "teachers.h"
 #include "teams.h"
@@ -10,7 +16,9 @@ using namespace std;
 
 int main()
 {
-	// cout << sizeof(TEACHER);
+
+	consoleSetup();
+	
 
 	/*TEAM a{ 0, "Chupacabra", "Lovqt Riba", "dfdf", TEAM_STATUS::IN_USE, 0};
 
@@ -27,6 +35,32 @@ int main()
 	bool isOpen = STUDENT_SERVICE::open();
 	bool isOpenT = TEACHER_SERVICE::open();
 	bool isOpenTeam = TEAM_SERVICE::open();
+	bool isOpenP = PARTICIPANT_SERVICE::open();
+
+	vector<STUDENT> ds = STUDENT_SERVICE::getAll();
+
+	auto func = [&](STUDENT st) -> string
+	{
+		stringstream row; 
+		row << st.id << "," << st.firstName << "," << st.lastName <<
+			"," << st.studentClass << "," << st.email << '\n';
+		
+		return row.str();
+	};
+
+	string a = vectorToCsv<STUDENT>(ds, "Id,Last Name,Last Name,Class,Email\n", func);
+
+	saveCsvFile(a);
+
+	system("notepad.exe data.csv");
+
+	/*PARTICIPANT_SERVICE::add({ 0,1,ROLES::SCRUM_MASTER });
+	PARTICIPANT_SERVICE::add({ 2,1,ROLES::BACK_END });
+	PARTICIPANT_SERVICE::add({ 1,2,ROLES::SCRUM_MASTER });
+	PARTICIPANT_SERVICE::add({ 3,3,ROLES::SCRUM_MASTER });
+
+	vector<PARTICIPANT> b = PARTICIPANT_SERVICE::getAll();
+	map<string, string> a = getParticipantNameAndRole(b, 1);*/
 
 	/*STUDENT_SERVICE::add({ 5, "Martin", "Gaorgiev", "10V", "MAGaorgiev18@codingburgas.bg" });
 	STUDENT_SERVICE::add({ 6, "Beroslav", "Rimpov", "10A", "berimpov18@codingburgas.bg" });
@@ -45,10 +79,10 @@ int main()
 	//TEACHER_SERVICE::add({ 10, "Denis", "Karakashev", "DBKarakashev@codingburgas.bg" });
 	//TEACHER_SERVICE::add({ 11, "Angel", "Milenov", "APMilenov@codingburgas.bg" });
 	//
-	// PARTICIPANT_SERVICE::add({ 0,1,ROLES::SCRUM_MASTER });
-	// PARTICIPANT_SERVICE::add({ 2,1,ROLES::BACK_END });
-	// PARTICIPANT_SERVICE::add({ 1,2,ROLES::SCRUM_MASTER });
-	// PARTICIPANT_SERVICE::add({ 3,3,ROLES::SCRUM_MASTER });
+	 PARTICIPANT_SERVICE::add({ 0,1,ROLES::SCRUM_MASTER });
+	 PARTICIPANT_SERVICE::add({ 2,1,ROLES::BACK_END });
+	 PARTICIPANT_SERVICE::add({ 1,2,ROLES::SCRUM_MASTER });
+	PARTICIPANT_SERVICE::add({ 3,3,ROLES::SCRUM_MASTER });
 
 	// TEAM_SERVICE::add({ 0,"Iskender Devs", "Make Duner", "1-1-1", TEAM_STATUS::IN_USE,0 });
 	// TEAM_SERVICE::add({ 0,"Jenski Hormoni", "Habii", "1-1-1", TEAM_STATUS::IN_USE,1 });
@@ -91,7 +125,7 @@ int main()
 
 	//string date =  getTodaysDate();
 
-	/*vector<PARTICIPANT>a = PARTICIPANT_SERVICE::getAllParticipantsFromTeam(1);
+	vector<PARTICIPANT>a = PARTICIPANT_SERVICE::getAllParticipantsFromTeam(1);
 
 	STUDENT_SERVICE::open();
 	vector<STUDENT> c = STUDENT_SERVICE::getAll();
@@ -101,7 +135,33 @@ int main()
 
 	// STUDENT student;
 
-	showMainMenu();
+	showTeamTableHeader();
+	
+	vector<TEAM> teams = {
+		{1, "Habibi", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu.", "2021 - 12 - 06", TEAM_STATUS::IN_USE, 1},
+		{2, "Habibi1", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu.", "2021 - 12 - 06", TEAM_STATUS::IN_USE, 2},
+		{3, "Habibi2", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu.", "2021 - 12 - 06", TEAM_STATUS::IN_USE, 3},
+		{4, "Habibi3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu.", "2021 - 12 - 06", TEAM_STATUS::IN_USE, 4},
+		{5, "Habibi4", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu.", "2021 - 12 - 06", TEAM_STATUS::IN_USE, 5},
+		{6, "Habibi5", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu.", "2021 - 12 - 06", TEAM_STATUS::IN_USE, 6},
+		{7, "Habibi6", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu.", "2021 - 12 - 06", TEAM_STATUS::IN_USE, 7}
+	};
+
+	map<string, string> participants = {
+		{"Scrum Master", "Ivan Salamov"},
+		{"Back-End", "Gosho Sekov"},
+		{"QA", "Salim Hapir"},
+		{"Front-End", "Sonko Jukolor"}
+	};
+
+	for (int i = 0; i < teams.size(); i++)
+	{
+		showTeamInTable(teams[i], participants);
+	}
+
+
+
+	//showMainMenu();
 
 	//student.showAll();
 
@@ -114,6 +174,7 @@ int main()
 	STUDENT_SERVICE::close();
 	TEACHER_SERVICE::close();
 	TEAM_SERVICE::close();
+	PARTICIPANT_SERVICE::close();
 	// PARTICIPANT_SERVICE::close();
 
 	//showStudentsTableHeader();

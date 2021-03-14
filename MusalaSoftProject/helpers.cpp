@@ -1,9 +1,14 @@
 #include "helpers.h"
+#include "teams.h"
 #include <iostream>
 #include <vector>
 #include <windows.h>
 #include <functional>
 #include <regex>
+#include <windows.h>
+#include <tchar.h>
+#include <conio.h>
+#include <strsafe.h>
 using namespace std;
 
 bool isEmailValid(std::string email)
@@ -34,4 +39,73 @@ bool setColor(uint16_t newColor)
 
 	return false;
 }
+
+
+std::string enumRoleToString(ROLES role)
+{
+	switch (role)
+	{
+	case ROLES::BACK_END:
+		return "Back-End";
+	case ROLES::FRONT_END:
+		return "Front-End";
+	case ROLES::QA:
+		return "QA";
+	case ROLES::SCRUM_MASTER:
+		return "Scrum Master";
+	}
+}
+
+std::string enumStatusToString(TEAM_STATUS status)
+{
+	switch (status)
+	{
+	case TEAM_STATUS::IN_USE:
+		return "In Use";
+	case TEAM_STATUS::NOT_ACTIVE:
+		return "Not Active";
+	case TEAM_STATUS::ARCHIVED:
+		return "Archive";
+	}
+}
+
+void consoleSetup()
+{
+	TCHAR conTitle[64];
+
+	HRESULT hr = StringCchPrintf(conTitle, 64, TEXT("Foo School"));
+	if (!(SUCCEEDED(hr) && SetConsoleTitle(conTitle)))
+	{
+		throw exception("A wild error appeard!");
+	}
+
+	HWND window = GetConsoleWindow();
+
+	if (window != NULL && ShowWindow(window, SW_MAXIMIZE) )
+	{
+		SendMessage(window, WM_SYSKEYDOWN, VK_RETURN, 0x20000000);
+	}
+	else
+	{
+		throw exception("A wild error appeard!");
+	}
+
+}
+
+void saveCsvFile(std::string csv)
+{
+	ofstream csvFile("data.csv");
+
+	if (csvFile.is_open())
+	{
+		csvFile << csv;
+		csvFile.close();
+		return;
+	}
+	
+	csvFile.close();
+	throw exception("A Wild Appeard!");
+
+}
+
 

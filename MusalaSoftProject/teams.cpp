@@ -4,6 +4,7 @@
 #include <string>
 #include <cstring>
 #include <fstream>
+#include <vector>
 using namespace std;
 
 fstream teamsFile;
@@ -90,6 +91,31 @@ bool TEAM_SERVICE::add(TEAM team)
 	}
 
 	return false;
+}
+
+vector<TEAM> TEAM_SERVICE::getAll()
+{
+	TEAM team;
+	vector<TEAM> teams;
+
+	teamsFile.seekg(0, ios::end);
+	streampos fileSize = teamsFile.tellg();
+	teamsFile.seekg(0, ios::beg);
+
+	while (teamsFile.tellg() < fileSize)
+	{
+		if (teamsFile.read((byte_*)&team, sizeof(TEAM)))
+		{
+			teams.push_back(team);
+		}
+		else
+		{
+			throw("A wild error appeard!");
+		}
+	}
+
+	return teams;
+
 }
 
 

@@ -4,6 +4,7 @@
 #include "teachers.h"
 #include "helpers.h"
 #include "teams.h"
+#include "participants.h"
 
 //typedef unsigned char byte;
 typedef void (*MENU_HANDLER)();
@@ -70,3 +71,7 @@ void showMenuOptionsStatus(std::vector<MENU_OPTION_STATUS>&);
 void handleUserChoiceStatus(std::vector<MENU_OPTION_STATUS>&);
 
 void showStudentNadpis();
+
+void showTeamTableHeader();
+
+void showTeamInTable(TEAM team, std::map<std::string, std::string> participants);

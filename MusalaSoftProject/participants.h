@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <map>
 
 extern std::fstream participantsFile;
 
@@ -20,6 +21,9 @@ struct PARTICIPANT
 	ROLES role;
 };
 
+std::map<std::string, std::string> getParticipantNameAndRole(std::vector<PARTICIPANT>, int teamId);
+
+
 struct PARTICIPANT_SERVICE
 {
 	static bool open(const char* fileName = "participants.txt");
@@ -27,5 +31,6 @@ struct PARTICIPANT_SERVICE
 	static bool add(PARTICIPANT participant);
 	static void removePt(int, int);
 	static std::vector<PARTICIPANT> getAllParticipantsFromTeam(int teamId);
+	static std::vector<PARTICIPANT> getAll();
 };
 
