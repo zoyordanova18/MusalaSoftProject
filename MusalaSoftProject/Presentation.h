@@ -13,21 +13,21 @@ typedef void (*MENU_HANDLER_STATUS)(TEAM&);
 
 struct MENU_OPTION
 {
-    char number;
+    int number;
     const char* text;
     MENU_HANDLER handler;
 };
 
 struct MENU_OPTION_INT
 {
-    char number;
+    int number;
     const char* text;
     MENU_HANDLER_INT handler;
 };
 
 struct MENU_OPTION_STATUS
 {
-    char number;
+    int number;
     const char* text;
     MENU_HANDLER_STATUS handler;
 };
@@ -79,3 +79,5 @@ void showTeamTableHeader();
 void printRowInTeamTable(TEAM team,
                          std::vector<std::string> description,
                          std::vector<std::string> participants);
+
+bool isInputInRange(std::size_t, int);
