@@ -76,4 +76,6 @@ void showStudentMenuHeading();
 
 void showTeamTableHeader();
 
-void showTeamInTable(TEAM team, std::map<std::string, std::string> participants);
+void printRowInTeamTable(TEAM team,
+                         std::vector<std::string> description,
+                         std::vector<std::string> participants);

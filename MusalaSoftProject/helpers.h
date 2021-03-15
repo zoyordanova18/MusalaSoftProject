@@ -33,7 +33,8 @@ bool setColor(uint16_t newColor);
 
 // General function for filtering data
 template<class T>
-std::vector<T> findRecords(std::vector<T> records, std::function<bool(const T&)> const& lambda)
+std::vector<T> findRecords(std::vector<T> records,
+	std::function<bool(const T&)> const& lambda)
 {
 	std::vector<T> results;
 
@@ -59,10 +60,12 @@ void consoleSetup();
 
 //Conerting information to CSV file format
 template<class T>
-std::string vectorToCsv(std::vector<T> records, std::string header, std::function<std::string(const T&)> const& lambda)
+std::string vectorToCsv(std::vector<T> records,
+	std::string header,
+	std::function<std::string(const T&)> const& lambda)
 {
 	std::string result = header;
-	
+
 	for (size_t i = 0; i < records.size(); i++)
 	{
 		result += lambda(records[i]);
@@ -73,3 +76,17 @@ std::string vectorToCsv(std::vector<T> records, std::string header, std::functio
 
 //Exporting the information in a CSV file
 void saveCsvFile(std::string csv);
+
+std::vector<std::string> descriptionToVector(std::string description,
+	int lineLength);
+
+std::vector<std::string> participantsToVector(
+	std::map<std::string, std::string> participants);
+
+void removeSpaces(std::string& str);
+
+std::ostream& redColor(std::ostream& out);
+
+std::ostream& whiteColor(std::ostream& out);
+
+bool isStringDeleted(std::string);

@@ -334,46 +334,101 @@ void showTeacherInTable(TEACHER teacher)
 void showTeamTableHeader()
 {
 	cout << endl;
-	string headerLine(140, '-');
+	string headerLine(150, '-');
 	cout << headerLine << endl;
 	cout << "| " << setw(5) << left << "Id" << " | ";
 	cout << setw(15) << left << "Name" << " | ";
 	cout << setw(30) << left << "Description" << " | ";
-	cout << setw(30) << left << "Participants" << " | ";
+	cout << setw(35) << left << "Participants" << " | ";
 	cout << setw(10) << left << "Date Of Setup" << " | ";
 	cout << setw(10) << left << "Status" << " | ";
-	cout << setw(15) << left << "Teacher" << " | " << endl;
+	cout << setw(20) << left << "Teacher" << " | " << endl;
 	cout << headerLine << endl;
 }
 
-void showTeamInTable(TEAM team, map<string, string> participants)
+void printRowInTeamTable(TEAM team,
+	vector<string> description,
+	vector<string> participants)
 {
+
+	string headerLine(150, '-');
+
+
+	int rowsCount = max(description.size(), participants.size());
 	vector<TEACHER> teachers = TEACHER_SERVICE::getAll();
-	string descrptionStr = team.description;
+
+	string teamStatus = enumStatusToString(team.status);
+	string teamId = to_string(team.id);
+	string date = team.dateOfSetup;
+
+
+	removeSpaces(date);
 
 	TEACHER teamTeacher = findTeacherById(teachers, team.teacherId);
+	stringstream teacher;
+	teacher << teamTeacher.firstName << ' ' << teamTeacher.lastName;
 
-	cout << "| " << setw(5) << left << team.id << " | ";
-	cout << setw(15) << left << team.name << " | ";
-	if (descrptionStr.size() > 30)
+	string teacherName = teacher.str();
+
+
+
+
+	for (int i = 0; i < rowsCount; i++)
 	{
-		for (size_t i = 0; i < descrptionStr.size(); i += 30)
+		cout << "| " << setw(5) << left << teamId << " | ";
+		cout << setw(15) << left << team.name << " | ";
+		if (i < description.size())
 		{
-			descrptionStr.insert(i, 1, '\n');
+			cout << setw(30) << left << description[i] << " | ";
+		}
+		else
+		{
+			cout << "                               | ";
+		}
+		if (i < participants.size())
+		{
+			if (isStringDeleted(participants[i]))
+			{
+				participants[i].pop_back();
+				setColor(RED);
+				cout << setw(35) << left << participants[i];
+				setColor(WHITE);
+				cout << " | ";
+			}
+			else
+			{
+				cout << setw(35) << left << participants[i] << " | ";
+			}
+		}
+		else
+		{
+			cout << "                                | ";
+		}
+		cout << setw(10) << left << date << "    | ";
+		cout << setw(10) << left << teamStatus << " | ";
+
+		if (isStringDeleted(teacherName))
+		{
+			teacherName.pop_back();
+			setColor(RED);
+			cout << setw(20) << left << teacherName;
+			setColor(WHITE);
+			cout << " | " << left << endl;
+		}
+		else
+		{
+			cout << setw(20) << left << teacherName <<
+				" | " << left << endl;
 		}
 
-		cout << setw(30) << left << descrptionStr << " | ";
+
+		teamId = "";
+		strcpy_s(team.name, "");
+		teamStatus = "";
+		date = "";
+		teacherName = "";
 	}
 
-	for (auto it = participants.cbegin(); it != participants.cend(); it++) 
-	{
-		cout << (*it).first << ": " << (*it).second << endl;
-	}
-	cout << " | ";
-
-	cout << setw(5) << left << team.dateOfSetup << " | ";
-	cout << setw(5) << left << enumStatusToString(team.status) << " | ";
-	cout << setw(20) << left << teamTeacher.firstName << " ";
-	cout << teamTeacher.lastName << " | " << left;
+	cout << headerLine << endl;
 }
 

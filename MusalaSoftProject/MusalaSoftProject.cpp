@@ -12,14 +12,13 @@
 #include "participants.h"
 #include "Presentation.h"
 #include "helpers.h"
-
 using namespace std;
 
 int main()
 {
 
 	consoleSetup();
-	
+
 
 	/*TEAM a{ 0, "Chupacabra", "Lovqt Riba", "dfdf", TEAM_STATUS::IN_USE, 0};
 
@@ -38,22 +37,51 @@ int main()
 	bool isOpenTeam = TEAM_SERVICE::open();
 	bool isOpenP = PARTICIPANT_SERVICE::open();
 
-	vector<STUDENT> ds = STUDENT_SERVICE::getAll();
 
-	auto func = [&](STUDENT st) -> string
-	{
-		stringstream row; 
-		row << st.id << "," << st.firstName << "," << st.lastName <<
-			"," << st.studentClass << "," << st.email << '\n';
-		
-		return row.str();
+	map<string, string> participants = {
+	{"Scrum Master", "Krasiyana Kamburova!"},
+	{"Back-End", "Gosho Sekov"},
+	{"QA", "Salim Hapir"},
+	{"Front-End", "Sonko Jukolor"}
 	};
 
-	string a = vectorToCsv<STUDENT>(ds, "Id,Last Name,Last Name,Class,Email\n", func);
+	vector<string> parts = participantsToVector(participants);
+	vector<string> desc = descriptionToVector("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu.", 30);
 
-	saveCsvFile(a);
 
-	system("notepad.exe data.csv");
+	showTeamTableHeader();
+
+	vector<TEAM> teams = {
+		{1, "Habibi", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu.", "2021 - 12 - 06", TEAM_STATUS::IN_USE, 1},
+		{2, "Habibi1", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu.", "2021 - 12 - 06", TEAM_STATUS::NOT_ACTIVE, 2},
+		{3, "Habibi2", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu.", "2021 - 12 - 06", TEAM_STATUS::IN_USE, 3},
+		{4, "Habibi3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu.", "2021 - 12 - 06", TEAM_STATUS::ARCHIVED, 4},
+		{5, "Habibi4", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu.", "2021 - 12 - 06", TEAM_STATUS::IN_USE, 5},
+		{6, "Habibi5", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu.", "2021 - 12 - 06", TEAM_STATUS::IN_USE, 1},
+		{7, "Habibi6", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu.", "2021 - 12 - 06", TEAM_STATUS::IN_USE, 1}
+	};
+
+	for (int i = 0; i < teams.size(); i++)
+	{
+		printRowInTeamTable(teams[i], desc, parts);
+	}
+
+	//vector<STUDENT> ds = STUDENT_SERVICE::getAll();
+
+	//auto func = [&](STUDENT st) -> string
+	//{
+	//	stringstream row; 
+	//	row << st.id << "," << st.firstName << "," << st.lastName <<
+	//		"," << st.studentClass << "," << st.email << '\n';
+	//	
+	//	return row.str();
+	//};
+
+	//string a = vectorToCsv<STUDENT>(ds, "Id,Last Name,Last Name,Class,Email\n", func);
+
+	//saveCsvFile(a);
+
+	//system("notepad.exe data.csv");
 
 	/*PARTICIPANT_SERVICE::add({ 0,1,ROLES::SCRUM_MASTER });
 	PARTICIPANT_SERVICE::add({ 2,1,ROLES::BACK_END });
@@ -113,7 +141,7 @@ int main()
 	//	STUDENT_SERVICE::editLastName(1, "S.O.S, S.O.S");
 	//	STUDENT_SERVICE::editClass(8, "36G");
 	//	STUDENT_SERVICE::editEmail(1, "DGAlo18@codingburgas.bg");
-	//	
+	//
 	//}
 	//catch (const std::exception& e)
 	//{
@@ -136,42 +164,22 @@ int main()
 
 	// STUDENT student;
 
-	showTeamTableHeader();
-	
-	vector<TEAM> teams = {
-		{1, "Habibi", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu.", "2021 - 12 - 06", TEAM_STATUS::IN_USE, 1},
-		{2, "Habibi1", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu.", "2021 - 12 - 06", TEAM_STATUS::IN_USE, 2},
-		{3, "Habibi2", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu.", "2021 - 12 - 06", TEAM_STATUS::IN_USE, 3},
-		{4, "Habibi3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu.", "2021 - 12 - 06", TEAM_STATUS::IN_USE, 4},
-		{5, "Habibi4", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu.", "2021 - 12 - 06", TEAM_STATUS::IN_USE, 5},
-		{6, "Habibi5", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu.", "2021 - 12 - 06", TEAM_STATUS::IN_USE, 6},
-		{7, "Habibi6", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu.", "2021 - 12 - 06", TEAM_STATUS::IN_USE, 7}
-	};
+	/*
 
-	map<string, string> participants = {
-		{"Scrum Master", "Ivan Salamov"},
-		{"Back-End", "Gosho Sekov"},
-		{"QA", "Salim Hapir"},
-		{"Front-End", "Sonko Jukolor"}
-	};
 
-	for (int i = 0; i < teams.size(); i++)
-	{
-		showTeamInTable(teams[i], participants);
-	}
+
+	*/
 
 
 
 	//showMainMenu();
-	setColor(WHITE);
-	showMainMenu();
 
 	//student.showAll();
 
 	//STUDENT_SERVICE::editFirstName(1, "GadenTellG");
 
 	//STUDENT::showAll();
-	
+
 	//TEACHER::showAll();
 
 	STUDENT_SERVICE::close();

@@ -118,4 +118,60 @@ void saveCsvFile(std::string csv)
 	throw exception("A Wild Appeard!");
 }
 
+vector<string> descriptionToVector(string description, int lineLength)
+{
+	vector<string> result;
+
+	while (description.size() > 0)
+	{
+		result.push_back(description.substr(0, 30));
+		description.erase(0, 30);
+	}
+
+	return result;
+}
+
+vector<string> participantsToVector(map<string, string> participants)
+{
+	vector<string> result;
+
+	for (auto it = participants.cbegin(); it != participants.cend(); it++)
+	{
+		result.push_back((*it).first + ": " + (*it).second);
+	}
+
+	return result;
+}
+
+void removeSpaces(string& str)
+{
+	string::iterator currentChar = str.begin();
+
+	while (currentChar < str.end())
+	{
+		if (*currentChar == ' ')
+		{
+			str.erase(currentChar, currentChar + 1);
+		}
+		else
+		{
+			currentChar++;
+		}
+	}
+}
+
+ostream& redColor(ostream& out)
+{
+	return out << "\33[31m";
+}
+
+ostream& whiteColor(ostream& out)
+{
+	return out << "\33[37m";
+}
+
+bool isStringDeleted(std::string msg)
+{
+	return (msg.find('!') != string::npos);
+}
 
