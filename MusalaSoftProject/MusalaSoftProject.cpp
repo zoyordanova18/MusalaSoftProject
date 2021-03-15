@@ -17,7 +17,7 @@ using namespace std;
 int main()
 {
 
-	consoleSetup();
+	// consoleSetup();
 
 
 	/*TEAM a{ 0, "Chupacabra", "Lovqt Riba", "dfdf", TEAM_STATUS::IN_USE, 0};
@@ -38,7 +38,7 @@ int main()
 	bool isOpenP = PARTICIPANT_SERVICE::open();
 
 
-	map<string, string> participants = {
+	/*map<string, string> participants = {
 	{"Scrum Master", "Krasiyana Kamburova!"},
 	{"Back-End", "Gosho Sekov"},
 	{"QA", "Salim Hapir"},
@@ -64,7 +64,7 @@ int main()
 	for (int i = 0; i < teams.size(); i++)
 	{
 		printRowInTeamTable(teams[i], desc, parts);
-	}
+	}*/
 
 	//vector<STUDENT> ds = STUDENT_SERVICE::getAll();
 
@@ -172,7 +172,7 @@ int main()
 
 
 
-	//showMainMenu();
+	showMainMenu();
 
 	//student.showAll();
 

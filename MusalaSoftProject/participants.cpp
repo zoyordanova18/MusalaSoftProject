@@ -15,13 +15,14 @@ fstream participantsFile;
 
 bool PARTICIPANT_SERVICE::open(const char* fileName)
 {
-	/*studentsFile.open(fileName, ios::in | ios::out | ios::_Noreplace);
+	participantsFile.open(fileName, ios::in | ios::out | ios::_Nocreate);
 
-	if (studentsFile.is_open() == false)
+	if (participantsFile.is_open() == false)
 	{
-		studentsFile.open(fileName, ios::out);
-		studentsFile.close();
-	}*/
+		participantsFile.open(fileName, ios::out);
+	}
+
+	participantsFile.close();
 
 	participantsFile.open(fileName, ios::ate | ios::binary | ios::in | ios::out);
 	return participantsFile.is_open();

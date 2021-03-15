@@ -28,7 +28,7 @@ string getTodaysDate()
 	monthString = monthString.size() == 1 ? "0" + monthString : monthString;
 	yearString = to_string(year);
 
-	string date =  yearString + '-' + monthString + '-' + dayString;
+	string date = yearString + '-' + monthString + '-' + dayString;
 
 	const char* cDate = date.c_str();
 
@@ -37,13 +37,14 @@ string getTodaysDate()
 
 bool TEAM_SERVICE::open(const char* fileName)
 {
-	/*studentsFile.open(fileName, ios::in | ios::out | ios::_Noreplace);
+	teamsFile.open(fileName, ios::in | ios::out | ios::_Nocreate);
 
-	if (studentsFile.is_open() == false)
+	if (teamsFile.is_open() == false)
 	{
-		studentsFile.open(fileName, ios::out);
-		studentsFile.close();
-	}*/
+		teamsFile.open(fileName, ios::out);
+	}
+
+	teamsFile.close();
 
 	teamsFile.open(fileName, ios::ate | ios::binary | ios::in | ios::out);
 	return teamsFile.is_open();

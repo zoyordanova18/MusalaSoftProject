@@ -11,13 +11,14 @@ fstream studentsFile;
 
 bool STUDENT_SERVICE::open(const char* fileName)
 {
-	/*studentsFile.open(fileName, ios::in | ios::out | ios::_Noreplace);
+	studentsFile.open(fileName, ios::in | ios::out | ios::_Nocreate);
 
 	if (studentsFile.is_open() == false)
 	{
 		studentsFile.open(fileName, ios::out);
-		studentsFile.close();
-	}*/
+	}
+	
+	studentsFile.close();
 
 	studentsFile.open(fileName, ios::ate | ios::binary | ios::in | ios::out);
 	return studentsFile.is_open();
@@ -75,7 +76,9 @@ vector<STUDENT> STUDENT_SERVICE::getAll()
 
 	studentsFile.seekg(0, ios::end);
 	streampos fileSize = studentsFile.tellg();
+	size_t fs = fileSize;
 	studentsFile.seekg(0, ios::beg);
+	int fov = studentsFile.tellg();
 
 	//while (!studentsFile.eof())
 	while (studentsFile.tellg() < fileSize)

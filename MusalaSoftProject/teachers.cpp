@@ -10,13 +10,14 @@ fstream teachersFile;
 
 bool TEACHER_SERVICE::open(const char* fileName)
 {
-	/*teachersFile.open(fileName, ios::in | ios::out | ios::_Noreplace);
+	teachersFile.open(fileName, ios::in | ios::out | ios::_Nocreate);
 
 	if (teachersFile.is_open() == false)
 	{
 		teachersFile.open(fileName, ios::out);
-		teachersFile.close();
-	}*/
+	}
+
+	teachersFile.close();
 
 	teachersFile.open(fileName, ios::ate | ios::binary | ios::in | ios::out);
 	return teachersFile.is_open();
