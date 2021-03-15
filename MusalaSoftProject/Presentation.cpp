@@ -118,19 +118,24 @@ void exitProgram()
 
 void handleUserChoice(vector<MENU_OPTION>& options)
 {
-	char choice;
+	int choice;
 	bool isInputValid = false;
+	bool isInputInTheRange = false;
 
-	showMessage("\nEnter your choice: ");
-	cin >> choice;
+	while (!isInputInTheRange or !isInputValid) {
 
-	/*while (!isInputValid) {
+		setColor(WHITE);
+		cout << "\nEnter your choice: ";
+		isInputValid = safeCin<int>(choice);
+		isInputInTheRange = isInputInRange(options.size(), choice);
+		if (!isInputValid or !isInputInTheRange)
+		{
+			setColor(RED);
+			cout << INVALID_MENU_OPTION_MESSAGE;
+		}
+	}
 
-		cout << "Enter your choice: ";
-		isInputValid = safeCin<char>(choice);
-	}*/
-
-	for (size_t i = 0; i < options.size(); i++)
+	for(size_t i = 0; i < options.size(); i++)
 	{
 		if (choice == options.at(i).number)
 		{
@@ -139,14 +144,24 @@ void handleUserChoice(vector<MENU_OPTION>& options)
 	}
 }
 
+bool isInputInRange(size_t size,int input)
+{
+	if (input <= size and input > 0)
+	{
+		return true;
+	}
+
+	return false;
+}
+
 vector<MENU_OPTION> initializeMainMenuOptions()
 {
 	vector<MENU_OPTION> options =
 	{
-		{'1', ".Students", showStudentMenu},
-		{'2', ".Teachers", showTeacherMenu},
-		{'3', ".Teams", showTeamsMenu},
-		{'4', ".Exit", exitProgram}
+		{1, ".Students", showStudentMenu},
+		{2, ".Teachers", showTeacherMenu},
+		{3, ".Teams", showTeamsMenu},
+		{4, ".Exit", exitProgram}
 	};
 
 	return options;
@@ -194,19 +209,23 @@ void showMenuOptionsInt(vector<MENU_OPTION_INT>& options)
 
 void handleUserChoiceInt(vector<MENU_OPTION_INT>& options)
 {
-	char choice;
+	int choice;
 	bool isInputValid = false;
+	bool isInputInTheRange = false;
 
-	showMessage("\nEnter your choice: ");
-	cin >> choice;
+	while (!isInputInTheRange or !isInputValid) {
 
-	/*while (!isInputValid) {
+		setColor(WHITE);
+		cout << "\nEnter your choice: ";
+		isInputValid = safeCin<int>(choice);
+		isInputInTheRange = isInputInRange(options.size(), choice);
+		if (!isInputValid or !isInputInTheRange)
+		{
+			setColor(RED);
+			cout << INVALID_MENU_OPTION_MESSAGE;
+		}
+	}
 
-		cout << "Enter your choice: ";
-		isInputValid = safeCin<char>(choice);
-	}*/
-
-	STUDENT student;
 	int mock = 0;
 
 	for (size_t i = 0; i < options.size(); i++)
@@ -254,15 +273,15 @@ void showStudentInTable(STUDENT student)
 		cout << " | ";
 		cout << setw(15) << left;
 		setColor(RED);
-		cout << student.firstName; 
+		cout << student.firstName;
 		setColor(WHITE);
 		cout << " | ";
-		cout << setw(15) << left; 
+		cout << setw(15) << left;
 		setColor(RED);
-		cout << lastNameStr; 
+		cout << lastNameStr;
 		setColor(WHITE);
 		cout << " | ";
-		cout << setw(5) << left; 
+		cout << setw(5) << left;
 		setColor(RED);
 		cout << student.studentClass;
 		setColor(WHITE);
@@ -361,7 +380,6 @@ void printRowInTeamTable(TEAM team,
 	string teamId = to_string(team.id);
 	string date = team.dateOfSetup;
 
-
 	removeSpaces(date);
 
 	TEACHER teamTeacher = findTeacherById(teachers, team.teacherId);
@@ -369,9 +387,6 @@ void printRowInTeamTable(TEAM team,
 	teacher << teamTeacher.firstName << ' ' << teamTeacher.lastName;
 
 	string teacherName = teacher.str();
-
-
-
 
 	for (int i = 0; i < rowsCount; i++)
 	{
@@ -420,7 +435,6 @@ void printRowInTeamTable(TEAM team,
 			cout << setw(20) << left << teacherName <<
 				" | " << left << endl;
 		}
-
 
 		teamId = "";
 		strcpy_s(team.name, "");

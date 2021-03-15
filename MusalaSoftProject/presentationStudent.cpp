@@ -8,11 +8,11 @@ vector<MENU_OPTION> initializeStudentMenuOptions()
 {
     vector<MENU_OPTION> mainMenu =
     {
-        {'1', ".Add student", showAddStudentMenu},
-        {'2', ".Edit student", showEditStudentMenu},
-        {'3', ".Delete student", deleteStudentMenu},
-        {'4', ".View all students", showAllMenu},
-        {'5', ".Return to the main menu", showMainMenu}
+        {1, ".Add student", showAddStudentMenu},
+        {2, ".Edit student", showEditStudentMenu},
+        {3, ".Delete student", deleteStudentMenu},
+        {4, ".View all students", showAllMenu},
+        {5, ".Return to the main menu", showMainMenu}
     };
 
     return mainMenu;
@@ -62,11 +62,11 @@ vector<MENU_OPTION_INT> initializeEditMenuOptions()
 {
     vector<MENU_OPTION_INT> options =
     {
-        {'1', ".First name", editFirstNameMenu},
-        {'2', ".Last name", editLastNameMenu},
-        {'3', ".Class", editStudentClassMenu},
-        {'4', ".E-mail", editStudentEmailMenu},
-        {'5', ".Return to student menu", returnToStudentMenu}
+        {1, ".First name", editFirstNameMenu},
+        {2, ".Last name", editLastNameMenu},
+        {3, ".Class", editStudentClassMenu},
+        {4, ".E-mail", editStudentEmailMenu},
+        {5, ".Return to student menu", returnToStudentMenu}
     };
 
     return options;

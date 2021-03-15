@@ -302,9 +302,6 @@ void deleteTeacherMenu()
 
     showMessage("\nChoose a teacher to delete");
 
-    /*showMessage("\nEnter ID: ");
-    cin >> id;*/
-
     while (!isInputValid) 
     {
         setColor(WHITE);
