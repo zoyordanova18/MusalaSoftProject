@@ -25,6 +25,8 @@ struct PARTICIPANT
 
 std::map<std::string, std::string> getParticipantNameAndRole(std::vector<PARTICIPANT>, int teamId);
 
+void showAllTeams();
+
 // Methods used for working with elements of struct PARTICIPANT type
 struct PARTICIPANT_SERVICE
 {
@@ -32,7 +34,6 @@ struct PARTICIPANT_SERVICE
 	static void close();
 	static bool add(PARTICIPANT participant);
 	static void removePt(int, int);
-	static std::vector<PARTICIPANT> getAllParticipantsFromTeam(int teamId);
 	static std::vector<PARTICIPANT> getAll();
 };
 

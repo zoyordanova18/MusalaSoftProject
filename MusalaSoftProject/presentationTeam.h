@@ -30,6 +30,8 @@ void setTeamStatusToActive(TEAM&);
 
 void setTeamStatusToInactive(TEAM&);
 
+void showAllTeamsMenu();
+
 void chooseTeamStatus(TEAM&);
 
 void setTeamStatusToArchived(TEAM&);

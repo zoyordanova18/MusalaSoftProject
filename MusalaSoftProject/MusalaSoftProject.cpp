@@ -37,6 +37,14 @@ int main()
 	bool isOpenTeam = TEAM_SERVICE::open();
 	bool isOpenP = PARTICIPANT_SERVICE::open();
 
+	PARTICIPANT_SERVICE::add({ 9,1,ROLES::QA });
+
+	//TEAM_SERVICE::add({ 0,"Iskender Devs", "Make Duner", "1-1-1", TEAM_STATUS::IN_USE,0 });
+	//TEAM_SERVICE::add({ 0,"Jenski Hormoni", "Habii", "1-1-1", TEAM_STATUS::IN_USE,1 });
+	//TEAM_SERVICE::add({ 0,"Piko Na Filiq", "Salamuuuuu", "1-1-1", TEAM_STATUS::IN_USE,2 });
+	//TEAM_SERVICE::add({ 0,"Sasha Riko", "Udrq li te tok", "1-1-1", TEAM_STATUS::IN_USE,3 });
+
+	
 
 	/*map<string, string> participants = {
 	{"Scrum Master", "Krasiyana Kamburova!"},
@@ -113,10 +121,10 @@ int main()
 	 PARTICIPANT_SERVICE::add({ 1,2,ROLES::SCRUM_MASTER });
 	PARTICIPANT_SERVICE::add({ 3,3,ROLES::SCRUM_MASTER });
 
-	// TEAM_SERVICE::add({ 0,"Iskender Devs", "Make Duner", "1-1-1", TEAM_STATUS::IN_USE,0 });
-	// TEAM_SERVICE::add({ 0,"Jenski Hormoni", "Habii", "1-1-1", TEAM_STATUS::IN_USE,1 });
-	// TEAM_SERVICE::add({ 0,"Piko Na Filiq", "Salamuuuuu", "1-1-1", TEAM_STATUS::IN_USE,2 });
-	// TEAM_SERVICE::add({ 0,"Sasha Riko", "Udrq li te tok", "1-1-1", TEAM_STATUS::IN_USE,3});
+	 TEAM_SERVICE::add({ 0,"Iskender Devs", "Make Duner", "1-1-1", TEAM_STATUS::IN_USE,0 });
+	 TEAM_SERVICE::add({ 0,"Jenski Hormoni", "Habii", "1-1-1", TEAM_STATUS::IN_USE,1 });
+	 TEAM_SERVICE::add({ 0,"Piko Na Filiq", "Salamuuuuu", "1-1-1", TEAM_STATUS::IN_USE,2 });
+	 TEAM_SERVICE::add({ 0,"Sasha Riko", "Udrq li te tok", "1-1-1", TEAM_STATUS::IN_USE,3});
 
 	//b.editFirstName(2, "Kandy");
 	//vector<STUDENT> c = b.getAll();

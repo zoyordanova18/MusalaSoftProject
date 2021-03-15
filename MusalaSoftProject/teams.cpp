@@ -1,5 +1,9 @@
 #include "teams.h"
+#include "participants.h"
+#include "Presentation.h"
+#include "helpers.h"
 #include <iostream>
+#include <map>
 #include <ctime>
 #include <string>
 #include <cstring>
@@ -116,6 +120,26 @@ vector<TEAM> TEAM_SERVICE::getAll()
 	}
 
 	return teams;
+}
+
+void showAllTeams()
+{
+	vector<PARTICIPANT> participantsIds = PARTICIPANT_SERVICE::getAll();
+	vector<TEAM> teams = TEAM_SERVICE::getAll();
+
+	map<string, string> participants;
+
+	showTeamTableHeader();
+
+	for (size_t i = 0; i < teams.size(); i++)
+	{
+		 participants = getParticipantNameAndRole(participantsIds, teams[i].id);
+		 vector<string> parts = participantsToVector(participants);
+		 vector<string> desc = descriptionToVector(teams[i].description, 30);
+
+		 printRowInTeamTable(teams[i], desc, parts);
+	}
+
 }
 
 

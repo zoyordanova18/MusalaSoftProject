@@ -129,25 +129,3 @@ map<string, string> getParticipantNameAndRole(vector<PARTICIPANT> participant, i
 
 	return result;
 }
-
-vector<PARTICIPANT> PARTICIPANT_SERVICE::getAllParticipantsFromTeam(int teamId)
-{
-	PARTICIPANT participant;
-	vector<PARTICIPANT> participants;
-
-	participantsFile.seekg(0, ios::beg);
-
-	while (!participantsFile.eof())
-	{
-		if (participantsFile.read((byte_*)&participant, sizeof(PARTICIPANT)))
-		{
-			if (participant.teamId == teamId)
-			{
-				participants.push_back(participant);
-			}
-		}
-	}
-
-	return participants;
-}
-

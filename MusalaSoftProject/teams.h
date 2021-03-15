@@ -23,6 +23,8 @@ struct TEAM
 	int teacherId;
 };
 
+void showAllTeams();
+
 // Methods used for working with elements of struct TEAM type
 struct TEAM_SERVICE
 {

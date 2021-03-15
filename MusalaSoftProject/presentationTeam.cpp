@@ -11,7 +11,7 @@ vector<MENU_OPTION> initializeTeamMenuOptions()
 		{'1', ".Add team", showAddTeamMenu},
 		{'2', ".Edit team", /*func*/},
 		{'3', ".Delete team", /*func*/},
-		{'4', ".View all teams", /*func*/},
+		{'4', ".View all teams", showAllTeamsMenu},
 		{'5', ".Return to main menu", showMainMenu}
 	};
 
@@ -188,4 +188,17 @@ void setTeamStatusToInactive(TEAM& team)
 void setTeamStatusToArchived(TEAM& team)
 {
 	team.status = TEAM_STATUS::ARCHIVED;
+}
+
+void showAllTeamsMenu()
+{
+	try
+	{
+		showAllTeams();
+		showTeamsMenu();
+	}
+	catch (const std::exception& e)
+	{
+		cout << e.what();
+	}
 }
