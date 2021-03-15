@@ -35,5 +35,7 @@ struct PARTICIPANT_SERVICE
 	static bool add(PARTICIPANT participant);
 	static void removePt(int, int);
 	static std::vector<PARTICIPANT> getAll();
+	static void editParticipantInTeam(int teamId, int studentId, 
+												  int newStudentId);
 };
 

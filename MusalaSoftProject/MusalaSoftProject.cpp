@@ -17,6 +17,8 @@ using namespace std;
 int main()
 {
 
+	//cout << sizeof(PARTICIPANT);
+
 	// consoleSetup();
 
 
@@ -37,12 +39,12 @@ int main()
 	bool isOpenTeam = TEAM_SERVICE::open();
 	bool isOpenP = PARTICIPANT_SERVICE::open();
 
-	PARTICIPANT_SERVICE::add({ 9,1,ROLES::QA });
+	//PARTICIPANT_SERVICE::add({ 9,1,ROLES::QA });
 
-	//TEAM_SERVICE::add({ 0,"Iskender Devs", "Make Duner", "1-1-1", TEAM_STATUS::IN_USE,0 });
-	//TEAM_SERVICE::add({ 0,"Jenski Hormoni", "Habii", "1-1-1", TEAM_STATUS::IN_USE,1 });
-	//TEAM_SERVICE::add({ 0,"Piko Na Filiq", "Salamuuuuu", "1-1-1", TEAM_STATUS::IN_USE,2 });
-	//TEAM_SERVICE::add({ 0,"Sasha Riko", "Udrq li te tok", "1-1-1", TEAM_STATUS::IN_USE,3 });
+	TEAM_SERVICE::add({ 0,"Iskender Devs", "Make Duner", "1-1-1", TEAM_STATUS::IN_USE,0 });
+	TEAM_SERVICE::add({ 0,"Jenski Hormoni", "Habii", "1-1-1", TEAM_STATUS::IN_USE,1 });
+	TEAM_SERVICE::add({ 0,"Piko Na Filiq", "Salamuuuuu", "1-1-1", TEAM_STATUS::IN_USE,2 });
+	TEAM_SERVICE::add({ 0,"Sasha Riko", "Udrq li te tok", "1-1-1", TEAM_STATUS::IN_USE,3 });
 
 	
 
@@ -91,12 +93,10 @@ int main()
 
 	//system("notepad.exe data.csv");
 
-	/*PARTICIPANT_SERVICE::add({ 0,1,ROLES::SCRUM_MASTER });
-	PARTICIPANT_SERVICE::add({ 2,1,ROLES::BACK_END });
-	PARTICIPANT_SERVICE::add({ 1,2,ROLES::SCRUM_MASTER });
-	PARTICIPANT_SERVICE::add({ 3,3,ROLES::SCRUM_MASTER });
+	PARTICIPANT_SERVICE::add({ 0,0,ROLES::SCRUM_MASTER });
 
-	vector<PARTICIPANT> b = PARTICIPANT_SERVICE::getAll();
+
+	/*vector<PARTICIPANT> b = PARTICIPANT_SERVICE::getAll();
 	map<string, string> a = getParticipantNameAndRole(b, 1);*/
 
 	/*STUDENT_SERVICE::add({ 5, "Martin", "Gaorgiev", "10V", "MAGaorgiev18@codingburgas.bg" });

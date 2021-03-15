@@ -24,7 +24,8 @@ bool PARTICIPANT_SERVICE::open(const char* fileName)
 
 	participantsFile.close();
 
-	participantsFile.open(fileName, ios::ate | ios::binary | ios::in | ios::out);
+	participantsFile.open(fileName, ios::ate | ios::binary | ios::in 
+														   | ios::out);
 	return participantsFile.is_open();
 }
 
@@ -109,7 +110,8 @@ vector<PARTICIPANT> PARTICIPANT_SERVICE::getAll()
 
 }
 
-map<string, string> getParticipantNameAndRole(vector<PARTICIPANT> participant, int teamId)
+map<string, string> getParticipantNameAndRole(vector<PARTICIPANT> participant,
+																	int teamId)
 {
 	string firstNameStr, lastNameStr;
 	vector<STUDENT> students = STUDENT_SERVICE::getAll();
@@ -120,12 +122,50 @@ map<string, string> getParticipantNameAndRole(vector<PARTICIPANT> participant, i
 	{
 		if (participant[i].teamId == teamId)
 		{
-			firstNameStr = findStudentById(students, participant[i].studentId).firstName;
-			lastNameStr = findStudentById(students, participant[i].studentId).lastName;
+			firstNameStr = findStudentById(students,
+						   participant[i].studentId).firstName;
+			lastNameStr = findStudentById(students, 
+						   participant[i].studentId).lastName;
 
-			result[enumRoleToString(participant[i].role)] = firstNameStr + " " + lastNameStr;
+			result[enumRoleToString(participant[i].role)] = 
+							firstNameStr + " " + lastNameStr;
 		}
 	}
 
 	return result;
+}
+
+void PARTICIPANT_SERVICE::editParticipantInTeam(int teamId, int studentId,
+															int newStudentId)
+{
+	PARTICIPANT participant;
+
+	participantsFile.seekg(0, ios::end);
+	streampos fileSize = participantsFile.tellg();
+	participantsFile.seekg(0, ios::beg);
+
+	int t = participantsFile.tellg();
+
+	while (participantsFile.tellg() < fileSize)
+	{
+		if (participantsFile.read((byte_*)&participant, sizeof(PARTICIPANT)))
+		{
+			if (participant.teamId == teamId && participant.studentId == studentId)
+			{
+				participant.studentId = newStudentId;
+
+				participantsFile.seekg(-12, ios::cur);
+				if (participantsFile.write((byte_*)&participant, sizeof(PARTICIPANT)))
+				{
+					return;
+				}
+				else
+				{
+					throw exception("A wild error appeard!");
+				}
+			}
+		}
+	}
+
+	throw exception("Invalid Id");
 }

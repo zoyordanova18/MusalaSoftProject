@@ -9,7 +9,7 @@ vector<MENU_OPTION> initializeTeamMenuOptions()
 	vector<MENU_OPTION> options =
 	{
 		{'1', ".Add team", showAddTeamMenu},
-		{'2', ".Edit team", /*func*/},
+		{'2', ".Edit team", showEditTeamMenu},
 		{'3', ".Delete team", /*func*/},
 		{'4', ".View all teams", showAllTeamsMenu},
 		{'5', ".Return to main menu", showMainMenu}
@@ -201,4 +201,96 @@ void showAllTeamsMenu()
 	{
 		cout << e.what();
 	}
+}
+
+vector<MENU_OPTION_INT> initializeTeamEditMenuOptions()
+{
+	vector<MENU_OPTION_INT> options =
+	{
+	   {'1', ".Edit Participant", editTeamParticipantMenu},
+	   {'2', ".Last name",/**/ },
+	   {'3', ".E-mail", /**/}
+	};
+
+	return options;
+}
+
+void editTeamParticipantMenu(int& id)
+{
+	PARTICIPANT participant;
+	PARTICIPANT_SERVICE chosen;
+	bool isInputValid = false;
+
+	while (!isInputValid)
+	{
+		setColor(WHITE);
+		showMessage("\nEnter ID: ");
+		isInputValid = safeCin<int>(id);
+		if (!isInputValid)
+		{
+			setColor(RED);
+			cout << INVALID_ID_MESSAGE;
+		}
+	}
+
+	isInputValid = false;
+
+	int studentId;
+	while (!isInputValid)
+	{
+		setColor(WHITE);
+		showMessage("\nStudent Id: ");
+		isInputValid = safeCin<int>(studentId);
+
+		if (!isInputValid)
+		{
+			setColor(RED);
+			cout << INVALID_FIRSTNAME_MESSAGE;
+		}
+	}
+
+	isInputValid = false;
+	int newStudentId;
+	while (!isInputValid)
+	{
+		setColor(WHITE);
+		showMessage("\nNew Student Id: ");
+		isInputValid = safeCin<int>(newStudentId);
+
+		if (!isInputValid)
+		{
+			setColor(RED);
+			cout << INVALID_FIRSTNAME_MESSAGE;
+		}
+	}
+
+	try
+	{
+		chosen.editParticipantInTeam(id, studentId, newStudentId);
+		cout << INFORMATION_EDITED_SUCCESSFULLY_MESSAGE;
+	}
+	catch (const std::exception& e)
+	{
+		cout << e.what();
+	}
+
+	showTeamsMenu();
+}
+
+void showEditTeamMenu()
+{
+	int id = 0;
+	PARTICIPANT participant;
+
+	cout << "\nChoose what you want to edit\n\n";
+
+	vector<MENU_OPTION_INT> options = initializeTeamEditMenuOptions();
+
+	showMenuOptionsInt(options);
+
+	handleUserChoiceInt(options);
+
+	cout << endl;
+
+	showTeamsMenu();
 }

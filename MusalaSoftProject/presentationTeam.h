@@ -4,6 +4,9 @@
 #include "teams.h"
 #include "Presentation.h"
 
+
+std::vector<MENU_OPTION_STATUS> initializeTeamStatusMenuOptions();
+
 std::vector<MENU_OPTION> initializeTeamMenuOptions();
 
 //std::vector<MENU_OPTION_INT> initializeEditMenuOptions();
@@ -24,7 +27,8 @@ void inputTeamDescription(TEAM&);
 
 void chooseTeacher(TEAM&);
 
-std::vector<MENU_OPTION_STATUS> initializeTeamStatusMenuOptions();
+
+std::vector<MENU_OPTION_INT> initializeTeamEditMenuOptions();
 
 void setTeamStatusToActive(TEAM&);
 
@@ -35,3 +39,8 @@ void showAllTeamsMenu();
 void chooseTeamStatus(TEAM&);
 
 void setTeamStatusToArchived(TEAM&);
+
+
+void showEditTeamMenu();
+
+void editTeamParticipantMenu(int& id);
