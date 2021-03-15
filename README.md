@@ -44,15 +44,15 @@ Technologies we used:
 ## Presentation and Documentation
 
 You can find the documentation here:
-* [Documentation](https://github.com/zoyordanova18/MusalaSoftProject/commit/8ae610d4685e89428426182395faf9c17e7c2c96)
+* [Documentation](https://codingburgas-my.sharepoint.com/:f:/g/personal/zoyordanova18_codingburgas_bg/EsnKTtjHvFROtGiaYYE0ETsBFoDARjZjqotjDazY_h2iiQ?e=BmB6re)
 
 You can find the presentation here:
-* [Presentation]
+* [Presentation](https://codingburgas-my.sharepoint.com/:f:/g/personal/zoyordanova18_codingburgas_bg/EsnKTtjHvFROtGiaYYE0ETsBFoDARjZjqotjDazY_h2iiQ?e=BmB6re)
 
 You can find the QA here:
-* [QA]
+* [QA](https://codingburgas-my.sharepoint.com/:f:/g/personal/zoyordanova18_codingburgas_bg/EsnKTtjHvFROtGiaYYE0ETsBFoDARjZjqotjDazY_h2iiQ?e=BmB6re)
 
-## How to run the project on your machine
+
 
 
 
