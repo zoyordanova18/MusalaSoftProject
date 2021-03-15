@@ -11,7 +11,6 @@ namespace MusalaSoftProjectUnitTests
 	TEST_CLASS(validStudentClassTest)
 	{
 	public:
-
 		TEST_METHOD(shouldReturnTrueIfStudentClassIsValid)
 		{
 			// Arrange

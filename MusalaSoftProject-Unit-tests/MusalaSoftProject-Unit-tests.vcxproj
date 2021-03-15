@@ -159,10 +159,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="EditStudentClassTest.cpp" />
-    <ClCompile Include="EditFirstNameTest.cpp" />
-    <ClCompile Include="EditLastNameTest.cpp" />
+    <ClCompile Include="editStudentEmailTest.cpp" />
+    <ClCompile Include="EditStudentFirstNameTest.cpp" />
+    <ClCompile Include="EditStudentLastNameTest.cpp" />
+    <ClCompile Include="editTeacherEmailTest.cpp" />
+    <ClCompile Include="editTeacherFirstNameTest.cpp" />
+    <ClCompile Include="editTeacherLastNameTest.cpp" />
     <ClCompile Include="HelperFunctionsForTesting.cpp" />
     <ClCompile Include="isEmailValidTest.cpp" />
+    <ClCompile Include="isNameValidTest.cpp" />
     <ClCompile Include="isStudentClassValidTest.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

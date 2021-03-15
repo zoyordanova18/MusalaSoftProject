@@ -1,4 +1,7 @@
 #pragma once
 #include "../MusalaSoftProject/students.h"
+#include "../MusalaSoftProject/teachers.h"
 
-void createFilesNeededForTesting(const char*);
+void createFilesNeededForTestingStudent(const char*);
+
+void createFilesNeededForTestingTeacher(const char*);

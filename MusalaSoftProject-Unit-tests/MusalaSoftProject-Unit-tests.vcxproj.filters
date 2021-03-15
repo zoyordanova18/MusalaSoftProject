@@ -18,13 +18,7 @@
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EditFirstNameTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="HelperFunctionsForTesting.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EditLastNameTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EditStudentClassTest.cpp">
@@ -34,6 +28,27 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="isStudentClassValidTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EditStudentFirstNameTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EditStudentLastNameTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="isNameValidTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="editTeacherFirstNameTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="editTeacherLastNameTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="editTeacherEmailTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="editStudentEmailTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

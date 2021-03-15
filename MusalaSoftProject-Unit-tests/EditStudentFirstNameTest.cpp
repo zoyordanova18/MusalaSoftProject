@@ -7,21 +7,20 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace MusalaSoftProjectUnitTests
 {
-	TEST_CLASS(editFirstNameTest)
+	TEST_CLASS(editStudentFirstNameTest)
 	{
 	public:
-
-		TEST_METHOD(shouldEditFirstName)
+		TEST_METHOD(shouldEditStudentFirstName)
 		{
 			// Arrange
-			createFilesNeededForTesting("students_shouldEditFirstName.txt");
+			createFilesNeededForTestingStudent("students_shouldEditStudentFirstName.txt");
 
 			// Act
 			STUDENT_SERVICE::editFirstName(1, "Ivan");
 			std::vector<STUDENT> students = STUDENT_SERVICE::getAll();
 			STUDENT student = findStudentById(students, 1);
 			STUDENT_SERVICE::close();
-			remove("students_shouldEditFirstName.txt");
+			remove("students_shouldEditStudentFirstName.txt");
 			
 			// Assert
 			Assert::AreEqual(student.firstName, "Ivan");
