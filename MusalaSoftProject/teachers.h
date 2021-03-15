@@ -8,7 +8,7 @@
 
 extern std::fstream teachersFile;
 
-
+// For storing teacher data
 #pragma pack(1)
 struct TEACHER
 {
@@ -21,6 +21,7 @@ struct TEACHER
 	static void showAll();
 };
 
+// Methods used for working with elements of struct TEACHER type
 struct TEACHER_SERVICE
 {
 	static bool open(const char* fileName = "teachers.txt");

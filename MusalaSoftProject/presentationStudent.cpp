@@ -8,8 +8,8 @@ vector<MENU_OPTION> initializeStudentMenuOptions()
 {
     vector<MENU_OPTION> mainMenu =
     {
-        {'1', ".Add student", showStudentAddMenu},
-        {'2', ".Edit student", showEditMenu},
+        {'1', ".Add student", showAddStudentMenu},
+        {'2', ".Edit student", showEditStudentMenu},
         {'3', ".Delete student", deleteStudentMenu},
         {'4', ".View all students", showAllMenu},
         {'5', ".Return to the main menu", showMainMenu}
@@ -18,29 +18,26 @@ vector<MENU_OPTION> initializeStudentMenuOptions()
     return mainMenu;
 }
 
-void showStudentAddMenu()
+void showAddStudentMenu()
 {
     system("cls");
 
     STUDENT student;
 
     inputFirstName(student);
-
     inputLastName(student);
-
     inputStudentClass(student);
-
     inputEmail(student);
 
     STUDENT_SERVICE::add(student);
 
-    showMessage("The student is successfully registered in the system.\n");
+    showMessage("The student was successfully registered in the system.\n");
 
     cout << endl;
     showStudentMenu();
 }
 
-void showEditMenu()
+void showEditStudentMenu()
 {
     int id = 0;
     STUDENT student;
@@ -50,7 +47,6 @@ void showEditMenu()
     vector<MENU_OPTION_INT> options = initializeEditMenuOptions();
 
     showMenuOptionsInt(options);
-
     handleUserChoiceInt(options);
 
     cout << endl;
@@ -110,7 +106,7 @@ void editFirstNameMenu(int& id)
 
   
     cout << endl;
-    showEditMenu();
+    showEditStudentMenu();
 }
 
 void editLastNameMenu(int& id)
@@ -145,7 +141,7 @@ void editLastNameMenu(int& id)
     }
 
     cout << endl;
-    showEditMenu();
+    showEditStudentMenu();
 }
 
 void editStudentClassMenu(int& id)
@@ -156,7 +152,6 @@ void editStudentClassMenu(int& id)
 
     while (!isInputValid) 
     {
-
         showMessage("\nEnter ID: ");
         isInputValid = safeCin<int>(id);
     }
@@ -183,7 +178,7 @@ void editStudentClassMenu(int& id)
     }
 
     cout << endl;
-    showEditMenu();
+    showEditStudentMenu();
 }
 
 void editStudentEmailMenu(int& id)
@@ -221,7 +216,7 @@ void editStudentEmailMenu(int& id)
     }
 
     cout << endl;
-    showEditMenu();
+    showEditStudentMenu();
 }
 
 void inputFirstName(STUDENT& student)

@@ -115,7 +115,6 @@ vector<TEAM> TEAM_SERVICE::getAll()
 	}
 
 	return teams;
-
 }
 
 

@@ -6,6 +6,7 @@
 
 extern std::fstream participantsFile;
 
+// Team member roles
 enum class ROLES
 {
 	BACK_END,
@@ -14,6 +15,7 @@ enum class ROLES
 	QA
 };
 
+// For storing participant details
 struct PARTICIPANT
 {
 	int studentId;
@@ -23,7 +25,7 @@ struct PARTICIPANT
 
 std::map<std::string, std::string> getParticipantNameAndRole(std::vector<PARTICIPANT>, int teamId);
 
-
+// Methods used for working with elements of struct PARTICIPANT type
 struct PARTICIPANT_SERVICE
 {
 	static bool open(const char* fileName = "participants.txt");

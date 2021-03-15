@@ -1,5 +1,4 @@
 #pragma once
-
 #include "students.h"
 #include "Presentation.h"
 #include "teachers.h"
@@ -14,18 +13,18 @@ void inputEmail(TEACHER&);
 
 void showTeacherMenu();
 
-void showTeacherAddMenu();
+void showAddTeacherMenu();
 
-std::vector<MENU_OPTION_INT> initializeEditMenuOptionsTeacher();
+std::vector<MENU_OPTION_INT> initializeTeacherEditMenuOptions();
 
-void editFirstNameMenuTeacher(int&);
+void editTeacherFirstNameMenu(int&);
 
-void showEditMenuTeacher();
+void showEditTeacherMenu();
 
-void editLastNameMenuTeacher(int&);
+void editTeacherLastNameMenu(int&);
 
-void editEmailMenuTeacher(int&);
+void editTeacherEmailMenu(int&);
 
 void deleteTeacherMenu();
 
-void showAllTeacherMenu();
+void showAllTeachersMenu();

@@ -93,7 +93,6 @@ vector<STUDENT> STUDENT_SERVICE::getAll()
 	//studentsFile.clear();
 
 	return students;
-
 }
 
 string STUDENT::toString(STUDENT& product)
@@ -113,7 +112,6 @@ void STUDENT::showAll()
 		showStudentInTable(students[i]);
 		cout << endl;
 	}
-
 }
 
 void STUDENT_SERVICE::editFirstName(int id, const char* studentName)
@@ -148,6 +146,7 @@ void STUDENT_SERVICE::editFirstName(int id, const char* studentName)
 			}
 		}
 	}
+
 	throw exception("Invalid ID");
 }
 
@@ -213,10 +212,7 @@ void STUDENT_SERVICE::editEmail(int id, const char* studentEmail)
 			{
 				throw exception("A wild error appeard!");
 			}
-
 		}
-
-
 	}
 	throw exception("Invalid ID");
 
@@ -246,11 +242,9 @@ void STUDENT_SERVICE::editClass(int id, const char* studentClass)
 			{
 				throw exception("A wild error appeard!");
 			}
-
 		}
-
-
 	}
+
 	throw exception("Invalid ID");
 }
 
@@ -264,8 +258,6 @@ void STUDENT_SERVICE::softDeleteStudent(int id)
 
 	editLastName(id, vanishedLastName.c_str());
 }
-
-
 
 STUDENT findStudentById(const vector<STUDENT>& students, int id)
 {
@@ -284,7 +276,6 @@ STUDENT findStudentById(const vector<STUDENT>& students, int id)
 
 	return noStudentFound;
 }
-
 
 bool isStudentDeleted(STUDENT student)
 {

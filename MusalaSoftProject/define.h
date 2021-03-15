@@ -10,6 +10,7 @@ constexpr auto WHITE = 7;
 
 typedef char byte_;
 
+// Frequently used messages
 #define INVALID_EMAIL_MESSAGE "\nPlease enter a valid e-mail!\n";
 #define INVALID_ID_MESSAGE "\nPlease enter a valid ID!\n";
 #define INVALID_FIRSTNAME_MESSAGE "\nPlease enter a valid first name!\n";

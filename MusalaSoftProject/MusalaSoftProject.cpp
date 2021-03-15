@@ -12,6 +12,7 @@
 #include "participants.h"
 #include "Presentation.h"
 #include "helpers.h"
+
 using namespace std;
 
 int main()

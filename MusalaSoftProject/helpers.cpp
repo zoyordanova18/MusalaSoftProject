@@ -13,7 +13,7 @@ using namespace std;
 
 bool isEmailValid(std::string email)
 {
-		regex pattern
+	regex pattern
 		("(([a-z]+)([._a-z0-9])([a-z0-9]+)).{1,64}(@)([a-z]+)([.a-z])([a-z])+",
 			regex_constants::icase);
 
@@ -23,7 +23,7 @@ bool isEmailValid(std::string email)
 bool isStudentClassValid(std::string studentClass)
 {
 	regex pattern
-	("([1-9]|1[0-2])[a-z]", regex_constants::icase);
+		("([1-9]|1[0-2])[a-z]", regex_constants::icase);
 
 	return regex_match(studentClass, pattern);
 }
@@ -31,8 +31,7 @@ bool isStudentClassValid(std::string studentClass)
 bool isNameValid(std::string name)
 {
 	regex pattern
-	("[a-z-A-Z]+",
-		regex_constants::icase);
+		("[a-z-A-Z]+", regex_constants::icase);
 
 	return regex_match(name, pattern);
 }
@@ -49,17 +48,19 @@ bool setColor(uint16_t newColor)
 	return false;
 }
 
-
 std::string enumRoleToString(ROLES role)
 {
 	switch (role)
 	{
 	case ROLES::BACK_END:
 		return "Back-End";
+
 	case ROLES::FRONT_END:
 		return "Front-End";
+
 	case ROLES::QA:
 		return "QA";
+
 	case ROLES::SCRUM_MASTER:
 		return "Scrum Master";
 	}
@@ -71,8 +72,10 @@ std::string enumStatusToString(TEAM_STATUS status)
 	{
 	case TEAM_STATUS::IN_USE:
 		return "In Use";
+
 	case TEAM_STATUS::NOT_ACTIVE:
 		return "Not Active";
+
 	case TEAM_STATUS::ARCHIVED:
 		return "Archive";
 	}
@@ -90,7 +93,7 @@ void consoleSetup()
 
 	HWND window = GetConsoleWindow();
 
-	if (window != NULL && ShowWindow(window, SW_MAXIMIZE) )
+	if (window != NULL && ShowWindow(window, SW_MAXIMIZE))
 	{
 		SendMessage(window, WM_SYSKEYDOWN, VK_RETURN, 0x20000000);
 	}
@@ -98,7 +101,6 @@ void consoleSetup()
 	{
 		throw exception("A wild error appeard!");
 	}
-
 }
 
 void saveCsvFile(std::string csv)
@@ -114,7 +116,6 @@ void saveCsvFile(std::string csv)
 	
 	csvFile.close();
 	throw exception("A Wild Appeard!");
-
 }
 
 

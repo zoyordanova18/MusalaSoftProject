@@ -8,6 +8,7 @@
 
 extern std::fstream studentsFile;
 
+// For storing student details
 #pragma pack(1)
 struct STUDENT
 {
@@ -19,10 +20,9 @@ struct STUDENT
 
 	std::string toString(STUDENT&);	
 	static void showAll();
-
-
 };
 
+// Methods used for working with elements of struct STUDENT type
 struct STUDENT_SERVICE
 {
 	static bool open(const char* fileName = "students.txt");
@@ -35,8 +35,8 @@ struct STUDENT_SERVICE
 	static void editEmail(int, const char*);
 	static void editClass(int, const char*);
 	static void softDeleteStudent(int);
-	static void superDelete(int);
 };
 
 STUDENT findStudentById(const std::vector<STUDENT>&, int);
+
 bool isStudentDeleted(STUDENT);

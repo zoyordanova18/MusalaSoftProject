@@ -7,9 +7,9 @@ std::vector<MENU_OPTION> initializeStudentMenuOptions();
 
 std::vector<MENU_OPTION_INT> initializeEditMenuOptions();
 
-void showStudentAddMenu();
+void showAddStudentMenu();
 
-void showEditMenu();
+void showEditStudentMenu();
 
 void inputFirstName(STUDENT&);
 
@@ -31,6 +31,7 @@ void deleteStudentMenu();
 
 void returnToStudentMenu(int&);
 
+// Calls the function for displaying all students
 void showAllMenu();
 
 

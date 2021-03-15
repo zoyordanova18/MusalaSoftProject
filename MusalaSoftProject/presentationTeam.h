@@ -26,10 +26,10 @@ void chooseTeacher(TEAM&);
 
 std::vector<MENU_OPTION_STATUS> initializeTeamStatusMenuOptions();
 
-void activeStatusMenu(TEAM&);
+void setTeamStatusToActive(TEAM&);
 
-void inactiveStatusMenu(TEAM&);
+void setTeamStatusToInactive(TEAM&);
 
 void chooseTeamStatus(TEAM&);
 
-void archivedStatusMenu(TEAM&);
+void setTeamStatusToArchived(TEAM&);

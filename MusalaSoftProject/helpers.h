@@ -6,7 +6,7 @@
 #include "participants.h";
 #include "teams.h";
 
-
+// General functions for validating input
 template <class T>
 bool safeCin(T& input)
 {
@@ -21,15 +21,17 @@ bool safeCin(T& input)
 	return true;
 };
 
-
+// Regex patterns for validation of different input fields
 bool isEmailValid(std::string email);
 
 bool isStudentClassValid(std::string studentClass);
 
 bool isNameValid(std::string name);
 
+// Function for changing the console output color
 bool setColor(uint16_t newColor);
 
+// General function for filtering data
 template<class T>
 std::vector<T> findRecords(std::vector<T> records, std::function<bool(const T&)> const& lambda)
 {
@@ -52,8 +54,10 @@ std::string enumRoleToString(ROLES role);
 
 std::string enumStatusToString(TEAM_STATUS status);
 
+// Function which changes default console mode to full screen
 void consoleSetup();
 
+//Conerting information to CSV file format
 template<class T>
 std::string vectorToCsv(std::vector<T> records, std::string header, std::function<std::string(const T&)> const& lambda)
 {
@@ -67,4 +71,5 @@ std::string vectorToCsv(std::vector<T> records, std::string header, std::functio
 	return result;
 }
 
+//Exporting the information in a CSV file
 void saveCsvFile(std::string csv);

@@ -12,6 +12,7 @@ enum class TEAM_STATUS
 	ARCHIVED
 };
 
+// For storing team details
 struct TEAM
 {
 	int id = 0;
@@ -22,6 +23,7 @@ struct TEAM
 	int teacherId;
 };
 
+// Methods used for working with elements of struct TEAM type
 struct TEAM_SERVICE
 {
 	static std::vector<TEAM> getAll();
@@ -31,8 +33,7 @@ struct TEAM_SERVICE
 	static bool add(TEAM team);
 };
 
-
+// Gets system data for initializing team creation date
 std::string getTodaysDate();
 
-void consoleSetup();
 

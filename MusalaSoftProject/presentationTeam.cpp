@@ -133,9 +133,9 @@ vector<MENU_OPTION_STATUS> initializeTeamStatusMenuOptions()
 {
 	vector<MENU_OPTION_STATUS> menu =
 	{
-		{'1', ".Active", activeStatusMenu},
-		{'2', ".Not active", inactiveStatusMenu},
-		{'3', ".Archived", archivedStatusMenu}
+		{'1', ".Active", setTeamStatusToActive},
+		{'2', ".Not active", setTeamStatusToInactive},
+		{'3', ".Archived", setTeamStatusToArchived}
 	};
 
 	return menu;
@@ -175,17 +175,17 @@ void handleUserChoiceStatus(vector<MENU_OPTION_STATUS>& options)
 	}
 }
 
-void activeStatusMenu(TEAM& team)
+void setTeamStatusToActive(TEAM& team)
 {
 	team.status = TEAM_STATUS::IN_USE;
 }
 
-void inactiveStatusMenu(TEAM& team)
+void setTeamStatusToInactive(TEAM& team)
 {
 	team.status = TEAM_STATUS::NOT_ACTIVE;
 }
 
-void archivedStatusMenu(TEAM& team)
+void setTeamStatusToArchived(TEAM& team)
 {
 	team.status = TEAM_STATUS::ARCHIVED;
 }

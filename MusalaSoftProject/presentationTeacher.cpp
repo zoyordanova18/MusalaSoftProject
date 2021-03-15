@@ -12,10 +12,10 @@ vector<MENU_OPTION> initializeTeacherMenuOptions()
 {
     vector<MENU_OPTION> options =
     {
-        {'1', ".Add teacher", showTeacherAddMenu},
-        {'2', ".Edit teacher", showEditMenuTeacher},
+        {'1', ".Add teacher", showAddTeacherMenu},
+        {'2', ".Edit teacher", showEditTeacherMenu},
         {'3', ".Delete teacher", deleteTeacherMenu},
-        {'4', ".View all teachers", showAllTeacherMenu},
+        {'4', ".View all teachers", showAllTeachersMenu},
         {'5', ".Return to main menu", showMainMenu}
     };
 
@@ -97,7 +97,7 @@ void showTeacherMenu()
     handleUserChoice(menu);
 }
 
-void showTeacherAddMenu()
+void showAddTeacherMenu()
 {
     TEACHER student;
 
@@ -116,19 +116,19 @@ void showTeacherAddMenu()
     showTeacherMenu();
 }
 
-vector<MENU_OPTION_INT> initializeEditMenuOptionsTeacher()
+vector<MENU_OPTION_INT> initializeTeacherEditMenuOptions()
 {
     vector<MENU_OPTION_INT> options =
     {
-       {'1', ".First name", editFirstNameMenuTeacher},
-       {'2', ".Last name", editLastNameMenuTeacher},
-       {'3', ".E-mail", editEmailMenuTeacher}
+       {'1', ".First name", editTeacherFirstNameMenu},
+       {'2', ".Last name", editTeacherLastNameMenu},
+       {'3', ".E-mail", editTeacherEmailMenu}
     };
 
     return options;
 }
 
-void showEditMenuTeacher()
+void showEditTeacherMenu()
 {
     int id = 0;
     TEACHER teacher;
@@ -139,7 +139,7 @@ void showEditMenuTeacher()
 
     cout << "\nChoose what you want to edit\n\n";
 
-    vector<MENU_OPTION_INT> options = initializeEditMenuOptionsTeacher();
+    vector<MENU_OPTION_INT> options = initializeTeacherEditMenuOptions();
 
     showMenuOptionsInt(options);
 
@@ -150,7 +150,7 @@ void showEditMenuTeacher()
     showTeacherMenu();
 }
 
-void editFirstNameMenuTeacher(int& id)
+void editTeacherFirstNameMenu(int& id)
 {
     TEACHER teacher;
     TEACHER_SERVICE chosen;
@@ -198,7 +198,7 @@ void editFirstNameMenuTeacher(int& id)
     showTeacherMenu();
 }
 
-void editLastNameMenuTeacher(int& id)
+void editTeacherLastNameMenu(int& id)
 {
     TEACHER teacher;
     TEACHER_SERVICE chosen;
@@ -246,7 +246,7 @@ void editLastNameMenuTeacher(int& id)
     showTeacherMenu();
 }
 
-void editEmailMenuTeacher(int& id)
+void editTeacherEmailMenu(int& id)
 {
     TEACHER teacher;
     TEACHER_SERVICE chosen;
@@ -326,7 +326,7 @@ void deleteTeacherMenu()
     showTeacherMenu();
 }
 
-void showAllTeacherMenu()
+void showAllTeachersMenu()
 {
     try
     {

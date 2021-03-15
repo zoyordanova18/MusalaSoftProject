@@ -6,7 +6,7 @@
 #include "teams.h"
 #include "participants.h"
 
-//typedef unsigned char byte;
+// Pointers to functions for handling menu functions
 typedef void (*MENU_HANDLER)();
 typedef void (*MENU_HANDLER_INT)(int&);
 typedef void (*MENU_HANDLER_STATUS)(TEAM&);
@@ -40,6 +40,7 @@ void showMessage(const char*);
 
 void showMenuOptions(std::vector<MENU_OPTION>&);
 
+// Calls the function corresponding to the user choice
 void handleUserChoice(std::vector<MENU_OPTION>&);
 
 std::vector<MENU_OPTION> initializeMainMenuOptions();
@@ -54,6 +55,7 @@ void showTeamsMenu();
 
 void showMenuOptionsInt(std::vector<MENU_OPTION_INT>&);
 
+// Calls the function corresponding to the user choice 
 void handleUserChoiceInt(std::vector<MENU_OPTION_INT>&);
 
 void showStudentsTableHeader();

@@ -88,7 +88,6 @@ vector<TEACHER> TEACHER_SERVICE::getAll()
 	//studentsFile.clear();
 
 	return teachers;
-
 }
 
 string TEACHER::toString(TEACHER& teacher)
@@ -109,7 +108,6 @@ void TEACHER::showAll()
 		showTeacherInTable(teachers[i]);
 		cout << endl;
 	}
-
 }
 
 void TEACHER_SERVICE::editFirstName(int id, const char* teacherName)
@@ -149,8 +147,8 @@ void TEACHER_SERVICE::editFirstName(int id, const char* teacherName)
 			}
 		}
 	}
-	throw exception("Invalid Id");
 
+	throw exception("Invalid Id");
 }
 
 void TEACHER_SERVICE::editLastName(int id, const char* teacherSurname)
@@ -177,11 +175,9 @@ void TEACHER_SERVICE::editLastName(int id, const char* teacherSurname)
 			{
 				throw exception("A wild error appeard!");
 			}
-
 		}
-
-
 	}
+
 	throw exception("Invalid ID");
 	// closeFile();
 	//return false;
@@ -211,11 +207,9 @@ void TEACHER_SERVICE::editEmail(int id, const char* teacherEmail)
 			{
 				throw exception("A wild error appeard!");
 			}
-
 		}
-
-
 	}
+
 	throw exception("Invalid ID");
 	// closeFile();
 	//return false;

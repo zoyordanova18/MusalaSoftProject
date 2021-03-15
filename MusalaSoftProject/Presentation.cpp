@@ -207,13 +207,13 @@ void handleUserChoiceInt(vector<MENU_OPTION_INT>& options)
 	}*/
 
 	STUDENT student;
-	int c = 0;
+	int mock = 0;
 
 	for (size_t i = 0; i < options.size(); i++)
 	{
 		if (choice == options.at(i).number)
 		{
-			options.at(i).handler(c);
+			options.at(i).handler(mock);
 		}
 	}
 }
@@ -373,9 +373,7 @@ void showTeamInTable(TEAM team, map<string, string> participants)
 
 	cout << setw(5) << left << team.dateOfSetup << " | ";
 	cout << setw(5) << left << enumStatusToString(team.status) << " | ";
-	cout << setw(20) << left << teamTeacher.firstName << " "<<
-		teamTeacher.lastName << " | " << left;
-
-
+	cout << setw(20) << left << teamTeacher.firstName << " ";
+	cout << teamTeacher.lastName << " | " << left;
 }
 
