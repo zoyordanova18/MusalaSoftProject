@@ -139,18 +139,25 @@ void TEAM_SERVICE::editTeacher(int teamId, int teacherId)
 		{
 			if (team.id == teamId)
 			{
-
-				team.teacherId = teacherId;
-
-				teamsFile.seekg(-332, ios::cur);
-				if (teamsFile.write((byte_*)&team, sizeof(TEAM)))
+				if (team.status == TEAM_STATUS::ARCHIVED)
 				{
-					return;
+					throw exception("Team is archived");
 				}
 				else
 				{
-					throw exception("A wild error appeard!");
+					team.teacherId = teacherId;
+
+					teamsFile.seekg(-332, ios::cur);
+					if (teamsFile.write((byte_*)&team, sizeof(TEAM)))
+					{
+						return;
+					}
+					else
+					{
+						throw exception("A wild error appeard!");
+					}
 				}
+			
 			}
 		}
 	}
@@ -175,17 +182,23 @@ void TEAM_SERVICE::editDescription(int teamId, string description)
 		{
 			if (team.id == teamId)
 			{
-
-				int res = strcpy_s(team.description, description.c_str());
-
-				teamsFile.seekg(-332, ios::cur);
-				if (teamsFile.write((byte_*)&team, sizeof(TEAM)))
+				if (team.status == TEAM_STATUS::ARCHIVED)
 				{
-					return;
+					throw exception("Team is archived");
 				}
 				else
 				{
-					throw exception("A wild error appeard!");
+					int res = strcpy_s(team.description, description.c_str());
+
+					teamsFile.seekg(-332, ios::cur);
+					if (teamsFile.write((byte_*)&team, sizeof(TEAM)))
+					{
+						return;
+					}
+					else
+					{
+						throw exception("A wild error appeard!");
+					}
 				}
 			}
 		}
@@ -211,17 +224,23 @@ void TEAM_SERVICE::editStatus(int teamId, TEAM_STATUS status)
 		{
 			if (team.id == teamId)
 			{
-
-				team.status = status;
-
-				teamsFile.seekg(-332, ios::cur);
-				if (teamsFile.write((byte_*)&team, sizeof(TEAM)))
+				if (team.status == TEAM_STATUS::ARCHIVED)
 				{
-					return;
+					throw exception("Team is archived");
 				}
 				else
 				{
-					throw exception("A wild error appeard!");
+					team.status = status;
+
+					teamsFile.seekg(-332, ios::cur);
+					if (teamsFile.write((byte_*)&team, sizeof(TEAM)))
+					{
+						return;
+					}
+					else
+					{
+						throw exception("A wild error appeard!");
+					}
 				}
 			}
 		}

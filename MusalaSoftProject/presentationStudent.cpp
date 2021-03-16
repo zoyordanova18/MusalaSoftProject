@@ -13,10 +13,31 @@ vector<MENU_OPTION> initializeStudentMenuOptions()
         {3, ".Delete student", deleteStudentMenu},
         {4, ".View all students", showAllMenu},
         {5, ".Filter students", showFilterStudentMenu},
-        {6, ".Return to the main menu", showMainMenu}
+        {6, ".Export To Excel", showExportToExcelMenu},
+        {7, ".Return to the main menu", showMainMenu}
     };
 
     return mainMenu;
+}
+
+void showExportToExcelMenu()
+{
+    vector<STUDENT> students = STUDENT_SERVICE::getAll();
+
+    auto func = [&](STUDENT st) -> string
+    {
+    	stringstream row; 
+    	row << st.id << "," << st.firstName << "," << st.lastName <<
+    		"," << st.studentClass << "," << st.email << '\n';
+    	
+    	return row.str();
+    };
+
+    string a = vectorToCsv<STUDENT>(students, "Id,Last Name,Last Name,Class,Email\n", func);
+
+    saveCsvFile(a);
+
+    showStudentMenu();
 }
 
 void showAddStudentMenu()
@@ -412,7 +433,9 @@ void editFirstNameMenu(int& id)
 
     while (!isInputValid)
     {
+        system("cls");
         setColor(WHITE);
+        STUDENT::showAll();
         showMessage("\nEnter ID: ");
         isInputValid = safeCin<int>(id);
         if (!isInputValid)
@@ -463,7 +486,9 @@ void editLastNameMenu(int& id)
 
     while (!isInputValid)
     {
+        system("cls");
         setColor(WHITE);
+        STUDENT::showAll();
         showMessage("\nEnter ID: ");
         isInputValid = safeCin<int>(id);
         if (!isInputValid)
@@ -512,7 +537,9 @@ void editStudentClassMenu(int& id)
 
     while (!isInputValid)
     {
+        system("cls");
         setColor(WHITE);
+        STUDENT::showAll();
         showMessage("\nEnter ID: ");
         isInputValid = safeCin<int>(id);
         if (!isInputValid)
@@ -562,7 +589,9 @@ void editStudentEmailMenu(int& id)
 
     while (!isInputValid)
     {
+        system("cls");
         setColor(WHITE);
+        STUDENT::showAll();
         showMessage("\nEnter ID: ");
         isInputValid = safeCin<int>(id);
         if (!isInputValid)

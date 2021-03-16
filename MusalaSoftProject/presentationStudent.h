@@ -7,6 +7,8 @@ std::vector<MENU_OPTION> initializeStudentMenuOptions();
 
 std::vector<MENU_OPTION_INT> initializeEditMenuOptions();
 
+void showExportToExcelMenu();
+
 void showAddStudentMenu();
 
 void showEditStudentMenu();

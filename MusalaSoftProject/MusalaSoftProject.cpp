@@ -18,6 +18,7 @@ using namespace std;
 int main()
 {
 	setColor(WHITE);
+	consoleSetup();
 
 	openAllFiles();
 

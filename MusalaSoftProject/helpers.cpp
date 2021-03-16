@@ -107,12 +107,13 @@ void consoleSetup()
 
 void saveCsvFile(std::string csv)
 {
-	ofstream csvFile("data.csv");
+	ofstream csvFile("data.csv", ios::out, ios::trunc);
 
 	if (csvFile.is_open())
 	{
 		csvFile << csv;
 		csvFile.close();
+		system("\"C:\\Program Files\\Microsoft Office\\root\\Office16\\EXCEL.EXE\" data.csv");
 		return;
 	}
 	
