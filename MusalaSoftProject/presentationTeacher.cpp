@@ -30,7 +30,7 @@ vector<MENU_OPTION> initializeFilterTeacherMenuOptions()
 	vector<MENU_OPTION> options =
 	{
 		{1, ".Find By Id", filterByIdTeacherMenu},
-		{2, ".Filter By First Name", /**/},
+		{2, ".Filter By First Name", filterByFirstNameTeacherMenu},
 		{3, ".Filter By Last Name", /**/},
 		{4, ".Filter By Class", /**/},
 		{5, ".Find by Email", /**/},
@@ -91,6 +91,59 @@ void filterByIdTeacherMenu()
 	showTeacherMenu();
 
 }
+
+void filterByFirstNameTeacherMenu()
+{
+	bool isInputValid = false;
+
+	string firstName;
+	while (!isInputValid)
+	{
+		system("cls");
+		setColor(WHITE);
+		showMessage("\nEnter First Name: ");
+		isInputValid = safeCin<string>(firstName);
+		if (!isInputValid)
+		{
+			setColor(RED);
+			cout << INVALID_FIRSTNAME_MESSAGE;
+		}
+	}
+
+	vector<TEACHER> teachers = TEACHER_SERVICE::getAll();
+
+	auto predicate = [&](TEACHER teacher)
+	{
+		return teacher.firstName == firstName;
+	};
+
+	vector<TEACHER> result = findRecords<TEACHER>(teachers, predicate);
+
+	if (result.size() == 0)
+	{
+		setColor(RED);
+		showMessage("There are not teachers with this first name! \n\n");
+		setColor(WHITE);
+	}
+	else
+	{
+		showTeachersTableHeader();
+
+		for (size_t i = 0; i < result.size(); i++)
+		{
+			showTeacherInTable(result[i]);
+			cout << endl;
+		}
+
+		string headerLine(83, '-');
+		cout << headerLine << endl << endl << endl;
+
+	}
+
+	showTeacherMenu();
+
+}
+
 
 void showFilterTeacherMenu()
 {

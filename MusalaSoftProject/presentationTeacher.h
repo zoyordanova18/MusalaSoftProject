@@ -9,6 +9,8 @@ void inputFirstName(TEACHER&);
 
 std::vector<MENU_OPTION> initializeFilterTeacherMenuOptions();
 
+void filterByFirstNameTeacherMenu();
+
 void filterByIdTeacherMenu();
 
 void showFilterTeacherMenu();
