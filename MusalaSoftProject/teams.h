@@ -35,6 +35,7 @@ struct TEAM_SERVICE
 	static bool add(TEAM team);
 	void editTeacher(int teamId, int teacherId);
 	void editDescription(int teamId, std::string description);
+	void editStatus(int teamId, TEAM_STATUS status);
 };
 
 

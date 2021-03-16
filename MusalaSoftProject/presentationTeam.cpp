@@ -216,7 +216,8 @@ vector<MENU_OPTION_INT> initializeTeamEditMenuOptions()
 	{
 	   {1, ". Participant", editTeamParticipantMenu},
 	   {2, ". Teacher",editTeamTeacherMenu },
-	   {3, ". Description ", editTeamDescriptionMenu}
+	   {3, ". Description ", editTeamDescriptionMenu},
+	   {4, ". Status ", editTeamStatusMenu}
 	};
 
 	return options;
@@ -371,6 +372,81 @@ void editTeamDescriptionMenu(int& id)
 	try
 	{
 		chosen.editDescription(id, description);
+		cout << INFORMATION_EDITED_SUCCESSFULLY_MESSAGE;
+	}
+	catch (const std::exception& e)
+	{
+		cout << e.what();
+	}
+
+	showTeamsMenu();
+}
+
+void setEditedStatus(int choice, TEAM_STATUS& status)
+{
+	switch (choice)
+	{
+	case 1:
+		status = TEAM_STATUS::IN_USE;
+		break;
+	case 2:
+		status = TEAM_STATUS::NOT_ACTIVE;
+		break;
+	case 3:
+		status = TEAM_STATUS::ARCHIVED;
+		break;
+	}
+}
+
+void editTeamStatusMenu(int& id)
+{
+	TEAM team;
+	TEAM_SERVICE chosen;
+	bool isInputValid = false;
+
+
+	while (!isInputValid)
+	{
+		setColor(WHITE);
+		showAllTeams();
+		showMessage("\nEnter Team ID: ");
+		isInputValid = safeCin<int>(id);
+		if (!isInputValid)
+		{
+			setColor(RED);
+			cout << INVALID_ID_MESSAGE;
+		}
+	}
+
+	isInputValid = false;
+	cout << "1. In Use" << endl;
+	cout << "2. Not Active" << endl;
+	cout << "3. Archived" << endl;
+	int choice;
+
+	TEAM_STATUS status;
+
+	while (!isInputValid)
+	{
+		setColor(WHITE);
+		showMessage("\nChoose status: ");
+		cin.ignore();
+		isInputValid = safeCin<int>(choice);
+		isInputValid = true;
+		if (!isInputValid)
+		{
+			setColor(RED);
+			cout << INVALID_FIRSTNAME_MESSAGE;
+		}
+		else
+		{
+			setEditedStatus(choice, status);
+		}
+	}
+
+	try
+	{
+		chosen.editStatus(id, status);
 		cout << INFORMATION_EDITED_SUCCESSFULLY_MESSAGE;
 	}
 	catch (const std::exception& e)
