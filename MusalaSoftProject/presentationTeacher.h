@@ -38,3 +38,5 @@ void editTeacherEmailMenu(int&);
 void deleteTeacherMenu();
 
 void showAllTeachersMenu();
+
+void showFilterTeacherMenuHeading();

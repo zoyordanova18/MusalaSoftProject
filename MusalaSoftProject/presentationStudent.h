@@ -48,6 +48,8 @@ void returnToStudentMenu(int&);
 // Calls the function for displaying all students
 void showAllMenu();
 
+void showFilterStudentMenuHeading();
+
 
 
 

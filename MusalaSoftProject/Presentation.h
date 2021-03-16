@@ -101,3 +101,5 @@ void showDeleteStudentMenuHeading();
 void showDeleteTeacherMenuHeading();
 
 void addParticipantMenuHeading();
+
+void showSchoolInformation();

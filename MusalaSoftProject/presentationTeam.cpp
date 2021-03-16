@@ -47,8 +47,6 @@ void filterByIdTeamMenu()
 
 void filterByNameTeamMenu()
 {
-
-
 	string teamName;
 
 	system("cls");
@@ -57,12 +55,9 @@ void filterByNameTeamMenu()
 	cin.ignore();
 	getline(cin, teamName);
 
-
-
 	showTeamByName(teamName);
 
 	showTeamsMenu();
-
 }
 
 void filterByTeacherTeamMenu()
@@ -87,9 +82,7 @@ void filterByTeacherTeamMenu()
 	showTeamByTeacher(teacherId);
 
 	showTeamsMenu();
-
 }
-
 
 vector<MENU_OPTION> initializeFilterTeamMenuOptions()
 {
@@ -97,20 +90,18 @@ vector<MENU_OPTION> initializeFilterTeamMenuOptions()
 	{
 		{1, ".Find By Id", filterByIdTeamMenu},
 		{2, ".Find By Name", filterByNameTeamMenu},
-		{3, ".Filter By Teacher", filterByTeacherTeamMenu}
+		{3, ".Filter By Teacher", filterByTeacherTeamMenu},
+		{4, ".Return to Teams Menu", showTeamsMenu}
 	};
 
 	return options;
 }
 
-
-
-
 void showFilterTeamMenu()
 {
 	system("cls");
 
-	// showEditStudentMenuHeading();
+	showFilterTeamMenuHeading();
 
 	showMessage("\nChoose what you want to filter\n\n");
 
@@ -691,4 +682,51 @@ void showEditTeamMenu()
 	cout << endl;
 
 	showTeamsMenu();
+}
+
+void showFilterTeamMenuHeading()
+{
+	string heading = "\r\n"
+		"______ _ _ _        "
+		"      _             "
+		"                    "
+		"                    "
+		"   \r\n"
+		"|  ___(_) | |       "
+		"     | |            "
+		"                    "
+		"                    "
+		"   \r\n"
+		"| |_   _| | |_ ___ _"
+		" __  | |_ ___  __ _ "
+		"_ __ ___  ___   _ __"
+		" ___   ___ _ __  _  "
+		" _ \r\n"
+		"|  _| | | | __/ _ \\"
+		" \'__| | __/ _ \\/ _"
+		"` | \'_ ` _ \\/ __| "
+		"| \'_ ` _ \\ / _ \\ "
+		"\'_ \\| | | |\r\n"
+		"| |   | | | ||  __/ "
+		"|    | ||  __/ (_| |"
+		" | | | | \\__ \\ | |"
+		" | | | |  __/ | | | "
+		"|_| |\r\n"
+		"\\_|   |_|_|\\__\\__"
+		"_|_|     \\__\\___|"
+		"\\__,_|_| |_| |_|___"
+		"/ |_| |_| |_|\\___|_"
+		"| |_|\\__,_|\r\n"
+		"                    "
+		"                    "
+		"                    "
+		"                    "
+		"   \r\n"
+		"                    "
+		"                    "
+		"                    "
+		"                    "
+		"   \r\n";
+
+	cout << heading;
 }

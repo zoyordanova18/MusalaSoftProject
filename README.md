@@ -17,9 +17,8 @@
     <li>
       <a href="#our-team">Our Team</a>
     </li>
-    <li>
-      <a href="#how-to-run-the-project-on-your-machine">How to run the project on your machine</a>
-    </li>
+   <li>
+    <a href="#presentation-and-documentation">Presentation and Documentation</a></li>
   </ol>
 </details>
 
@@ -49,7 +48,7 @@ You can find the documentation here:
 You can find the presentation here:
 * [Presentation](https://codingburgas-my.sharepoint.com/:p:/g/personal/zoyordanova18_codingburgas_bg/EaZtp1e-GGJFruKvUfkt5cEB9IH5V2YRCE6loaE2fKo2_A?e=tK67oT)
 
-You can find the QA Doxumentation here:
+You can find the QA Documentation here:
 * [Test plan](https://codingburgas-my.sharepoint.com/:b:/g/personal/zoyordanova18_codingburgas_bg/ERS4O6rlbBJAhbAQWkFpM7MBmH1z4H3O9mUMAkBwkdLRnA?e=WXPQM8)
 * [Test case documentation](https://codingburgas-my.sharepoint.com/:x:/g/personal/zoyordanova18_codingburgas_bg/EeHfmMMWjqZLixuyBHQo8MgBV5dmTHBgY6W_NRxxojAVsQ?e=nTN68L)
 

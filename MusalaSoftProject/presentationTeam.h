@@ -3,8 +3,6 @@
 #include <vector>
 #include "teams.h"
 #include "Presentation.h"
-
-
 std::vector<MENU_OPTION_STATUS> initializeTeamStatusMenuOptions();
 
 std::vector<MENU_OPTION> initializeTeamMenuOptions();
@@ -60,3 +58,5 @@ void inputStudentId(PARTICIPANT& participant);
 void inputRole(PARTICIPANT& participant);
 
 void showAddParticipantMenu();
+
+void showFilterTeamMenuHeading();

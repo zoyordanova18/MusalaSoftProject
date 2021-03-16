@@ -506,7 +506,7 @@ void showMenuOptions(vector<MENU_OPTION>& options)
 
 void exitProgram()
 {
-	showMessage("\nThank you for using out application!\n");
+	showMessage("\nThank you for using our application!\n");
 	exit(0);
 }
 
@@ -559,14 +559,13 @@ void showMainMenu()
 
 	showMainMenuHeading();
 	showSchoolArt();
+	showSchoolInformation();
 	showMenuOptions(mainMenu);
 	handleUserChoice(mainMenu);
-
 }
 
 void showStudentMenu()
 {
-	
 	showStudentMenuHeading();
 
 	vector<MENU_OPTION> menu = initializeStudentMenuOptions();
@@ -888,6 +887,13 @@ void addParticipantMenuHeading()
 		"  \r\n";
 
 	cout << heading;
+}
+
+void showSchoolInformation()
+{
+	cout << "\n\nSchool name: Foo School";
+	cout << "\nCity: Bar";
+	cout << "\nAddress: FooBar, 10\n";
 }
 
 
