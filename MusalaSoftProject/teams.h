@@ -25,6 +25,8 @@ struct TEAM
 
 void showAllTeams();
 
+void showTeamById(int teamId);
+
 // Methods used for working with elements of struct TEAM type
 struct TEAM_SERVICE
 {

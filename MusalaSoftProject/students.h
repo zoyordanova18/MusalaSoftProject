@@ -27,7 +27,7 @@ struct STUDENT_SERVICE
 {
 	static bool open(const char* fileName = "students.txt");
 	static void close();
-	static bool add(STUDENT student);
+	static void add(STUDENT student);
 	static uint32_t generateId();
 	static std::vector <STUDENT> getAll();
 	static void editFirstName(int, const char*);

@@ -23,7 +23,9 @@ struct PARTICIPANT
 	ROLES role;
 };
 
-std::map<std::string, std::string> getParticipantNameAndRole(std::vector<PARTICIPANT>, int teamId);
+std::map<std::string, std::string> getParticipantNameAndRole(std::vector<PARTICIPANT>,
+																	       int teamId,
+															 bool isIdNeeded = false);
 
 void showAllTeams();
 
@@ -32,7 +34,7 @@ struct PARTICIPANT_SERVICE
 {
 	static bool open(const char* fileName = "participants.txt");
 	static void close();
-	static bool add(PARTICIPANT participant);
+	static void add(PARTICIPANT participant);
 	static void removePt(int, int);
 	static std::vector<PARTICIPANT> getAll();
 	static void editParticipantInTeam(int teamId, int studentId, 

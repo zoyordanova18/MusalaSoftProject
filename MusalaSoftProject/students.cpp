@@ -29,7 +29,7 @@ void STUDENT_SERVICE::close()
 	studentsFile.close();
 }
 
-bool STUDENT_SERVICE::add(STUDENT student)
+ void STUDENT_SERVICE::add(STUDENT student)
 {
 	student.id = generateId();
 
@@ -39,10 +39,10 @@ bool STUDENT_SERVICE::add(STUDENT student)
 
 	if (studentsFile.write((byte_*)&student, sizeof(STUDENT)))
 	{
-		return true;
+		return;
 	}
 
-	return false;
+	throw exception("A wild error appeard!");
 }
 
 uint32_t STUDENT_SERVICE::generateId()

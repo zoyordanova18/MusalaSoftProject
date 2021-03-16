@@ -11,7 +11,7 @@ vector<MENU_OPTION> initializeTeamMenuOptions()
 	{
 		{1, ".Add team", showAddTeamMenu},
 		{2, ".Edit team", showEditTeamMenu},
-		{3, ".Add Participant", /**/},
+		{3, ".Add Participant", showAddParticipantMenu},
 		{4, ".View all teams", showAllTeamsMenu},
 		{5, ".Return to main menu", showMainMenu}
 	};
@@ -206,6 +206,7 @@ void editTeamParticipantMenu(int& id)
 	while (!isInputValid)
 	{
 		setColor(WHITE);
+		showAllTeams();
 		showMessage("\nEnter Team ID: ");
 		isInputValid = safeCin<int>(id);
 		if (!isInputValid)
@@ -220,7 +221,9 @@ void editTeamParticipantMenu(int& id)
 	int studentId;
 	while (!isInputValid)
 	{
+		system("cls");
 		setColor(WHITE);
+		showTeamById(id);
 		showMessage("\nStudent ID: ");
 		isInputValid = safeCin<int>(studentId);
 
@@ -235,7 +238,9 @@ void editTeamParticipantMenu(int& id)
 	int newStudentId;
 	while (!isInputValid)
 	{
+		system("cls");
 		setColor(WHITE);
+		STUDENT::showAll();
 		showMessage("\nNew student ID: ");
 		isInputValid = safeCin<int>(newStudentId);
 
@@ -452,77 +457,105 @@ void setRole(int choice, ROLES& status)
 }
 
 
-void showAddParticipantMenu(int& id)
+void inputTeamId(PARTICIPANT& participant)
 {
-	PARTICIPANT participant;
-	PARTICIPANT_SERVICE chosen;
 	bool isInputValid = false;
 
 	while (!isInputValid)
 	{
 		setColor(WHITE);
+		system("cls");
 		showAllTeams();
-		showMessage("\nEnter Team ID: ");
+		showMessage("\nTeam ID: ");
+		int id;
 		isInputValid = safeCin<int>(id);
 		if (!isInputValid)
 		{
 			setColor(RED);
-			cout << INVALID_ID_MESSAGE;
+			cout << INVALID_FIRSTNAME_MESSAGE;
 		}
+		
+		participant.teamId = id;
 	}
-	participant.teamId = id;
 
+	cout << endl;
+}
 
-	isInputValid = false;
+void inputStudentId(PARTICIPANT& participant)
+{
+	bool isInputValid = false;
 
-	int studentId;
 	while (!isInputValid)
 	{
 		setColor(WHITE);
+		system("cls");
 		STUDENT::showAll();
-		showMessage("\nStudent ID: ");
-		isInputValid = safeCin<int>(studentId);
-
+		showMessage("\nStudnet ID: ");
+		int id;
+		isInputValid = safeCin<int>(id);
 		if (!isInputValid)
 		{
 			setColor(RED);
 			cout << INVALID_FIRSTNAME_MESSAGE;
 		}
+
+		participant.studentId = id;
 	}
-	participant.studentId = studentId;
 
-	isInputValid = false;
-	cout << "1. Scrum Master" << endl;
-	cout << "2. Back-End" << endl;
-	cout << "3. Front-End" << endl;
-	cout << "4. QA" << endl;
-	int choice;
+	cout << endl;
+}
 
-	ROLES role;
+void inputRole(PARTICIPANT& participant)
+{
+	bool isInputValid = false;
 
 	while (!isInputValid)
 	{
 		setColor(WHITE);
-		showMessage("\nChoose status: ");
-		cin.ignore();
+		system("cls");
+
+		cout << "1. Scrum Master" << endl;
+		cout << "2. Back-End" << endl;
+		cout << "3. Front-End" << endl;
+		cout << "4. QA" << endl;
+		cout << "Choose Role: " << endl;
+		int choice;
+
+		ROLES role;
 		isInputValid = safeCin<int>(choice);
-		isInputValid = true;
+
 		if (!isInputValid)
 		{
 			setColor(RED);
 			cout << INVALID_FIRSTNAME_MESSAGE;
+			continue;
 		}
-		else
-		{
-			setRole(choice, role);
-		}
+
+		setRole(choice, role);
+		participant.role = role;
+		
 	}
-	participant.role = role;
+
+	cout << endl;
+}
+
+
+void showAddParticipantMenu()
+{
+	system("cls");
+
+	addParticipantMenuHeading();
+
+	PARTICIPANT participant;
+
+	inputTeamId(participant);
+	inputStudentId(participant);
+	inputRole(participant);
 
 	try
 	{
-		chosen.add(participant);
-		cout << INFORMATION_EDITED_SUCCESSFULLY_MESSAGE;
+		PARTICIPANT_SERVICE::add(participant);
+		showMessage("The team was successfully registered in the tem.\n");
 	}
 	catch (const std::exception& e)
 	{

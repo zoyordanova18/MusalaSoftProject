@@ -40,7 +40,12 @@ int main()
 
 	int a = 5;
 
-	showAddParticipantMenu(a);
+	PARTICIPANT_SERVICE::add({ 0,1,ROLES::SCRUM_MASTER });
+	PARTICIPANT_SERVICE::add({ 2,1,ROLES::BACK_END });
+	PARTICIPANT_SERVICE::add({ 1,2,ROLES::SCRUM_MASTER });
+	PARTICIPANT_SERVICE::add({ 3,3,ROLES::SCRUM_MASTER });
+
+	//showAddParticipantMenu(a);
 
 	//PARTICIPANT_SERVICE::add({ 9,1,ROLES::QA });
 
@@ -119,10 +124,7 @@ int main()
 	//TEACHER_SERVICE::add({ 10, "Denis", "Karakashev", "DBKarakashev@codingburgas.bg" });
 	//TEACHER_SERVICE::add({ 11, "Angel", "Milenov", "APMilenov@codingburgas.bg" });
 	//
-	 PARTICIPANT_SERVICE::add({ 0,1,ROLES::SCRUM_MASTER });
-	 PARTICIPANT_SERVICE::add({ 2,1,ROLES::BACK_END });
-	 PARTICIPANT_SERVICE::add({ 1,2,ROLES::SCRUM_MASTER });
-	PARTICIPANT_SERVICE::add({ 3,3,ROLES::SCRUM_MASTER });
+
 
 	 TEAM_SERVICE::add({ 0,"Iskender Devs", "Make Duner", "1-1-1", TEAM_STATUS::IN_USE,0 });
 	 TEAM_SERVICE::add({ 0,"Jenski Hormoni", "Habii", "1-1-1", TEAM_STATUS::IN_USE,1 });

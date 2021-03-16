@@ -54,4 +54,10 @@ void editTeamStatusMenu(int& id);
 
 void setEditedStatus(int choice, TEAM_STATUS& status);
 
-void showAddParticipantMenu(int& id);
+void inputTeamId(PARTICIPANT& participant);
+
+void inputStudentId(PARTICIPANT& participant);
+
+void inputRole(PARTICIPANT& participant);
+
+void showAddParticipantMenu();

@@ -99,3 +99,5 @@ void showEditTeacherMenuHeading();
 void showDeleteStudentMenuHeading();
 
 void showDeleteTeacherMenuHeading();
+
+void addParticipantMenuHeading();

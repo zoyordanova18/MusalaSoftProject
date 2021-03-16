@@ -34,16 +34,16 @@ void PARTICIPANT_SERVICE::close()
 	participantsFile.close();
 }
 
-bool PARTICIPANT_SERVICE::add(PARTICIPANT participant)
+void PARTICIPANT_SERVICE::add(PARTICIPANT participant)
 {
 	participantsFile.seekp(0, ios::end);
 
 	if (participantsFile.write((byte_*)&participant, sizeof(PARTICIPANT)))
 	{
-		return true;
+		return;
 	}
 
-	return false;
+	throw exception("A wild error appeared!");
 }
 
 void PARTICIPANT_SERVICE::removePt(int studentId, int teamId)
@@ -111,7 +111,8 @@ vector<PARTICIPANT> PARTICIPANT_SERVICE::getAll()
 }
 
 map<string, string> getParticipantNameAndRole(vector<PARTICIPANT> participant,
-																	int teamId)
+																   int teamId,
+															  bool isIsNeeded)
 {
 	string firstNameStr, lastNameStr;
 	vector<STUDENT> students = STUDENT_SERVICE::getAll();
@@ -122,13 +123,30 @@ map<string, string> getParticipantNameAndRole(vector<PARTICIPANT> participant,
 	{
 		if (participant[i].teamId == teamId)
 		{
-			firstNameStr = findStudentById(students,
-						   participant[i].studentId).firstName;
-			lastNameStr = findStudentById(students, 
-						   participant[i].studentId).lastName;
+			if (!isIsNeeded)
+			{
+				firstNameStr = findStudentById(students,
+					participant[i].studentId).firstName;
+				lastNameStr = findStudentById(students,
+					participant[i].studentId).lastName;
 
-			result[enumRoleToString(participant[i].role)] = 
-							firstNameStr + " " + lastNameStr;
+				result[enumRoleToString(participant[i].role)] =
+					firstNameStr + " " + lastNameStr;
+			}
+			else
+			{
+				string brace = ") ";
+
+				firstNameStr = findStudentById(students,
+					participant[i].studentId).firstName;
+				lastNameStr = findStudentById(students,
+					participant[i].studentId).lastName;
+
+				result[enumRoleToString(participant[i].role)] =
+					"(" + to_string(participant[i].studentId) + brace + 
+									   firstNameStr + " " + lastNameStr;
+			} 
+
 		}
 	}
 
@@ -169,4 +187,3 @@ void PARTICIPANT_SERVICE::editParticipantInTeam(int teamId, int studentId,
 
 	throw exception("Invalid Id");
 }
-

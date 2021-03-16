@@ -31,9 +31,16 @@ void showAddStudentMenu()
     inputStudentClass(student);
     inputEmail(student);
 
-    STUDENT_SERVICE::add(student);
+    try
+    {
+        STUDENT_SERVICE::add(student);
 
-    showMessage("The student was successfully registered in the system.\n");
+        showMessage("The student was successfully registered in the tem.\n");
+    }
+    catch (const std::exception& e)
+    {
+        cout << e.what();
+    }
 
     cout << endl;
     showStudentMenu();

@@ -252,3 +252,27 @@ void showAllTeams()
 }
 
 
+void showTeamById(int teamId)
+{
+	vector<PARTICIPANT> participantsIds = PARTICIPANT_SERVICE::getAll();
+	vector<TEAM> teams = TEAM_SERVICE::getAll();
+
+	map<string, string> participants;
+
+	showTeamTableHeader();
+
+	for (size_t i = 0; i < teams.size(); i++)
+	{
+		if (teams[i].id == teamId)
+		{
+			participants = getParticipantNameAndRole(participantsIds, teams[i].id, true);
+			vector<string> parts = participantsToVector(participants);
+			vector<string> desc = descriptionToVector(teams[i].description, 30);
+
+			printRowInTeamTable(teams[i], desc, parts);
+		}
+
+	}
+
+}
+
