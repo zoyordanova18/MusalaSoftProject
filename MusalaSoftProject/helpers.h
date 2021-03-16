@@ -87,10 +87,6 @@ std::vector<std::string> participantsToVector(
 
 void removeSpaces(std::string& str);
 
-std::ostream& redColor(std::ostream& out);
-
-std::ostream& whiteColor(std::ostream& out);
-
 bool isStringDeleted(std::string);
 
 bool isInputInRange(std::size_t, int);
@@ -98,3 +94,5 @@ bool isInputInRange(std::size_t, int);
 void openAllFiles();
 
 void closeAllFiles();
+
+bool isStringTooLong(std::string str, int max);

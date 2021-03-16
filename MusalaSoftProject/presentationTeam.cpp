@@ -613,10 +613,16 @@ void inputRole(PARTICIPANT& participant)
 {
 	bool isInputValid = false;
 
+
+
 	while (!isInputValid)
 	{
 		setColor(WHITE);
 		system("cls");
+
+		setColor(YELLOW);
+		cout << "Warning: If the role is occupied the student with that role will be removed from the team\n";
+		setColor(WHITE);
 
 		cout << "1. Scrum Master" << endl;
 		cout << "2. Back-End" << endl;

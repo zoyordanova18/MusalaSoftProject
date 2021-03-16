@@ -711,6 +711,7 @@ void deleteStudentMenu()
     while (!isInputValid) 
     {
         setColor(WHITE);
+        STUDENT::showAll();
         showMessage("\nEnter ID: ");
         isInputValid = safeCin<int>(id);
         if (!isInputValid)

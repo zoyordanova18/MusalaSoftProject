@@ -162,16 +162,6 @@ void removeSpaces(string& str)
 	}
 }
 
-ostream& redColor(ostream& out)
-{
-	return out << "\33[31m";
-}
-
-ostream& whiteColor(ostream& out)
-{
-	return out << "\33[37m";
-}
-
 bool isStringDeleted(std::string msg)
 {
 	return (msg.find('!') != string::npos);
