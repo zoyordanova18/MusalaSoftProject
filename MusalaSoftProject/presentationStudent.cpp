@@ -84,19 +84,33 @@ void editFirstNameMenu(int& id)
     STUDENT_SERVICE chosen;
     bool isInputValid = false;
 
-    while (!isInputValid) 
+    while (!isInputValid)
     {
+        setColor(WHITE);
         showMessage("\nEnter ID: ");
         isInputValid = safeCin<int>(id);
+        if (!isInputValid)
+        {
+            setColor(RED);
+            cout << INVALID_ID_MESSAGE;
+        }
     }
 
     isInputValid = false;
-    while (!isInputValid) 
+
+    while (!isInputValid)
     {
-        showMessage("\nFirst name: ");
-        string nameStr;
-        isInputValid = safeCin<string>(nameStr);
-        strcpy_s(student.firstName, nameStr.c_str());
+        setColor(WHITE);
+        showMessage("\nFirst Name: ");
+        string firstNameStr;
+        isInputValid = safeCin<string>(firstNameStr);
+        isInputValid = isNameValid(firstNameStr);
+        if (!isInputValid)
+        {
+            setColor(RED);
+            cout << INVALID_FIRSTNAME_MESSAGE;
+        }
+        strcpy_s(student.firstName, firstNameStr.c_str());
     }
 
     try
@@ -121,19 +135,33 @@ void editLastNameMenu(int& id)
     STUDENT_SERVICE chosen;
     bool isInputValid = false;
 
-    while (!isInputValid) 
+    while (!isInputValid)
     {
-         showMessage("\nEnter ID: ");
-         isInputValid = safeCin<int>(id);
+        setColor(WHITE);
+        showMessage("\nEnter ID: ");
+        isInputValid = safeCin<int>(id);
+        if (!isInputValid)
+        {
+            setColor(RED);
+            cout << INVALID_ID_MESSAGE;
+        }
     }
 
     isInputValid = false;
+
     while (!isInputValid)
     {
-        showMessage("\nLast name: ");
-        string nameStr;
-        isInputValid = safeCin<string>(nameStr);
-        strcpy_s(student.lastName, nameStr.c_str());
+        setColor(WHITE);
+        showMessage("\nLast Name: ");
+        string lastNameStr;
+        isInputValid = safeCin<string>(lastNameStr);
+        isInputValid = isNameValid(lastNameStr);
+        if (!isInputValid)
+        {
+            setColor(RED);
+            cout << INVALID_LASTNAME_MESSAGE;
+        }
+        strcpy_s(student.lastName, lastNameStr.c_str());
     }
 
     try
@@ -156,20 +184,33 @@ void editStudentClassMenu(int& id)
     STUDENT_SERVICE chosen;
     bool isInputValid = false;
 
-    while (!isInputValid) 
+    while (!isInputValid)
     {
+        setColor(WHITE);
         showMessage("\nEnter ID: ");
         isInputValid = safeCin<int>(id);
+        if (!isInputValid)
+        {
+            setColor(RED);
+            cout << INVALID_ID_MESSAGE;
+        }
     }
 
     isInputValid = false;
-    while (!isInputValid) {
 
-        showMessage("\nClass: ");
-        string classStr;
-        isInputValid = safeCin<string>(classStr);
-        isInputValid = isStudentClassValid(classStr);
-        strcpy_s(student.studentClass, classStr.c_str());
+    while (!isInputValid)
+    {
+        setColor(WHITE);
+        showMessage("\nFirst Name: ");
+        string studentClassStr;
+        isInputValid = safeCin<string>(studentClassStr);
+        isInputValid = isNameValid(studentClassStr);
+        if (!isInputValid)
+        {
+            setColor(RED);
+            cout << INVALID_STUDENTCLASS_MESSAGE;
+        }
+        strcpy_s(student.studentClass, studentClassStr.c_str());
     }
 
     try
@@ -193,21 +234,33 @@ void editStudentEmailMenu(int& id)
     STUDENT_SERVICE chosen;
     bool isInputValid = false;
 
-    while (!isInputValid) 
+    while (!isInputValid)
     {
-
+        setColor(WHITE);
         showMessage("\nEnter ID: ");
         isInputValid = safeCin<int>(id);
+        if (!isInputValid)
+        {
+            setColor(RED);
+            cout << INVALID_ID_MESSAGE;
+        }
     }
 
     isInputValid = false;
-    while (!isInputValid) 
+
+    while (!isInputValid)
     {
-        showMessage("\nEmail: ");
+        setColor(WHITE);
+        showMessage("\nFirst Name: ");
         string emailStr;
         isInputValid = safeCin<string>(emailStr);
-        isInputValid = isEmailValid(emailStr);
-        strcpy_s(student.studentClass, emailStr.c_str());
+        isInputValid = isNameValid(emailStr);
+        if (!isInputValid)
+        {
+            setColor(RED);
+            cout << INVALID_EMAIL_MESSAGE;
+        }
+        strcpy_s(student.email, emailStr.c_str());
     }
 
     try
@@ -231,10 +284,18 @@ void inputFirstName(STUDENT& student)
     
     while (!isInputValid) 
     {
-        showMessage("\nFirst name: ");
-        string nameStr;
-        isInputValid = safeCin<string>(nameStr);
-        strcpy_s(student.firstName, nameStr.c_str());
+        setColor(WHITE);
+        showMessage("\nFirst Name: ");
+        string firstNameStr;
+        isInputValid = safeCin<string>(firstNameStr);
+        isInputValid = isNameValid(firstNameStr);
+        if (!isInputValid)
+        {
+            setColor(RED);
+            cout << INVALID_FIRSTNAME_MESSAGE;
+        }
+
+        strcpy_s(student.firstName, firstNameStr.c_str());
     }
 
     cout << endl;
@@ -246,10 +307,18 @@ void inputLastName(STUDENT& student)
 
     while (!isInputValid) 
     {
-        showMessage("\nLast name: ");
-        string nameStr;
-        isInputValid = safeCin<string>(nameStr);
-        strcpy_s(student.lastName, nameStr.c_str());
+        setColor(WHITE);
+        showMessage("\nLast Name: ");
+        string lastNameStr;
+        isInputValid = safeCin<string>(lastNameStr);
+        isInputValid = isNameValid(lastNameStr);
+        if (!isInputValid)
+        {
+            setColor(RED);
+            cout << INVALID_LASTNAME_MESSAGE;
+        }
+
+        strcpy_s(student.lastName, lastNameStr.c_str());
     }
 
     cout << endl;
@@ -261,11 +330,18 @@ void inputStudentClass(STUDENT& student)
 
     while (!isInputValid) {
 
+        setColor(WHITE);
         showMessage("\nClass: ");
-        string classStr;
-        isInputValid = safeCin<string>(classStr);
-        isInputValid = isStudentClassValid(classStr);
-        strcpy_s(student.studentClass, classStr.c_str());
+        string studentClassStr;
+        isInputValid = safeCin<string>(studentClassStr);
+        isInputValid = isStudentClassValid(studentClassStr);
+        if (!isInputValid)
+        {
+            setColor(RED);
+            cout << INVALID_STUDENTCLASS_MESSAGE;
+        }
+
+        strcpy_s(student.studentClass, studentClassStr.c_str());
     }
 
     cout << endl;
@@ -277,10 +353,17 @@ void inputEmail(STUDENT& student)
 
     while (!isInputValid)
     {
-        showMessage("\nEmail: ");
+        setColor(WHITE);
+        showMessage("\nE-mail: ");
         string emailStr;
         isInputValid = safeCin<string>(emailStr);
         isInputValid = isEmailValid(emailStr);
+        if (!isInputValid)
+        {
+            setColor(RED);
+            cout << INVALID_EMAIL_MESSAGE;
+        }
+
         strcpy_s(student.email, emailStr.c_str());
     }
 
@@ -301,8 +384,14 @@ void deleteStudentMenu()
     
     while (!isInputValid) 
     {
+        setColor(WHITE);
         showMessage("\nEnter ID: ");
         isInputValid = safeCin<int>(id);
+        if (!isInputValid)
+        {
+            setColor(RED);
+            cout << INVALID_ID_MESSAGE;
+        }
     }
 
     try

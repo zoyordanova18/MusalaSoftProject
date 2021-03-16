@@ -115,7 +115,7 @@ void showAddTeacherMenu()
 
     TEACHER_SERVICE::add(student);
 
-    showMessage("The teacher is successfully registered in the system.\n");
+    showMessage("The teacher was successfully registered in the system.\n");
 
     cout << endl;
 
