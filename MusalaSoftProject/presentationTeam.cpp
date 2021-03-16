@@ -19,20 +19,6 @@ vector<MENU_OPTION> initializeTeamMenuOptions()
 	return options;
 }
 
-/*vector<MENU_OPTION_INT> initializeTeamEditMenuOptions()
-{
-	vector<MENU_OPTION_INT> options =
-	{
-		{'1', ".First name", editFirstNameMenu},
-		{'2', ".Last name", editLastNameMenu},
-		{'3', ".Class", editStudentClassMenu},
-		{'4', ".E-mail", editStudentEmailMenu},
-		{'5', ".Return to student menu", returnToStudentMenu}
-	};
-
-	return options;
-}*/
-
 void showAddTeamMenu()
 {
 	TEAM team;
@@ -57,39 +43,25 @@ void inputTeamName(TEAM& team)
 {
 	bool isInputValid = false;
 
-	/*while (!isInputValid) {
-
+	while (!isInputValid)
+	{
+		setColor(WHITE);
 		showMessage("\nTeam name: ");
-		isInputValid = safeCin<const char*>(team.name);
-	}*/
+		string teamNameStr;
+		isInputValid = safeCin<string>(teamNameStr);
+		if (!isInputValid)
+		{
+			setColor(RED);
+			cout << INVALID_TEAMNAME_MESSAGE;
+		}
+		strcpy_s(team.name, teamNameStr.c_str());
+	}
 
-	showMessage("\nName: ");
-	cin >> team.name;
 	cout << endl;
 }
 
-/*void returnToTeamMenu(int&)
-{
-
-}*/
-
-/*void showAllTeamsMenu()
-{
-	TEAM::showAll();
-	cout << endl;
-	showStudentMenu();
-}*/
-
 void inputTeamDescription(TEAM& team)
 {
-	bool isInputValid = false;
-
-	/*while (!isInputValid) {
-
-		showMessage("\nTeam name: ");
-		isInputValid = safeCin<const char*>(team.description);
-	}*/
-
 	showMessage("\nTeam description: ");
 	string descr;
 
@@ -106,25 +78,23 @@ void chooseTeacher(TEAM& team)
 	TEACHER::showAll();
 	showMessage("\nPlease choose a teacher as a mentor for the team\n");
 
-	showMessage("\nEnter ID: ");
-	cin >> id;
-	team.teacherId = id;
-	cout << endl;
-}
+	bool isInputValid = false;
 
-/*TEACHER chooseTeacherMenu(int& id)
-{
-	vector<TEACHER> teachers = TEACHER_SERVICE::getAll();
-
-	for (size_t i = 0; i < teachers.size(); i++)
+	while (!isInputValid)
 	{
-		if (id == teachers.at(i).id)
+		setColor(WHITE);
+		showMessage("\nEnter ID: ");
+		isInputValid = safeCin<int>(id);
+		if (!isInputValid)
 		{
-			return teachers.at(i);
+			setColor(RED);
+			cout << INVALID_ID_MESSAGE;
 		}
 	}
 
-}*/
+	team.teacherId = id;
+	cout << endl;
+}
 
 void chooseTeamStatus(TEAM& team)
 {
@@ -162,16 +132,20 @@ void handleUserChoiceStatus(vector<MENU_OPTION_STATUS>& options, TEAM& teams)
 {
 	int choice;
 	bool isInputValid = false;
-	
+	bool isInputInTheRange = false;
 
-	cout << "\nEnter your choice: ";
-	cin >> choice;
+	while (!isInputInTheRange or !isInputValid) {
 
-	/*while (!isInputValid) {
-
-		cout << "Enter your choice: ";
-		isInputValid = safeCin<char>(choice);
-	}*/
+		setColor(WHITE);
+		cout << "\nEnter your choice: ";
+		isInputValid = safeCin<int>(choice);
+		isInputInTheRange = isInputInRange(options.size(), choice);
+		if (!isInputValid or !isInputInTheRange)
+		{
+			setColor(RED);
+			cout << INVALID_MENU_OPTION_MESSAGE;
+		}
+	}
 
 	for (size_t i = 0; i < options.size(); i++)
 	{
@@ -247,7 +221,7 @@ void editTeamParticipantMenu(int& id)
 	while (!isInputValid)
 	{
 		setColor(WHITE);
-		showMessage("\nStudent Id: ");
+		showMessage("\nStudent ID: ");
 		isInputValid = safeCin<int>(studentId);
 
 		if (!isInputValid)
@@ -262,7 +236,7 @@ void editTeamParticipantMenu(int& id)
 	while (!isInputValid)
 	{
 		setColor(WHITE);
-		showMessage("\nNew Student Id: ");
+		showMessage("\nNew student ID: ");
 		isInputValid = safeCin<int>(newStudentId);
 
 		if (!isInputValid)
@@ -295,7 +269,7 @@ void editTeamTeacherMenu(int& id)
 	{
 		setColor(WHITE);
 		showAllTeams();
-		showMessage("\nEnter Team ID: ");
+		showMessage("\nEnter team ID: ");
 		isInputValid = safeCin<int>(id);
 		if (!isInputValid)
 		{
@@ -311,7 +285,7 @@ void editTeamTeacherMenu(int& id)
 		setColor(WHITE);
 		system("cls");
 		TEACHER::showAll();
-		showMessage("\nNew Teacher Id: ");
+		showMessage("\nNew teacher ID: ");
 		isInputValid = safeCin<int>(newTeacherId);
 
 		if (!isInputValid)
@@ -344,7 +318,7 @@ void editTeamDescriptionMenu(int& id)
 	{
 		setColor(WHITE);
 		showAllTeams();
-		showMessage("\nEnter Team ID: ");
+		showMessage("\nEnter team ID: ");
 		isInputValid = safeCin<int>(id);
 		if (!isInputValid)
 		{
@@ -358,7 +332,7 @@ void editTeamDescriptionMenu(int& id)
 	while (!isInputValid)
 	{
 		setColor(WHITE);
-		showMessage("\nNew Description: ");
+		showMessage("\nNew description: ");
 		cin.ignore();
 		getline(cin, description);
 		isInputValid = true;
@@ -409,7 +383,7 @@ void editTeamStatusMenu(int& id)
 	{
 		setColor(WHITE);
 		showAllTeams();
-		showMessage("\nEnter Team ID: ");
+		showMessage("\nEnter team ID: ");
 		isInputValid = safeCin<int>(id);
 		if (!isInputValid)
 		{
@@ -419,9 +393,9 @@ void editTeamStatusMenu(int& id)
 	}
 
 	isInputValid = false;
-	cout << "1. In Use" << endl;
-	cout << "2. Not Active" << endl;
-	cout << "3. Archived" << endl;
+	cout << "1.In Use" << endl;
+	cout << "2.Not Active" << endl;
+	cout << "3.Archived" << endl;
 	int choice;
 
 	TEAM_STATUS status;
