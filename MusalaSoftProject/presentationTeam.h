@@ -60,3 +60,5 @@ void inputStudentId(PARTICIPANT& participant);
 void inputRole(PARTICIPANT& participant);
 
 void showAddParticipantMenu();
+
+void showFilterTeamMenuHeading();

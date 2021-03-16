@@ -366,7 +366,7 @@ void showFilterStudentMenu()
 
     system("cls");
 
-    // showEditStudentMenuHeading();
+    showFilterStudentMenuHeading();
 
     showMessage("\nChoose what you want to edit\n\n");
 
@@ -747,4 +747,54 @@ void showAllMenu()
 
     cout << endl;
     showStudentMenu();
+}
+
+void showFilterStudentMenuHeading()
+{
+    string heading = "\r\n"
+        "______ _ _ _        "
+        "          _         "
+        "    _            _  "
+        "                    "
+        "              \r\n"
+        "|  ___(_) | |       "
+        "         | |        "
+        "   | |          | | "
+        "                    "
+        "              \r\n"
+        "| |_   _| | |_ ___ _"
+        " __   ___| |_ _   _ "
+        " __| | ___ _ __ | |_"
+        " ___   _ __ ___   __"
+        "_ _ __  _   _ \r\n"
+        "|  _| | | | __/ _ \\"
+        " \'__| / __| __| | |"
+        " |/ _` |/ _ \\ \'_ "
+        "\\| __/ __| | \'_ ` "
+        "_ \\ / _ \\ \'_ \\| "
+        "| | |\r\n"
+        "| |   | | | ||  __/ "
+        "|    \\__ \\ |_| |_|"
+        " | (_| |  __/ | | | "
+        "|_\\__ \\ | | | | | "
+        "|  __/ | | | |_| |\r"
+        "\n"
+        "\\_|   |_|_|\\__\\__"
+        "_|_|    |___/\\__|\\"
+        "__,_|\\__,_|\\___|_|"
+        " |_|\\__|___/ |_| |_"
+        "| |_|\\___|_| |_|\\_"
+        "_,_|\r\n"
+        "                    "
+        "                    "
+        "                    "
+        "                    "
+        "              \r\n"
+        "                    "
+        "                    "
+        "                    "
+        "                    "
+        "              \r\n";
+
+    cout << heading;
 }

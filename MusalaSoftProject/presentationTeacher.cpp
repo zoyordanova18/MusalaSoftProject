@@ -251,11 +251,62 @@ void filterByEmailTeacherMenu()
 
 }
 
+void showFilterTeacherMenuHeading()
+{
+	string heading = "\r\n"
+		"______ _ _ _        "
+		"      _             "
+		"     _              "
+		"                    "
+		"              \r\n"
+		"|  ___(_) | |       "
+		"     | |            "
+		"    | |             "
+		"                    "
+		"              \r\n"
+		"| |_   _| | |_ ___ _"
+		" __  | |_ ___  __ _ "
+		" ___| |__   ___ _ __"
+		" ___   _ __ ___   __"
+		"_ _ __  _   _ \r\n"
+		"|  _| | | | __/ _ \\"
+		" \'__| | __/ _ \\/ _"
+		"` |/ __| \'_ \\ / _ "
+		"\\ \'__/ __| | \'_ `"
+		" _ \\ / _ \\ \'_ \\|"
+		" | | |\r\n"
+		"| |   | | | ||  __/ "
+		"|    | ||  __/ (_| |"
+		" (__| | | |  __/ |  "
+		"\\__ \\ | | | | | | "
+		" __/ | | | |_| |\r\n"
+		"\\_|   |_|_|\\__\\__"
+		"_|_|     \\__\\___|"
+		"\\__,_|\\___|_| |_|"
+		"\\___|_|  |___/ |_| "
+		"|_| |_|\\___|_| |_|"
+		"\\__,_|\r\n"
+		"                    "
+		"                    "
+		"                    "
+		"                    "
+		"              \r\n"
+		"                    "
+		"                    "
+		"                    "
+		"                    "
+		"              \r\n";
+
+	cout << heading;
+
+}
+
+
 void showFilterTeacherMenu()
 {
 	system("cls");
 
-	// showEditStudentMenuHeading();
+	showFilterTeacherMenuHeading();
 
 	showMessage("\nChoose what you want to edit\n\n");
 
