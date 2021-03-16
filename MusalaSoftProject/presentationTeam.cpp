@@ -214,9 +214,9 @@ vector<MENU_OPTION_INT> initializeTeamEditMenuOptions()
 {
 	vector<MENU_OPTION_INT> options =
 	{
-	   {1, ".Edit Participant", editTeamParticipantMenu},
-	   {2, ".Edit Teacher",editTeamTeacherMenu },
-	   {3, ".E-mail", /**/}
+	   {1, ". Participant", editTeamParticipantMenu},
+	   {2, ". Teacher",editTeamTeacherMenu },
+	   {3, ". Description ", editTeamDescriptionMenu}
 	};
 
 	return options;
@@ -332,6 +332,55 @@ void editTeamTeacherMenu(int& id)
 
 	showTeamsMenu();
 }
+
+void editTeamDescriptionMenu(int& id)
+{
+	TEAM team;
+	TEAM_SERVICE chosen;
+	bool isInputValid = false;
+
+	while (!isInputValid)
+	{
+		setColor(WHITE);
+		showAllTeams();
+		showMessage("\nEnter Team ID: ");
+		isInputValid = safeCin<int>(id);
+		if (!isInputValid)
+		{
+			setColor(RED);
+			cout << INVALID_ID_MESSAGE;
+		}
+	}
+
+	isInputValid = false;
+	string description;
+	while (!isInputValid)
+	{
+		setColor(WHITE);
+		showMessage("\nNew Description: ");
+		cin.ignore();
+		getline(cin, description);
+		isInputValid = true;
+		if (!isInputValid)
+		{
+			setColor(RED);
+			cout << INVALID_FIRSTNAME_MESSAGE;
+		}
+	}
+
+	try
+	{
+		chosen.editDescription(id, description);
+		cout << INFORMATION_EDITED_SUCCESSFULLY_MESSAGE;
+	}
+	catch (const std::exception& e)
+	{
+		cout << e.what();
+	}
+
+	showTeamsMenu();
+}
+
 
 void showEditTeamMenu()
 {

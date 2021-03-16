@@ -47,3 +47,5 @@ void showEditTeamMenu();
 void editTeamParticipantMenu(int& id);
 
 void handleUserChoiceStatus(std::vector<MENU_OPTION_STATUS>& options, TEAM& teams);
+
+void editTeamDescriptionMenu(int& id);
