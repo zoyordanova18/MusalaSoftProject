@@ -47,10 +47,11 @@ You can find the documentation here:
 * [Documentation](https://codingburgas-my.sharepoint.com/:b:/g/personal/zoyordanova18_codingburgas_bg/Eb-UaFGFzYtHkFtKcyi89aYBjZR8AFhRKv2PQVy_mFT7Gg?e=QOBQ4m)
 
 You can find the presentation here:
-* [Presentation](https://codingburgas-my.sharepoint.com/:f:/g/personal/zoyordanova18_codingburgas_bg/EsnKTtjHvFROtGiaYYE0ETsBFoDARjZjqotjDazY_h2iiQ?e=BmB6re)
+* [Presentation](https://codingburgas-my.sharepoint.com/:p:/g/personal/zoyordanova18_codingburgas_bg/EZ5GeNw0U_5IksrQzwIyeCYBE08S_MEYecXpL096L-WxoQ?e=FSXMyK)
 
 You can find the QA here:
 * [QA](https://codingburgas-my.sharepoint.com/:b:/g/personal/zoyordanova18_codingburgas_bg/ERS4O6rlbBJAhbAQWkFpM7MBmH1z4H3O9mUMAkBwkdLRnA?e=WXPQM8)
+* [QA Tests](https://codingburgas-my.sharepoint.com/:x:/g/personal/zoyordanova18_codingburgas_bg/EeHfmMMWjqZLixuyBHQo8MgBV5dmTHBgY6W_NRxxojAVsQ?e=nTN68L)
 
 
 
