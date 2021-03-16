@@ -13,11 +13,44 @@ vector<MENU_OPTION> initializeTeamMenuOptions()
 		{2, ".Edit team", showEditTeamMenu},
 		{3, ".Add Participant", showAddParticipantMenu},
 		{4, ".View all teams", showAllTeamsMenu},
-		{5, ".Return to main menu", showMainMenu}
+		{5, ".Filter teams", showAllTeamsMenu},
+		{6, ".Return to main menu", showMainMenu}
 	};
 
 	return options;
 }
+
+vector<MENU_OPTION> initializeFilterTeamMenuOptions()
+{
+	vector<MENU_OPTION> options =
+	{
+		{1, ".Find By Id", /**/},
+		{2, ".Filter By First Name", /**/},
+		{3, ".Filter By Last Name", /**/},
+		{4, ".Find by Email", /**/},
+		{5, ".Return to Teacher Menu", /**/}
+	};
+
+	return options;
+}
+
+void showFilterTeacherMenu()
+{
+	system("cls");
+
+	// showEditStudentMenuHeading();
+
+	showMessage("\nChoose what you want to filter\n\n");
+
+	vector<MENU_OPTION> options = initializeFilterTeamMenuOptions();
+
+	showMenuOptions(options);
+	handleUserChoice(options);
+
+	cout << endl;
+	showStudentMenu();
+}
+
 
 void showAddTeamMenu()
 {

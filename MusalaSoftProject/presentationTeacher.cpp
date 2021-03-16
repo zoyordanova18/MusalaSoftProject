@@ -251,7 +251,6 @@ void filterByEmailTeacherMenu()
 
 }
 
-
 void showFilterTeacherMenu()
 {
 	system("cls");
@@ -268,7 +267,6 @@ void showFilterTeacherMenu()
 	cout << endl;
 	showStudentMenu();
 }
-
 
 void inputFirstName(TEACHER& teacher)
 {

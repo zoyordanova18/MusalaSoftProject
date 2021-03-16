@@ -11,6 +11,11 @@ std::vector<MENU_OPTION> initializeTeamMenuOptions();
 
 //std::vector<MENU_OPTION_INT> initializeEditMenuOptions();
 
+
+std::vector<MENU_OPTION> initializeFilterTeamMenuOptions();
+
+void showFilterTeacherMenu();
+
 void showAddTeamMenu();
 
 //void showEditMenu();
