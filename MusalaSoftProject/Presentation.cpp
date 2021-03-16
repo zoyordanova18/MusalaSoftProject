@@ -561,10 +561,12 @@ void showMainMenu()
 	showSchoolArt();
 	showMenuOptions(mainMenu);
 	handleUserChoice(mainMenu);
+
 }
 
 void showStudentMenu()
 {
+	
 	showStudentMenuHeading();
 
 	vector<MENU_OPTION> menu = initializeStudentMenuOptions();

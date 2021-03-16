@@ -11,6 +11,10 @@ void showAddStudentMenu();
 
 void showEditStudentMenu();
 
+void showFilterStudentMenu();
+
+void filterByIdMenu(int& id);
+
 void inputFirstName(STUDENT&);
 
 void inputLastName(STUDENT&);

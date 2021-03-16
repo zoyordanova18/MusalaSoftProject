@@ -12,7 +12,8 @@ vector<MENU_OPTION> initializeStudentMenuOptions()
         {2, ".Edit student", showEditStudentMenu},
         {3, ".Delete student", deleteStudentMenu},
         {4, ".View all students", showAllMenu},
-        {5, ".Return to the main menu", showMainMenu}
+        {5, ".Filter students", showFilterStudentMenu},
+        {6, ".Return to the main menu", showMainMenu}
     };
 
     return mainMenu;
@@ -58,6 +59,82 @@ void showEditStudentMenu()
     showMessage("\nChoose what you want to edit\n\n");
 
     vector<MENU_OPTION_INT> options = initializeEditMenuOptions();
+
+    showMenuOptionsInt(options);
+    handleUserChoiceInt(options);
+
+    cout << endl;
+    showStudentMenu();
+}
+
+vector<MENU_OPTION_INT> initializeFilterStudentMenuOptions()
+{
+    vector<MENU_OPTION_INT> options =
+    {
+        {1, ".Find By Id", filterByIdMenu},
+        {2, ".Filter By First Name", /**/},
+        {3, ".Filter By Last Name", /**/},
+        {4, ".Filter By Class", /**/},
+        {5, ".Find by Email", /**/},
+        {6, ".Return to Student Menu", /**/}
+    };
+
+    return options;
+}
+
+void filterByIdMenu(int& id)
+{
+    bool isInputValid = false;
+
+    while (!isInputValid)
+    {
+        system("cls");
+        setColor(WHITE);
+        showMessage("\nEnter ID: ");
+        isInputValid = safeCin<int>(id);
+        if (!isInputValid)
+        {
+            setColor(RED);
+            cout << INVALID_ID_MESSAGE;
+        }
+    }
+
+    vector<STUDENT> students = STUDENT_SERVICE::getAll();
+    
+    auto predicate = [&](STUDENT student)
+    {
+        return student.id == id;
+    };
+
+    vector<STUDENT> result = findRecords<STUDENT>(students, predicate);
+
+    showStudentsTableHeader();
+
+    for (size_t i = 0; i < result.size(); i++)
+    {
+        showStudentInTable(result[i]);
+    }
+
+    string headerLine(91, '-');
+    cout << endl << headerLine << endl <<
+        endl << endl;
+
+    showStudentMenu();
+
+}
+
+void showFilterStudentMenu()
+{
+    int id = 0;
+    STUDENT student;
+
+    system("cls");
+
+    // showEditStudentMenuHeading();
+
+    showMessage("\nChoose what you want to edit\n\n");
+
+    vector<MENU_OPTION_INT> options = initializeFilterStudentMenuOptions();
 
     showMenuOptionsInt(options);
     handleUserChoiceInt(options);

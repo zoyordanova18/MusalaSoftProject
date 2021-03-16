@@ -518,7 +518,7 @@ void inputRole(PARTICIPANT& participant)
 		cout << "2. Back-End" << endl;
 		cout << "3. Front-End" << endl;
 		cout << "4. QA" << endl;
-		cout << "Choose Role: " << endl;
+		cout << "Choose Role: ";
 		int choice;
 
 		ROLES role;
