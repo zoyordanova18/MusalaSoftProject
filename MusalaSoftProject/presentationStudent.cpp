@@ -67,25 +67,26 @@ void showEditStudentMenu()
     showStudentMenu();
 }
 
-vector<MENU_OPTION_INT> initializeFilterStudentMenuOptions()
+vector<MENU_OPTION> initializeFilterStudentMenuOptions()
 {
-    vector<MENU_OPTION_INT> options =
+    vector<MENU_OPTION> options =
     {
         {1, ".Find By Id", filterByIdMenu},
-        {2, ".Filter By First Name", /**/},
-        {3, ".Filter By Last Name", /**/},
-        {4, ".Filter By Class", /**/},
-        {5, ".Find by Email", /**/},
-        {6, ".Return to Student Menu", /**/}
+        {2, ".Filter By First Name", filterByFirstNameMenu},
+        {3, ".Filter By Last Name", filterByLastNameMenu},
+        {4, ".Filter By Class", filterByClassMenu},
+        {5, ".Find by Email", filterByEmailMenu},
+        {6, ".Return to Student Menu", returnToStudentMenu}
     };
 
     return options;
 }
 
-void filterByIdMenu(int& id)
+void filterByIdMenu()
 {
     bool isInputValid = false;
 
+    int id;
     while (!isInputValid)
     {
         system("cls");
@@ -110,18 +111,253 @@ void filterByIdMenu(int& id)
 
     showStudentsTableHeader();
 
-    for (size_t i = 0; i < result.size(); i++)
+    if (result.size() == 0)
     {
-        showStudentInTable(result[i]);
+        setColor(RED);
+        showMessage("There are not students with this id! \n\n");
+        setColor(WHITE);
     }
+    else
+    {
+        for (size_t i = 0; i < result.size(); i++)
+        {
+            showStudentInTable(result[i]);
+        }
 
-    string headerLine(91, '-');
-    cout << endl << headerLine << endl <<
-        endl << endl;
+        string headerLine(91, '-');
+        cout << endl << headerLine << endl <<
+            endl << endl;
+
+    }
 
     showStudentMenu();
 
 }
+
+void filterByFirstNameMenu()
+{
+    bool isInputValid = false;
+
+    string firstName;
+    while (!isInputValid)
+    {
+        system("cls");
+        setColor(WHITE);
+        showMessage("\nEnter First Name: ");
+        isInputValid = safeCin<string>(firstName);
+        if (!isInputValid)
+        {
+            setColor(RED);
+            cout << INVALID_ID_MESSAGE;
+        }
+    }
+
+    vector<STUDENT> students = STUDENT_SERVICE::getAll();
+
+    auto predicate = [&](STUDENT student)
+    { 
+        return student.firstName == firstName;
+    };
+
+    vector<STUDENT> result = findRecords<STUDENT>(students, predicate);
+
+    if (result.size() == 0)
+    {
+        setColor(RED);
+        showMessage("There are not students with this name! \n\n");
+        setColor(WHITE);
+    }
+    else
+    {
+        showStudentsTableHeader();
+
+        for (size_t i = 0; i < result.size(); i++)
+        {
+            showStudentInTable(result[i]);
+            cout << endl;
+        }
+
+        string headerLine(91, '-');
+        cout << headerLine << endl <<
+            endl << endl;
+    }
+
+   
+    showStudentMenu();
+
+}
+
+void filterByLastNameMenu()
+{
+    bool isInputValid = false;
+
+    string latName;
+    while (!isInputValid)
+    {
+        system("cls");
+        setColor(WHITE);
+        showMessage("\nEnter Last Name: ");
+        isInputValid = safeCin<string>(latName);
+        if (!isInputValid)
+        {
+            setColor(RED);
+            cout << INVALID_ID_MESSAGE;
+        }
+    }
+
+    vector<STUDENT> students = STUDENT_SERVICE::getAll();
+
+    auto predicate = [&](STUDENT student)
+    {
+        return student.lastName == latName;
+    };
+
+    vector<STUDENT> result = findRecords<STUDENT>(students, predicate);
+
+    if (result.size() == 0)
+    {
+        setColor(RED);
+        showMessage("There are not students with this name! \n\n");
+        setColor(WHITE);
+    }
+    else
+    {
+        showStudentsTableHeader();
+
+        for (size_t i = 0; i < result.size(); i++)
+        {
+            showStudentInTable(result[i]);
+            cout << endl;
+        }
+
+        string headerLine(91, '-');
+        cout <<  headerLine << endl <<
+            endl << endl;
+    }
+
+
+    showStudentMenu();
+
+}
+
+void filterByClassMenu()
+{
+    bool isInputValid = false;
+    bool isClassValid = false;
+
+    string stClass;
+    while (!isInputValid || !isClassValid)
+    {
+        system("cls");
+        setColor(WHITE);
+
+        showMessage("\nEnter Class: ");
+        isInputValid = safeCin<string>(stClass);
+
+        transform(stClass.begin(), stClass.end(), stClass.begin(), ::toupper);
+
+        isClassValid = isStudentClassValid(stClass);
+        if (!isInputValid || !isClassValid)
+        {
+            setColor(RED);
+            cout << INVALID_STUDENTCLASS_MESSAGE;
+        }
+    }
+
+    vector<STUDENT> students = STUDENT_SERVICE::getAll();
+
+    auto predicate = [&](STUDENT student)
+    {
+        return student.studentClass == stClass;
+    };
+
+    vector<STUDENT> result = findRecords<STUDENT>(students, predicate);
+
+    if (result.size() == 0)
+    {
+        setColor(RED);
+        showMessage("There are not students with this class! \n\n");
+        setColor(WHITE);
+    }
+    else
+    {
+        showStudentsTableHeader();
+
+        for (size_t i = 0; i < result.size(); i++)
+        {
+            showStudentInTable(result[i]);
+            cout << endl;
+        }
+
+        string headerLine(91, '-');
+        cout << headerLine << endl <<
+            endl << endl;
+    }
+
+
+    showStudentMenu();
+
+}
+
+void filterByEmailMenu()
+{
+    bool isInputValid = false;
+    bool isStEmailValid = false;
+
+    string email;
+    while (!isInputValid || !isStEmailValid)
+    {
+        system("cls");
+        setColor(WHITE);
+
+        showMessage("\nEnter Class: ");
+        isInputValid = safeCin<string>(email);
+
+        transform(email.begin(), email.end(), email.begin(), ::toupper);
+
+        isStEmailValid = isEmailValid(email);
+        if (!isInputValid || !isStEmailValid)
+        {
+            setColor(RED);
+            cout << INVALID_STUDENTCLASS_MESSAGE;
+        }
+    }
+
+    vector<STUDENT> students = STUDENT_SERVICE::getAll();
+
+    auto predicate = [&](STUDENT student)
+    {
+        return student.email == email;
+    };
+
+    vector<STUDENT> result = findRecords<STUDENT>(students, predicate);
+
+    if (result.size() == 0)
+    {
+        setColor(RED);
+        showMessage("There are not students with this email! \n\n");
+        setColor(WHITE);
+    }
+    else
+    {
+        showStudentsTableHeader();
+
+        for (size_t i = 0; i < result.size(); i++)
+        {
+            showStudentInTable(result[i]);
+            cout << endl;
+        }
+
+        string headerLine(91, '-');
+        cout << headerLine << endl <<
+            endl << endl;
+    }
+
+
+    showStudentMenu();
+
+}
+
 
 void showFilterStudentMenu()
 {
@@ -134,10 +370,10 @@ void showFilterStudentMenu()
 
     showMessage("\nChoose what you want to edit\n\n");
 
-    vector<MENU_OPTION_INT> options = initializeFilterStudentMenuOptions();
+    vector<MENU_OPTION> options = initializeFilterStudentMenuOptions();
 
-    showMenuOptionsInt(options);
-    handleUserChoiceInt(options);
+    showMenuOptions(options);
+    handleUserChoice(options);
 
     cout << endl;
     showStudentMenu();
@@ -147,6 +383,12 @@ void returnToStudentMenu(int& mock)
 {
     showStudentMenu();
 }
+
+void returnToStudentMenu()
+{
+    showStudentMenu();
+}
+
 
 vector<MENU_OPTION_INT> initializeEditMenuOptions()
 {

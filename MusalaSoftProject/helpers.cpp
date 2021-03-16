@@ -203,3 +203,8 @@ void closeAllFiles()
 	PARTICIPANT_SERVICE::close();
 }
 
+bool isStringTooLong(string str, int max)
+{
+	return (str.size() > max);
+}
+

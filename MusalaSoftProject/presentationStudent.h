@@ -11,9 +11,19 @@ void showAddStudentMenu();
 
 void showEditStudentMenu();
 
+void returnToStudentMenu();
+
+void filterByFirstNameMenu();
+
 void showFilterStudentMenu();
 
-void filterByIdMenu(int& id);
+void filterByEmailMenu();
+
+void filterByClassMenu();
+
+void filterByLastNameMenu();
+
+void filterByIdMenu();
 
 void inputFirstName(STUDENT&);
 
