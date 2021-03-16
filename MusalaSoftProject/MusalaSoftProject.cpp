@@ -35,10 +35,7 @@ int main()
 
 	//cout << sizeof(a)<<endl;
 
-	bool isOpen = STUDENT_SERVICE::open();
-	bool isOpenT = TEACHER_SERVICE::open();
-	bool isOpenTeam = TEAM_SERVICE::open();
-	bool isOpenP = PARTICIPANT_SERVICE::open();
+	openAllFiles();
 
 	//PARTICIPANT_SERVICE::add({ 9,1,ROLES::QA });
 
@@ -173,14 +170,6 @@ int main()
 
 	// STUDENT student;
 
-	/*
-
-
-
-	*/
-
-
-
 	showMainMenu();
 
 	//student.showAll();
@@ -191,12 +180,10 @@ int main()
 
 	//TEACHER::showAll();
 
-	STUDENT_SERVICE::close();
-	TEACHER_SERVICE::close();
-	TEAM_SERVICE::close();
-	PARTICIPANT_SERVICE::close();
 	// PARTICIPANT_SERVICE::close();
 
 	//showStudentsTableHeader();
+
+	closeAllFiles();
 }
 

@@ -5,6 +5,8 @@
 #include <vector>
 #include "participants.h";
 #include "teams.h";
+#include "teachers.h"
+#include "students.h"
 
 // General functions for validating input
 template <class T>
@@ -92,3 +94,7 @@ std::ostream& whiteColor(std::ostream& out);
 bool isStringDeleted(std::string);
 
 bool isInputInRange(std::size_t, int);
+
+void openAllFiles();
+
+void closeAllFiles();

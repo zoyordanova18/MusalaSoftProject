@@ -1,5 +1,3 @@
-#include "helpers.h"
-#include "teams.h"
 #include <iostream>
 #include <vector>
 #include <windows.h>
@@ -9,6 +7,10 @@
 #include <tchar.h>
 #include <conio.h>
 #include <strsafe.h>
+#include "helpers.h"
+#include "teams.h"
+#include "teachers.h"
+#include "students.h"
 using namespace std;
 
 bool isEmailValid(std::string email)
@@ -183,5 +185,21 @@ bool isInputInRange(size_t size, int input)
 	}
 
 	return false;
+}
+
+void openAllFiles()
+{
+	bool isOpen = STUDENT_SERVICE::open();
+	bool isOpenT = TEACHER_SERVICE::open();
+	bool isOpenTeam = TEAM_SERVICE::open();
+	bool isOpenP = PARTICIPANT_SERVICE::open();
+}
+
+void closeAllFiles()
+{
+	STUDENT_SERVICE::close();
+	TEACHER_SERVICE::close();
+	TEAM_SERVICE::close();
+	PARTICIPANT_SERVICE::close();
 }
 
