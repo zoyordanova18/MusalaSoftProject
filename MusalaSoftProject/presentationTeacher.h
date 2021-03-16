@@ -11,6 +11,8 @@ std::vector<MENU_OPTION> initializeFilterTeacherMenuOptions();
 
 void filterByFirstNameTeacherMenu();
 
+void filterByLastNameTeacherMenu();
+
 void filterByIdTeacherMenu();
 
 void showFilterTeacherMenu();
