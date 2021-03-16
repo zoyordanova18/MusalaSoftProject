@@ -48,7 +48,7 @@ void inputFirstName(TEACHER& teacher)
 void inputLastName(TEACHER& teacher)
 {
     bool isInputValid = false;
-
+   
     while (!isInputValid)
     {
         setColor(WHITE);
@@ -91,6 +91,8 @@ void inputEmail(TEACHER& teacher)
 
 void showTeacherMenu()
 {
+    showTeacherMenuHeading();
+
     vector<MENU_OPTION> menu = initializeTeacherMenuOptions();
 
     showMenuOptions(menu);
@@ -99,6 +101,10 @@ void showTeacherMenu()
 
 void showAddTeacherMenu()
 {
+    system("cls");
+
+    showAddTeacherMenuHeading();
+
     TEACHER student;
 
     inputFirstName(student);
@@ -132,6 +138,10 @@ void showEditTeacherMenu()
 {
     int id = 0;
     TEACHER teacher;
+
+    system("cls");
+
+    showEditTeacherMenuHeading();
 
     //cout << "Please choose a student to edit: ";
 
@@ -299,6 +309,8 @@ void deleteTeacherMenu()
     TEACHER_SERVICE chosen;
     int id;
     bool isInputValid = false;
+
+    showDeleteTeacherMenuHeading();
 
     showMessage("\nChoose a teacher to delete");
 

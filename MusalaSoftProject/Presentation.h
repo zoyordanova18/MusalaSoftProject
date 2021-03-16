@@ -79,3 +79,23 @@ void showTeamTableHeader();
 void printRowInTeamTable(TEAM team,
                          std::vector<std::string> description,
                          std::vector<std::string> participants);
+
+bool isInputInRange(std::size_t, int);
+
+void showTeacherMenuHeading();
+
+void showTeamsMenuHeading();
+
+void showAddStudentMenuHeading();
+
+void showAddTeacherMenuHeading();
+
+void showAddTeamMenuHeading();
+
+void showEditStudentMenuHeading();
+
+void showEditTeacherMenuHeading();
+
+void showDeleteStudentMenuHeading();
+
+void showDeleteTeacherMenuHeading();

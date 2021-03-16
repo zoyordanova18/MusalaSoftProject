@@ -22,6 +22,8 @@ void showAddStudentMenu()
 {
     system("cls");
 
+    showAddStudentMenuHeading();
+
     STUDENT student;
 
     inputFirstName(student);
@@ -41,6 +43,10 @@ void showEditStudentMenu()
 {
     int id = 0;
     STUDENT student;
+
+    system("cls");
+
+    showEditStudentMenuHeading();
 
     showMessage("\nChoose what you want to edit\n\n");
 
@@ -283,9 +289,13 @@ void inputEmail(STUDENT& student)
 
 void deleteStudentMenu()
 {
+    system("cls");
+
     STUDENT_SERVICE chosen;
     bool isInputValid = false;
     int id;
+
+    showDeleteStudentMenuHeading();
 
     showMessage("\nChoose a student to delete: ");
     
