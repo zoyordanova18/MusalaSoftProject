@@ -158,6 +158,43 @@ void TEAM_SERVICE::editTeacher(int teamId, int teacherId)
 	throw exception("Invalid Id");
 }
 
+void TEAM_SERVICE::editDescription(int teamId, string description)
+{
+
+	TEAM team;
+
+	teamsFile.seekg(0, ios::end);
+	streampos fileSize = teamsFile.tellg();
+	teamsFile.seekg(0, ios::beg);
+
+	int t = teamsFile.tellg();
+
+	while (teamsFile.tellg() < fileSize)
+	{
+		if (teamsFile.read((byte_*)&team, sizeof(TEAM)))
+		{
+			if (team.id == teamId)
+			{
+
+				int res = strcpy_s(team.description, description.c_str());
+
+				teamsFile.seekg(-332, ios::cur);
+				if (teamsFile.write((byte_*)&team, sizeof(TEAM)))
+				{
+					return;
+				}
+				else
+				{
+					throw exception("A wild error appeard!");
+				}
+			}
+		}
+	}
+
+	throw exception("Invalid Id");
+}
+
+
 void showAllTeams()
 {
 	vector<PARTICIPANT> participantsIds = PARTICIPANT_SERVICE::getAll();

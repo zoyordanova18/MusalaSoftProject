@@ -34,7 +34,9 @@ struct TEAM_SERVICE
 	static uint32_t generateId();
 	static bool add(TEAM team);
 	void editTeacher(int teamId, int teacherId);
+	void editDescription(int teamId, std::string description);
 };
+
 
 // Gets system data for initializing team creation date
 std::string getTodaysDate();
