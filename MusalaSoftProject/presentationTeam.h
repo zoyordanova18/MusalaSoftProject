@@ -9,28 +9,23 @@ std::vector<MENU_OPTION_STATUS> initializeTeamStatusMenuOptions();
 
 std::vector<MENU_OPTION> initializeTeamMenuOptions();
 
-//std::vector<MENU_OPTION_INT> initializeEditMenuOptions();
+void filterByIdTeamMenu();
+
+void filterByNameTeamMenu();
 
 void showFilterTeamMenu();
+
+void filterByTeacherTeamMenu();
 
 std::vector<MENU_OPTION> initializeFilterTeamMenuOptions();
 
 void showAddTeamMenu();
 
-//void showEditMenu();
-
 void inputTeamName(TEAM&);
 
 void inputTeamDescription(TEAM&);
 
-//void deleteTeamMenu();
-
-//void returnToTeamMenu(int&);
-
-//void showAllTeamsMenu();
-
 void chooseTeacher(TEAM&);
-
 
 std::vector<MENU_OPTION_INT> initializeTeamEditMenuOptions();
 

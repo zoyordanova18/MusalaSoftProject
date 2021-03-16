@@ -27,6 +27,10 @@ void showAllTeams();
 
 void showTeamById(int teamId);
 
+void showTeamByName(std::string name);
+
+void showTeamByTeacher(int teacherId);
+
 // Methods used for working with elements of struct TEAM type
 struct TEAM_SERVICE
 {

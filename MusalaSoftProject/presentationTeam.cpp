@@ -45,16 +45,59 @@ void filterByIdTeamMenu()
 
 }
 
+void filterByNameTeamMenu()
+{
+
+
+	string teamName;
+
+	system("cls");
+	setColor(WHITE);
+	showMessage("\nEnter Team Name: ");
+	cin.ignore();
+	getline(cin, teamName);
+
+
+
+	showTeamByName(teamName);
+
+	showTeamsMenu();
+
+}
+
+void filterByTeacherTeamMenu()
+{
+	bool isInputValid = false;
+
+	int teacherId;
+	while (!isInputValid)
+	{
+		system("cls");
+		setColor(WHITE);
+		TEACHER::showAll();
+		showMessage("\nEnter Teacher ID: ");
+		isInputValid = safeCin<int>(teacherId);
+		if (!isInputValid)
+		{
+			setColor(RED);
+			cout << INVALID_ID_MESSAGE;
+		}
+	}
+
+	showTeamByTeacher(teacherId);
+
+	showTeamsMenu();
+
+}
+
 
 vector<MENU_OPTION> initializeFilterTeamMenuOptions()
 {
 	vector<MENU_OPTION> options =
 	{
 		{1, ".Find By Id", filterByIdTeamMenu},
-		{2, ".Find By First Name", /**/},
-		{3, ".Filter By Last Name", /**/},
-		{4, ".Find by Email", /**/},
-		{5, ".Return to Teacher Menu", /**/}
+		{2, ".Find By Name", filterByNameTeamMenu},
+		{3, ".Filter By Teacher", filterByTeacherTeamMenu}
 	};
 
 	return options;
@@ -79,7 +122,6 @@ void showFilterTeamMenu()
 	cout << endl;
 	showStudentMenu();
 }
-
 
 void showAddTeamMenu()
 {
@@ -364,7 +406,7 @@ void editTeamTeacherMenu(int& id)
 
 	try
 	{
-		chosen.editTeacher(id,  newTeacherId);
+		chosen.editTeacher(id, newTeacherId);
 		cout << INFORMATION_EDITED_SUCCESSFULLY_MESSAGE;
 	}
 	catch (const std::exception& e)
@@ -536,7 +578,7 @@ void inputTeamId(PARTICIPANT& participant)
 			setColor(RED);
 			cout << INVALID_FIRSTNAME_MESSAGE;
 		}
-		
+
 		participant.teamId = id;
 	}
 
@@ -595,7 +637,7 @@ void inputRole(PARTICIPANT& participant)
 
 		setRole(choice, role);
 		participant.role = role;
-		
+
 	}
 
 	cout << endl;
