@@ -36,10 +36,10 @@ Technologies we used:
 
 ## Our Team
 
-- Jacqueline Yordanova(Scrum Trainer)
-- Iliyan Iliev(Back-End developer)
-- Stanislava Andonova(QA Engineer)
-- Dimitar Kaloyanov(Front-End developer)
+- Jacqueline Yordanova (Scrum Trainer)
+- Iliyan Iliev (Back-End developer)
+- Stanislava Andonova (QA Engineer)
+- Dimitar Kaloyanov (Front-End developer)
 
 ## Presentation and Documentation
 
@@ -49,9 +49,9 @@ You can find the documentation here:
 You can find the presentation here:
 * [Presentation](https://codingburgas-my.sharepoint.com/:p:/g/personal/zoyordanova18_codingburgas_bg/EZ5GeNw0U_5IksrQzwIyeCYBE08S_MEYecXpL096L-WxoQ?e=FSXMyK)
 
-You can find the QA here:
-* [QA](https://codingburgas-my.sharepoint.com/:b:/g/personal/zoyordanova18_codingburgas_bg/ERS4O6rlbBJAhbAQWkFpM7MBmH1z4H3O9mUMAkBwkdLRnA?e=WXPQM8)
-* [QA Tests](https://codingburgas-my.sharepoint.com/:x:/g/personal/zoyordanova18_codingburgas_bg/EeHfmMMWjqZLixuyBHQo8MgBV5dmTHBgY6W_NRxxojAVsQ?e=nTN68L)
+You can find the QA Doxumentation here:
+* [Test case documentation](https://codingburgas-my.sharepoint.com/:b:/g/personal/zoyordanova18_codingburgas_bg/ERS4O6rlbBJAhbAQWkFpM7MBmH1z4H3O9mUMAkBwkdLRnA?e=WXPQM8)
+* [Test plan](https://codingburgas-my.sharepoint.com/:x:/g/personal/zoyordanova18_codingburgas_bg/EeHfmMMWjqZLixuyBHQo8MgBV5dmTHBgY6W_NRxxojAVsQ?e=nTN68L)
 
 
 
