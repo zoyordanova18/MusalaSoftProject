@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "presentationTeam.h"
 #include "Presentation.h"
 
@@ -8,11 +9,11 @@ vector<MENU_OPTION> initializeTeamMenuOptions()
 {
 	vector<MENU_OPTION> options =
 	{
-		{'1', ".Add team", showAddTeamMenu},
-		{'2', ".Edit team", showEditTeamMenu},
-		{'3', ".Delete team", /*func*/},
-		{'4', ".View all teams", showAllTeamsMenu},
-		{'5', ".Return to main menu", showMainMenu}
+		{1, ".Add team", showAddTeamMenu},
+		{2, ".Edit team", showEditTeamMenu},
+		{3, ".Delete team", /*func*/},
+		{4, ".View all teams", showAllTeamsMenu},
+		{5, ".Return to main menu", showMainMenu}
 	};
 
 	return options;
@@ -90,7 +91,12 @@ void inputTeamDescription(TEAM& team)
 	}*/
 
 	showMessage("\nTeam description: ");
-	cin >> team.description;
+	string descr;
+
+	cin.ignore();
+	getline(cin, descr);
+
+	strcpy_s(team.description, descr.c_str());
 	cout << endl;
 }
 
@@ -102,6 +108,7 @@ void chooseTeacher(TEAM& team)
 
 	showMessage("\nEnter ID: ");
 	cin >> id;
+	team.teacherId = id;
 	cout << endl;
 }
 
@@ -126,16 +133,16 @@ void chooseTeamStatus(TEAM& team)
 	showMessage("\nPlease choose a status for the team\n\n");
 
 	showMenuOptionsStatus(menu);
-	handleUserChoiceStatus(menu);
+	handleUserChoiceStatus(menu, team);
 }
 
 vector<MENU_OPTION_STATUS> initializeTeamStatusMenuOptions()
 {
 	vector<MENU_OPTION_STATUS> menu =
 	{
-		{'1', ".Active", setTeamStatusToActive},
-		{'2', ".Not active", setTeamStatusToInactive},
-		{'3', ".Archived", setTeamStatusToArchived}
+		{1, ".Active", setTeamStatusToActive},
+		{2, ".Not active", setTeamStatusToInactive},
+		{3, ".Archived", setTeamStatusToArchived}
 	};
 
 	return menu;
@@ -151,11 +158,11 @@ void showMenuOptionsStatus(vector<MENU_OPTION_STATUS>& options)
 	}
 }
 
-void handleUserChoiceStatus(vector<MENU_OPTION_STATUS>& options)
+void handleUserChoiceStatus(vector<MENU_OPTION_STATUS>& options, TEAM& teams)
 {
-	char choice;
+	int choice;
 	bool isInputValid = false;
-	TEAM teams;
+	
 
 	cout << "\nEnter your choice: ";
 	cin >> choice;
@@ -207,9 +214,9 @@ vector<MENU_OPTION_INT> initializeTeamEditMenuOptions()
 {
 	vector<MENU_OPTION_INT> options =
 	{
-	   {'1', ".Edit Participant", editTeamParticipantMenu},
-	   {'2', ".Last name",/**/ },
-	   {'3', ".E-mail", /**/}
+	   {1, ".Edit Participant", editTeamParticipantMenu},
+	   {2, ".Edit Teacher",editTeamTeacherMenu },
+	   {3, ".E-mail", /**/}
 	};
 
 	return options;
@@ -267,6 +274,55 @@ void editTeamParticipantMenu(int& id)
 	try
 	{
 		chosen.editParticipantInTeam(id, studentId, newStudentId);
+		cout << INFORMATION_EDITED_SUCCESSFULLY_MESSAGE;
+	}
+	catch (const std::exception& e)
+	{
+		cout << e.what();
+	}
+
+	showTeamsMenu();
+}
+
+void editTeamTeacherMenu(int& id)
+{
+	TEAM team;
+	TEAM_SERVICE chosen;
+	bool isInputValid = false;
+
+	while (!isInputValid)
+	{
+		setColor(WHITE);
+		showAllTeams();
+		showMessage("\nEnter Team ID: ");
+		isInputValid = safeCin<int>(id);
+		if (!isInputValid)
+		{
+			setColor(RED);
+			cout << INVALID_ID_MESSAGE;
+		}
+	}
+
+	isInputValid = false;
+	int newTeacherId;
+	while (!isInputValid)
+	{
+		setColor(WHITE);
+		system("cls");
+		TEACHER::showAll();
+		showMessage("\nNew Teacher Id: ");
+		isInputValid = safeCin<int>(newTeacherId);
+
+		if (!isInputValid)
+		{
+			setColor(RED);
+			cout << INVALID_FIRSTNAME_MESSAGE;
+		}
+	}
+
+	try
+	{
+		chosen.editTeacher(id,  newTeacherId);
 		cout << INFORMATION_EDITED_SUCCESSFULLY_MESSAGE;
 	}
 	catch (const std::exception& e)

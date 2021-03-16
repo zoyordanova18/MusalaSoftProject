@@ -144,16 +144,6 @@ void handleUserChoice(vector<MENU_OPTION>& options)
 	}
 }
 
-bool isInputInRange(size_t size,int input)
-{
-	if (input <= size and input > 0)
-	{
-		return true;
-	}
-
-	return false;
-}
-
 vector<MENU_OPTION> initializeMainMenuOptions()
 {
 	vector<MENU_OPTION> options =

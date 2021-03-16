@@ -18,6 +18,7 @@ int main()
 {
 
 	//cout << sizeof(PARTICIPANT);
+	cout << sizeof(TEAM);
 
 	// consoleSetup();
 

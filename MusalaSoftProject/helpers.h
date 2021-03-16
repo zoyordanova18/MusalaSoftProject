@@ -90,3 +90,5 @@ std::ostream& redColor(std::ostream& out);
 std::ostream& whiteColor(std::ostream& out);
 
 bool isStringDeleted(std::string);
+
+bool isInputInRange(std::size_t, int);

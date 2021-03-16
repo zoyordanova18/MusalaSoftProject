@@ -40,7 +40,10 @@ void chooseTeamStatus(TEAM&);
 
 void setTeamStatusToArchived(TEAM&);
 
+void editTeamTeacherMenu(int& id);
 
 void showEditTeamMenu();
 
 void editTeamParticipantMenu(int& id);
+
+void handleUserChoiceStatus(std::vector<MENU_OPTION_STATUS>& options, TEAM& teams);

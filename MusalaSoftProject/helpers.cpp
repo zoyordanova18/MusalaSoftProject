@@ -175,3 +175,13 @@ bool isStringDeleted(std::string msg)
 	return (msg.find('!') != string::npos);
 }
 
+bool isInputInRange(size_t size, int input)
+{
+	if (input <= size and input > 0)
+	{
+		return true;
+	}
+
+	return false;
+}
+

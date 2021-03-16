@@ -33,6 +33,7 @@ struct TEAM_SERVICE
 	static void close();
 	static uint32_t generateId();
 	static bool add(TEAM team);
+	void editTeacher(int teamId, int teacherId);
 };
 
 // Gets system data for initializing team creation date
