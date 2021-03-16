@@ -7,6 +7,12 @@ std::vector<MENU_OPTION> initializeTeacherMenuOptions();
 
 void inputFirstName(TEACHER&);
 
+std::vector<MENU_OPTION> initializeFilterTeacherMenuOptions();
+
+void filterByIdTeacherMenu();
+
+void showFilterTeacherMenu();
+
 void inputLastName(TEACHER&);
 
 void inputEmail(TEACHER&);

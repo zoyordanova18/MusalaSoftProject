@@ -1,3 +1,5 @@
+
+
 #include <iostream>
 #include <vector>
 #include "Presentation.h"
@@ -10,342 +12,428 @@ using namespace std;
 
 vector<MENU_OPTION> initializeTeacherMenuOptions()
 {
-    vector<MENU_OPTION> options =
-    {
-        {1, ".Add teacher", showAddTeacherMenu},
-        {2, ".Edit teacher", showEditTeacherMenu},
-        {3, ".Delete teacher", deleteTeacherMenu},
-        {4, ".View all teachers", showAllTeachersMenu},
-        {5, ".Return to main menu", showMainMenu}
-    };
+	vector<MENU_OPTION> options =
+	{
+		{1, ".Add teacher", showAddTeacherMenu},
+		{2, ".Edit teacher", showEditTeacherMenu},
+		{3, ".Delete teacher", deleteTeacherMenu},
+		{4, ".View all teachers", showAllTeachersMenu},
+		{5, ".Filter teachers", showFilterTeacherMenu},
+		{6, ".Return to main menu", showMainMenu}
+	};
 
-    return options;
+	return options;
 }
+
+vector<MENU_OPTION> initializeFilterTeacherMenuOptions()
+{
+	vector<MENU_OPTION> options =
+	{
+		{1, ".Find By Id", filterByIdTeacherMenu},
+		{2, ".Filter By First Name", /**/},
+		{3, ".Filter By Last Name", /**/},
+		{4, ".Filter By Class", /**/},
+		{5, ".Find by Email", /**/},
+		{6, ".Return to Student Menu", /**/}
+	};
+
+	return options;
+}
+
+void filterByIdTeacherMenu()
+{
+	bool isInputValid = false;
+
+	int id;
+	while (!isInputValid)
+	{
+		system("cls");
+		setColor(WHITE);
+		showMessage("\nEnter ID: ");
+		isInputValid = safeCin<int>(id);
+		if (!isInputValid)
+		{
+			setColor(RED);
+			cout << INVALID_ID_MESSAGE;
+		}
+	}
+
+	vector<TEACHER> teachers = TEACHER_SERVICE::getAll();
+
+	auto predicate = [&](TEACHER teacher)
+	{
+		return teacher.id == id;
+	};
+
+	vector<TEACHER> result = findRecords<TEACHER>(teachers, predicate);
+
+	if (result.size() == 0)
+	{
+		setColor(RED);
+		showMessage("There are not teachers with this id! \n\n");
+		setColor(WHITE);
+	}
+	else
+	{
+		showTeachersTableHeader();
+
+		for (size_t i = 0; i < result.size(); i++)
+		{
+			showTeacherInTable(result[i]);
+			cout << endl;
+		}
+
+		string headerLine(83, '-');
+		cout << headerLine << endl << endl << endl;
+
+	}
+
+	showTeacherMenu();
+
+}
+
+void showFilterTeacherMenu()
+{
+	system("cls");
+
+	// showEditStudentMenuHeading();
+
+	showMessage("\nChoose what you want to edit\n\n");
+
+	vector<MENU_OPTION> options = initializeFilterTeacherMenuOptions();
+
+	showMenuOptions(options);
+	handleUserChoice(options);
+
+	cout << endl;
+	showStudentMenu();
+}
+
 
 void inputFirstName(TEACHER& teacher)
 {
-    bool isInputValid = false;
+	bool isInputValid = false;
 
-    while (!isInputValid) 
-    {
-        setColor(WHITE);
-        showMessage("\nFirst Name: ");
-        string firstNameStr;
-        isInputValid = safeCin<string>(firstNameStr);
-        isInputValid = isNameValid(firstNameStr);
-        if (!isInputValid)
-        {
-            setColor(RED);
-            cout << INVALID_FIRSTNAME_MESSAGE;
-        }
-            
-        strcpy_s(teacher.firstName, firstNameStr.c_str());
-    }
+	while (!isInputValid)
+	{
+		setColor(WHITE);
+		showMessage("\nFirst Name: ");
+		string firstNameStr;
+		isInputValid = safeCin<string>(firstNameStr);
+		isInputValid = isNameValid(firstNameStr);
+		if (!isInputValid)
+		{
+			setColor(RED);
+			cout << INVALID_FIRSTNAME_MESSAGE;
+		}
 
-    cout << endl;
+		strcpy_s(teacher.firstName, firstNameStr.c_str());
+	}
+
+	cout << endl;
 }
 
 void inputLastName(TEACHER& teacher)
 {
-    bool isInputValid = false;
-   
-    while (!isInputValid)
-    {
-        setColor(WHITE);
-        showMessage("\nLast Name: ");
-        string lastNameStr;
-        isInputValid = safeCin<string>(lastNameStr);
-        isInputValid = isNameValid(lastNameStr);
-        if (!isInputValid)
-        {
-            setColor(RED);
-            cout << INVALID_LASTNAME_MESSAGE;
-        }
-        strcpy_s(teacher.lastName, lastNameStr.c_str());
-    }
+	bool isInputValid = false;
 
-    cout << endl;
+	while (!isInputValid)
+	{
+		setColor(WHITE);
+		showMessage("\nLast Name: ");
+		string lastNameStr;
+		isInputValid = safeCin<string>(lastNameStr);
+		isInputValid = isNameValid(lastNameStr);
+		if (!isInputValid)
+		{
+			setColor(RED);
+			cout << INVALID_LASTNAME_MESSAGE;
+		}
+		strcpy_s(teacher.lastName, lastNameStr.c_str());
+	}
+
+	cout << endl;
 }
 
 void inputEmail(TEACHER& teacher)
 {
-    bool isInputValid = false;
+	bool isInputValid = false;
 
-    while (!isInputValid)
-    {
-        setColor(WHITE);
-        showMessage("\nE-mail: ");
-        string emailStr;
-        isInputValid = safeCin<string>(emailStr);
-        isInputValid = isEmailValid(emailStr);
-        if (!isInputValid)
-        {
-            setColor(RED);
-            cout << INVALID_EMAIL_MESSAGE;
-        }
-        strcpy_s(teacher.email, emailStr.c_str());
-    }
+	while (!isInputValid)
+	{
+		setColor(WHITE);
+		showMessage("\nE-mail: ");
+		string emailStr;
+		isInputValid = safeCin<string>(emailStr);
+		isInputValid = isEmailValid(emailStr);
+		if (!isInputValid)
+		{
+			setColor(RED);
+			cout << INVALID_EMAIL_MESSAGE;
+		}
+		strcpy_s(teacher.email, emailStr.c_str());
+	}
 
-    cout << endl;
+	cout << endl;
 }
 
 void showTeacherMenu()
 {
-    showTeacherMenuHeading();
+	showTeacherMenuHeading();
 
-    vector<MENU_OPTION> menu = initializeTeacherMenuOptions();
+	vector<MENU_OPTION> menu = initializeTeacherMenuOptions();
 
-    showMenuOptions(menu);
-    handleUserChoice(menu);
+	showMenuOptions(menu);
+	handleUserChoice(menu);
 }
 
 void showAddTeacherMenu()
 {
-    system("cls");
+	system("cls");
 
-    showAddTeacherMenuHeading();
+	showAddTeacherMenuHeading();
 
-    TEACHER student;
+	TEACHER student;
 
-    inputFirstName(student);
+	inputFirstName(student);
 
-    inputLastName(student);
+	inputLastName(student);
 
-    inputEmail(student);
+	inputEmail(student);
 
-    TEACHER_SERVICE::add(student);
+	TEACHER_SERVICE::add(student);
 
-    showMessage("The teacher was successfully registered in the system.\n");
+	showMessage("The teacher was successfully registered in the system.\n");
 
-    cout << endl;
+	cout << endl;
 
-    showTeacherMenu();
+	showTeacherMenu();
 }
 
 vector<MENU_OPTION_INT> initializeTeacherEditMenuOptions()
 {
-    vector<MENU_OPTION_INT> options =
-    {
-       {1, ".First name", editTeacherFirstNameMenu},
-       {2, ".Last name", editTeacherLastNameMenu},
-       {3, ".E-mail", editTeacherEmailMenu}
-    };
+	vector<MENU_OPTION_INT> options =
+	{
+	   {1, ".First name", editTeacherFirstNameMenu},
+	   {2, ".Last name", editTeacherLastNameMenu},
+	   {3, ".E-mail", editTeacherEmailMenu}
+	};
 
-    return options;
+	return options;
 }
 
 void showEditTeacherMenu()
 {
-    int id = 0;
-    TEACHER teacher;
+	int id = 0;
+	TEACHER teacher;
 
-    system("cls");
+	system("cls");
 
-    showEditTeacherMenuHeading();
+	showEditTeacherMenuHeading();
 
-    //cout << "Please choose a student to edit: ";
+	//cout << "Please choose a student to edit: ";
 
-    //student.showAll();
+	//student.showAll();
 
-    cout << "\nChoose what you want to edit\n\n";
+	cout << "\nChoose what you want to edit\n\n";
 
-    vector<MENU_OPTION_INT> options = initializeTeacherEditMenuOptions();
+	vector<MENU_OPTION_INT> options = initializeTeacherEditMenuOptions();
 
-    showMenuOptionsInt(options);
+	showMenuOptionsInt(options);
 
-    handleUserChoiceInt(options);
+	handleUserChoiceInt(options);
 
-    cout << endl;
+	cout << endl;
 
-    showTeacherMenu();
+	showTeacherMenu();
 }
 
 void editTeacherFirstNameMenu(int& id)
 {
-    TEACHER teacher;
-    TEACHER_SERVICE chosen;
-    bool isInputValid = false;
+	TEACHER teacher;
+	TEACHER_SERVICE chosen;
+	bool isInputValid = false;
 
-    while (!isInputValid) 
-    {
-        setColor(WHITE);
-        showMessage("\nEnter ID: ");
-        isInputValid = safeCin<int>(id);
-        if (!isInputValid)
-        {
-            setColor(RED);
-            cout << INVALID_ID_MESSAGE;
-        }
-    }
+	while (!isInputValid)
+	{
+		setColor(WHITE);
+		showMessage("\nEnter ID: ");
+		isInputValid = safeCin<int>(id);
+		if (!isInputValid)
+		{
+			setColor(RED);
+			cout << INVALID_ID_MESSAGE;
+		}
+	}
 
-    isInputValid = false;
+	isInputValid = false;
 
-    while (!isInputValid) 
-    {
-        setColor(WHITE);
-        showMessage("\nFirst Name: ");
-        string firstNameStr;
-        isInputValid = safeCin<string>(firstNameStr);
-        isInputValid = isNameValid(firstNameStr);
-        if (!isInputValid)
-        {
-            setColor(RED);
-            cout << INVALID_FIRSTNAME_MESSAGE;
-        }
-        strcpy_s(teacher.firstName, firstNameStr.c_str());
-    }
-    
-    try
-    {
-        chosen.editFirstName(id, teacher.firstName);
-        cout << INFORMATION_EDITED_SUCCESSFULLY_MESSAGE;
-    }
-    catch (const std::exception& e)
-    {
-        cout << e.what();
-    }
+	while (!isInputValid)
+	{
+		setColor(WHITE);
+		showMessage("\nFirst Name: ");
+		string firstNameStr;
+		isInputValid = safeCin<string>(firstNameStr);
+		isInputValid = isNameValid(firstNameStr);
+		if (!isInputValid)
+		{
+			setColor(RED);
+			cout << INVALID_FIRSTNAME_MESSAGE;
+		}
+		strcpy_s(teacher.firstName, firstNameStr.c_str());
+	}
 
-    showTeacherMenu();
+	try
+	{
+		chosen.editFirstName(id, teacher.firstName);
+		cout << INFORMATION_EDITED_SUCCESSFULLY_MESSAGE;
+	}
+	catch (const std::exception& e)
+	{
+		cout << e.what();
+	}
+
+	showTeacherMenu();
 }
 
 void editTeacherLastNameMenu(int& id)
 {
-    TEACHER teacher;
-    TEACHER_SERVICE chosen;
-    bool isInputValid = false;
+	TEACHER teacher;
+	TEACHER_SERVICE chosen;
+	bool isInputValid = false;
 
-    while (!isInputValid)
-    {
-        setColor(WHITE);
-        showMessage("\nEnter ID: ");
-        isInputValid = safeCin<int>(id);
-        if (!isInputValid)
-        {
-            setColor(RED);
-            cout << INVALID_ID_MESSAGE;
-        }
-    }
+	while (!isInputValid)
+	{
+		setColor(WHITE);
+		showMessage("\nEnter ID: ");
+		isInputValid = safeCin<int>(id);
+		if (!isInputValid)
+		{
+			setColor(RED);
+			cout << INVALID_ID_MESSAGE;
+		}
+	}
 
-    isInputValid = false;
+	isInputValid = false;
 
-    while (!isInputValid)
-    {
-        setColor(WHITE);
-        showMessage("\nLast Name: ");
-        string lastNameStr;
-        isInputValid = safeCin<string>(lastNameStr);
-        isInputValid = isNameValid(lastNameStr);
-        if (!isInputValid)
-        {
-            setColor(RED);
-            cout << INVALID_LASTNAME_MESSAGE;
-        }
-        strcpy_s(teacher.lastName, lastNameStr.c_str());
-    }
+	while (!isInputValid)
+	{
+		setColor(WHITE);
+		showMessage("\nLast Name: ");
+		string lastNameStr;
+		isInputValid = safeCin<string>(lastNameStr);
+		isInputValid = isNameValid(lastNameStr);
+		if (!isInputValid)
+		{
+			setColor(RED);
+			cout << INVALID_LASTNAME_MESSAGE;
+		}
+		strcpy_s(teacher.lastName, lastNameStr.c_str());
+	}
 
-    try
-    {
-        chosen.editLastName(id, teacher.lastName);
-        cout << INFORMATION_EDITED_SUCCESSFULLY_MESSAGE;
-    }
-    catch (const std::exception& e)
-    {
-        cout << e.what();
-    }
+	try
+	{
+		chosen.editLastName(id, teacher.lastName);
+		cout << INFORMATION_EDITED_SUCCESSFULLY_MESSAGE;
+	}
+	catch (const std::exception& e)
+	{
+		cout << e.what();
+	}
 
-    showTeacherMenu();
+	showTeacherMenu();
 }
 
 void editTeacherEmailMenu(int& id)
 {
-    TEACHER teacher;
-    TEACHER_SERVICE chosen;
-    bool isInputValid = false;
+	TEACHER teacher;
+	TEACHER_SERVICE chosen;
+	bool isInputValid = false;
 
-    while (!isInputValid) 
-    {
-       setColor(WHITE);
-       showMessage("\nEnter ID: ");
-       isInputValid = safeCin<int>(id);
-       if (!isInputValid)
-       {
-           setColor(RED);
-           cout << INVALID_ID_MESSAGE;
-       }
-    }
+	while (!isInputValid)
+	{
+		setColor(WHITE);
+		showMessage("\nEnter ID: ");
+		isInputValid = safeCin<int>(id);
+		if (!isInputValid)
+		{
+			setColor(RED);
+			cout << INVALID_ID_MESSAGE;
+		}
+	}
 
-    isInputValid = false;
+	isInputValid = false;
 
-    while (!isInputValid)
-    {
-        setColor(WHITE);
-        showMessage("\nEmail: ");
-        string emailStr;
-        isInputValid = safeCin<string>(emailStr);
-        isInputValid = isEmailValid(emailStr);
-        if (!isInputValid)
-        {
-            setColor(RED);
-            cout << INVALID_EMAIL_MESSAGE;
-        }
-        strcpy_s(teacher.email, emailStr.c_str());
-    }
-    
-    try
-    {
-        chosen.editEmail(id, teacher.email);
-        cout << INFORMATION_EDITED_SUCCESSFULLY_MESSAGE;
-    }
-    catch (const std::exception& e)
-    {
-        cout << e.what();
-    }
+	while (!isInputValid)
+	{
+		setColor(WHITE);
+		showMessage("\nEmail: ");
+		string emailStr;
+		isInputValid = safeCin<string>(emailStr);
+		isInputValid = isEmailValid(emailStr);
+		if (!isInputValid)
+		{
+			setColor(RED);
+			cout << INVALID_EMAIL_MESSAGE;
+		}
+		strcpy_s(teacher.email, emailStr.c_str());
+	}
 
-    showTeacherMenu();
+	try
+	{
+		chosen.editEmail(id, teacher.email);
+		cout << INFORMATION_EDITED_SUCCESSFULLY_MESSAGE;
+	}
+	catch (const std::exception& e)
+	{
+		cout << e.what();
+	}
+
+	showTeacherMenu();
 }
 
 void deleteTeacherMenu()
 {
-    TEACHER_SERVICE chosen;
-    int id;
-    bool isInputValid = false;
+	TEACHER_SERVICE chosen;
+	int id;
+	bool isInputValid = false;
 
-    showDeleteTeacherMenuHeading();
+	showDeleteTeacherMenuHeading();
 
-    showMessage("\nChoose a teacher to delete");
+	showMessage("\nChoose a teacher to delete");
 
-    while (!isInputValid) 
-    {
-        setColor(WHITE);
-        showMessage("\nEnter ID: ");
-        isInputValid = safeCin<int>(id);
-        if (!isInputValid)
-        {
-            setColor(RED);
-            cout << INVALID_ID_MESSAGE;
-        }
-    }
+	while (!isInputValid)
+	{
+		setColor(WHITE);
+		showMessage("\nEnter ID: ");
+		isInputValid = safeCin<int>(id);
+		if (!isInputValid)
+		{
+			setColor(RED);
+			cout << INVALID_ID_MESSAGE;
+		}
+	}
 
-    chosen.softDeleteTeacher(id);
+	chosen.softDeleteTeacher(id);
 
-    showMessage("\nThe teacher was removed successfully.");
+	showMessage("\nThe teacher was removed successfully.");
 
-    cout << endl;
+	cout << endl;
 
-    showTeacherMenu();
+	showTeacherMenu();
 }
 
 void showAllTeachersMenu()
 {
-    try
-    {
-        TEACHER::showAll();
-    }
-    catch (const std::exception& e)
-    {
-        cout << e.what();
-    }
- 
-    cout << endl;
-    showTeacherMenu();
+	try
+	{
+		TEACHER::showAll();
+	}
+	catch (const std::exception& e)
+	{
+		cout << e.what();
+	}
+
+	cout << endl;
+	showTeacherMenu();
 }
