@@ -11,7 +11,7 @@ vector<MENU_OPTION> initializeTeamMenuOptions()
 	{
 		{1, ".Add team", showAddTeamMenu},
 		{2, ".Edit team", showEditTeamMenu},
-		{3, ".Delete team", /*func*/},
+		{3, ".Add Participant", /**/},
 		{4, ".View all teams", showAllTeamsMenu},
 		{5, ".Return to main menu", showMainMenu}
 	};
@@ -232,7 +232,7 @@ void editTeamParticipantMenu(int& id)
 	while (!isInputValid)
 	{
 		setColor(WHITE);
-		showMessage("\nEnter ID: ");
+		showMessage("\nEnter Team ID: ");
 		isInputValid = safeCin<int>(id);
 		if (!isInputValid)
 		{
@@ -457,6 +457,106 @@ void editTeamStatusMenu(int& id)
 	showTeamsMenu();
 }
 
+
+void setRole(int choice, ROLES& status)
+{
+	switch (choice)
+	{
+	case 1:
+		status = ROLES::SCRUM_MASTER;
+		break;
+	case 2:
+		status = ROLES::BACK_END;
+		break;
+	case 3:
+		status = ROLES::FRONT_END;
+		break;
+	case 4:
+		status = ROLES::QA;
+		break;
+	}
+}
+
+
+void showAddParticipantMenu(int& id)
+{
+	PARTICIPANT participant;
+	PARTICIPANT_SERVICE chosen;
+	bool isInputValid = false;
+
+	while (!isInputValid)
+	{
+		setColor(WHITE);
+		showAllTeams();
+		showMessage("\nEnter Team ID: ");
+		isInputValid = safeCin<int>(id);
+		if (!isInputValid)
+		{
+			setColor(RED);
+			cout << INVALID_ID_MESSAGE;
+		}
+	}
+	participant.teamId = id;
+
+
+	isInputValid = false;
+
+	int studentId;
+	while (!isInputValid)
+	{
+		setColor(WHITE);
+		STUDENT::showAll();
+		showMessage("\nStudent ID: ");
+		isInputValid = safeCin<int>(studentId);
+
+		if (!isInputValid)
+		{
+			setColor(RED);
+			cout << INVALID_FIRSTNAME_MESSAGE;
+		}
+	}
+	participant.studentId = studentId;
+
+	isInputValid = false;
+	cout << "1. Scrum Master" << endl;
+	cout << "2. Back-End" << endl;
+	cout << "3. Front-End" << endl;
+	cout << "4. QA" << endl;
+	int choice;
+
+	ROLES role;
+
+	while (!isInputValid)
+	{
+		setColor(WHITE);
+		showMessage("\nChoose status: ");
+		cin.ignore();
+		isInputValid = safeCin<int>(choice);
+		isInputValid = true;
+		if (!isInputValid)
+		{
+			setColor(RED);
+			cout << INVALID_FIRSTNAME_MESSAGE;
+		}
+		else
+		{
+			setRole(choice, role);
+		}
+	}
+	participant.role = role;
+
+	try
+	{
+		chosen.add(participant);
+		cout << INFORMATION_EDITED_SUCCESSFULLY_MESSAGE;
+	}
+	catch (const std::exception& e)
+	{
+		cout << e.what();
+	}
+
+	showTeamsMenu();
+}
 
 void showEditTeamMenu()
 {

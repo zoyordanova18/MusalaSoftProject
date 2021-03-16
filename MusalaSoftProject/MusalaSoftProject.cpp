@@ -11,6 +11,7 @@
 #include "teams.h"
 #include "participants.h"
 #include "Presentation.h"
+#include "presentationTeam.h"
 #include "helpers.h"
 using namespace std;
 
@@ -36,6 +37,10 @@ int main()
 	//cout << sizeof(a)<<endl;
 
 	openAllFiles();
+
+	int a = 5;
+
+	showAddParticipantMenu(a);
 
 	//PARTICIPANT_SERVICE::add({ 9,1,ROLES::QA });
 

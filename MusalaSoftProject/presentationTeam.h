@@ -53,3 +53,5 @@ void editTeamDescriptionMenu(int& id);
 void editTeamStatusMenu(int& id);
 
 void setEditedStatus(int choice, TEAM_STATUS& status);
+
+void showAddParticipantMenu(int& id);
