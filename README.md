@@ -18,7 +18,7 @@
       <a href="#our-team">Our Team</a>
     </li>
    <li>
-    <a href="#documentation-and-presentation">Presentation and Documentation</a></li>
+    <a href="#presentation-and-documentation">Presentation and Documentation</a></li>
   </ol>
 </details>
 
