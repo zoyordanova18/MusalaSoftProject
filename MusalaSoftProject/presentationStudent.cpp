@@ -304,18 +304,18 @@ void filterByEmailMenu()
     bool isInputValid = false;
     bool isStEmailValid = false;
 
-    string email;
+    string stClass;
     while (!isInputValid || !isStEmailValid)
     {
         system("cls");
         setColor(WHITE);
 
         showMessage("\nEnter Class: ");
-        isInputValid = safeCin<string>(email);
+        isInputValid = safeCin<string>(stClass);
 
-        transform(email.begin(), email.end(), email.begin(), ::toupper);
+        transform(stClass.begin(), stClass.end(), stClass.begin(), ::toupper);
 
-        isStEmailValid = isEmailValid(email);
+        isStEmailValid = isEmailValid(stClass);
         if (!isInputValid || !isStEmailValid)
         {
             setColor(RED);
@@ -327,7 +327,7 @@ void filterByEmailMenu()
 
     auto predicate = [&](STUDENT student)
     {
-        return student.email == email;
+        return student.email == stClass;
     };
 
     vector<STUDENT> result = findRecords<STUDENT>(students, predicate);

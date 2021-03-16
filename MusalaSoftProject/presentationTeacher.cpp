@@ -32,8 +32,8 @@ vector<MENU_OPTION> initializeFilterTeacherMenuOptions()
 		{1, ".Find By Id", filterByIdTeacherMenu},
 		{2, ".Filter By First Name", filterByFirstNameTeacherMenu},
 		{3, ".Filter By Last Name", filterByLastNameTeacherMenu},
-		{4, ".Find by Email", /**/},
-		{5, ".Return to Student Menu", /**/}
+		{4, ".Find by Email", filterByEmailTeacherMenu},
+		{5, ".Return to Teacher Menu", showTeacherMenu}
 	};
 
 	return options;
@@ -174,6 +174,62 @@ void filterByLastNameTeacherMenu()
 	{
 		setColor(RED);
 		showMessage("There are not teachers with this last name! \n\n");
+		setColor(WHITE);
+	}
+	else
+	{
+		showTeachersTableHeader();
+
+		for (size_t i = 0; i < result.size(); i++)
+		{
+			showTeacherInTable(result[i]);
+			cout << endl;
+		}
+
+		string headerLine(83, '-');
+		cout << headerLine << endl << endl << endl;
+
+	}
+
+	showTeacherMenu();
+
+}
+
+void filterByEmailTeacherMenu()
+{
+	bool isInputValid = false;
+	bool isStEmailValid = false;
+
+	string email;
+	while (!isInputValid || !isStEmailValid)
+	{
+		system("cls");
+		setColor(WHITE);
+
+		showMessage("\nEnter Email: ");
+		isInputValid = safeCin<string>(email);
+
+		isStEmailValid = isEmailValid(email);
+		if (!isInputValid || !isStEmailValid)
+		{
+			setColor(RED);
+			cout << INVALID_STUDENTCLASS_MESSAGE;
+		}
+	}
+
+	vector<TEACHER> teachers = TEACHER_SERVICE::getAll();
+
+	auto predicate = [&](TEACHER teacher)
+	{
+		return teacher.email == email;
+	};
+
+	vector<TEACHER> result = findRecords<TEACHER>(teachers, predicate);
+
+	if (result.size() == 0)
+	{
+		setColor(RED);
+		showMessage("There are not teachers with this email! \n\n");
 		setColor(WHITE);
 	}
 	else

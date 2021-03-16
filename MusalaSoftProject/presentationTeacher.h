@@ -13,6 +13,8 @@ void filterByFirstNameTeacherMenu();
 
 void filterByLastNameTeacherMenu();
 
+void filterByEmailTeacherMenu();
+
 void filterByIdTeacherMenu();
 
 void showFilterTeacherMenu();
