@@ -44,10 +44,10 @@ Technologies we used:
 ## Presentation and Documentation
 
 You can find the documentation here:
-* [Documentation](https://codingburgas-my.sharepoint.com/:b:/g/personal/zoyordanova18_codingburgas_bg/Eb-UaFGFzYtHkFtKcyi89aYBjZR8AFhRKv2PQVy_mFT7Gg?e=QOBQ4m)
+* [Documentation](https://codingburgas-my.sharepoint.com/:b:/g/personal/zoyordanova18_codingburgas_bg/ES0CAWThaOFGvRoXjcZ4zrABeTWIo4zje5NZtweUIKsRtw?e=j63G5V)
 
 You can find the presentation here:
-* [Presentation](https://codingburgas-my.sharepoint.com/:p:/g/personal/zoyordanova18_codingburgas_bg/EZ5GeNw0U_5IksrQzwIyeCYBE08S_MEYecXpL096L-WxoQ?e=FSXMyK)
+* [Presentation](https://codingburgas-my.sharepoint.com/:p:/g/personal/zoyordanova18_codingburgas_bg/EaZtp1e-GGJFruKvUfkt5cEB9IH5V2YRCE6loaE2fKo2_A?e=tK67oT)
 
 You can find the QA Doxumentation here:
 * [Test plan](https://codingburgas-my.sharepoint.com/:b:/g/personal/zoyordanova18_codingburgas_bg/ERS4O6rlbBJAhbAQWkFpM7MBmH1z4H3O9mUMAkBwkdLRnA?e=WXPQM8)
