@@ -44,13 +44,13 @@ Technologies we used:
 ## Presentation and Documentation
 
 You can find the documentation here:
-* [Documentation](https://codingburgas-my.sharepoint.com/:f:/g/personal/zoyordanova18_codingburgas_bg/EsnKTtjHvFROtGiaYYE0ETsBFoDARjZjqotjDazY_h2iiQ?e=BmB6re)
+* [Documentation](https://codingburgas-my.sharepoint.com/:b:/g/personal/zoyordanova18_codingburgas_bg/Eb-UaFGFzYtHkFtKcyi89aYBjZR8AFhRKv2PQVy_mFT7Gg?e=QOBQ4m)
 
 You can find the presentation here:
 * [Presentation](https://codingburgas-my.sharepoint.com/:f:/g/personal/zoyordanova18_codingburgas_bg/EsnKTtjHvFROtGiaYYE0ETsBFoDARjZjqotjDazY_h2iiQ?e=BmB6re)
 
 You can find the QA here:
-* [QA](https://codingburgas-my.sharepoint.com/:f:/g/personal/zoyordanova18_codingburgas_bg/EsnKTtjHvFROtGiaYYE0ETsBFoDARjZjqotjDazY_h2iiQ?e=BmB6re)
+* [QA](https://codingburgas-my.sharepoint.com/:b:/g/personal/zoyordanova18_codingburgas_bg/ERS4O6rlbBJAhbAQWkFpM7MBmH1z4H3O9mUMAkBwkdLRnA?e=WXPQM8)
 
 
 
