@@ -13,19 +13,45 @@ vector<MENU_OPTION> initializeTeamMenuOptions()
 		{2, ".Edit team", showEditTeamMenu},
 		{3, ".Add Participant", showAddParticipantMenu},
 		{4, ".View all teams", showAllTeamsMenu},
-		{5, ".Filter teams", showAllTeamsMenu},
+		{5, ".Filter teams", showFilterTeamMenu},
 		{6, ".Return to main menu", showMainMenu}
 	};
 
 	return options;
 }
 
+
+void filterByIdTeamMenu()
+{
+	bool isInputValid = false;
+
+	int id;
+	while (!isInputValid)
+	{
+		system("cls");
+		setColor(WHITE);
+		showMessage("\nEnter ID: ");
+		isInputValid = safeCin<int>(id);
+		if (!isInputValid)
+		{
+			setColor(RED);
+			cout << INVALID_ID_MESSAGE;
+		}
+	}
+
+	showTeamById(id);
+
+	showTeamsMenu();
+
+}
+
+
 vector<MENU_OPTION> initializeFilterTeamMenuOptions()
 {
 	vector<MENU_OPTION> options =
 	{
-		{1, ".Find By Id", /**/},
-		{2, ".Filter By First Name", /**/},
+		{1, ".Find By Id", filterByIdTeamMenu},
+		{2, ".Find By First Name", /**/},
 		{3, ".Filter By Last Name", /**/},
 		{4, ".Find by Email", /**/},
 		{5, ".Return to Teacher Menu", /**/}
@@ -34,7 +60,10 @@ vector<MENU_OPTION> initializeFilterTeamMenuOptions()
 	return options;
 }
 
-void showFilterTeacherMenu()
+
+
+
+void showFilterTeamMenu()
 {
 	system("cls");
 
