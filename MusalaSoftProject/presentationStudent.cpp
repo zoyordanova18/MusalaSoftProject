@@ -103,7 +103,7 @@ void editFirstNameMenu(int& id)
     {
         chosen.editFirstName(id, student.firstName);
 
-        showMessage("\nThe information was edited successfully.\n");
+        cout << INFORMATION_EDITED_SUCCESSFULLY_MESSAGE;
     }
     catch (const std::exception& e)
     {
@@ -139,7 +139,7 @@ void editLastNameMenu(int& id)
     try
     {
         chosen.editLastName(id, student.lastName);
-        showMessage("\nThe information was edited successfully.\n");
+        cout << INFORMATION_EDITED_SUCCESSFULLY_MESSAGE;
     }
     catch (const std::exception& e)
     {
@@ -176,7 +176,7 @@ void editStudentClassMenu(int& id)
     {
         chosen.editClass(id, student.studentClass);
 
-        showMessage("\nThe information was edited successfully.\n");
+        cout << INFORMATION_EDITED_SUCCESSFULLY_MESSAGE;
     }
     catch (const std::exception& e)
     {
@@ -214,7 +214,7 @@ void editStudentEmailMenu(int& id)
     {
         chosen.editEmail(id, student.email);
 
-        showMessage("\nThe information was edited successfully.\n");
+        cout << INFORMATION_EDITED_SUCCESSFULLY_MESSAGE;
     }
     catch (const std::exception& e)
     {

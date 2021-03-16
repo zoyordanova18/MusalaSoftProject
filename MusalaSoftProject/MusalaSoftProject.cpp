@@ -18,7 +18,7 @@ int main()
 {
 
 	//cout << sizeof(PARTICIPANT);
-	cout << sizeof(TEAM);
+	//cout << sizeof(TEAM);
 
 	// consoleSetup();
 
@@ -42,10 +42,10 @@ int main()
 
 	//PARTICIPANT_SERVICE::add({ 9,1,ROLES::QA });
 
-	TEAM_SERVICE::add({ 0,"Iskender Devs", "Make Duner", "1-1-1", TEAM_STATUS::IN_USE,0 });
+	/*TEAM_SERVICE::add({ 0,"Iskender Devs", "Make Duner", "1-1-1", TEAM_STATUS::IN_USE,0 });
 	TEAM_SERVICE::add({ 0,"Jenski Hormoni", "Habii", "1-1-1", TEAM_STATUS::IN_USE,1 });
 	TEAM_SERVICE::add({ 0,"Piko Na Filiq", "Salamuuuuu", "1-1-1", TEAM_STATUS::IN_USE,2 });
-	TEAM_SERVICE::add({ 0,"Sasha Riko", "Udrq li te tok", "1-1-1", TEAM_STATUS::IN_USE,3 });
+	TEAM_SERVICE::add({ 0,"Sasha Riko", "Udrq li te tok", "1-1-1", TEAM_STATUS::IN_USE,3 });*/
 
 	
 
